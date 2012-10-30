@@ -25,3 +25,6 @@
 [submodule "gocode"]
 	path = gocode
 	url = https://github.com/nsf/gocode.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips
