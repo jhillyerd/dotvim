@@ -26,6 +26,7 @@ set hidden
 set hlsearch
 set incsearch
 set number
+set relativenumber
 set wildmode=longest,list,full
 set wildmenu
 let mapleader="\\"
