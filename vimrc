@@ -45,6 +45,7 @@ autocmd InsertEnter * setlocal cursorline
 autocmd InsertLeave * setlocal nocursorline
 set background=dark
 colorscheme solarized
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 if has("win32")
   set guifont=Consolas:h11
