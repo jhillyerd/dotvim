@@ -17,6 +17,7 @@ let g:syntastic_go_checker = 'gofmt'
 
 "Options
 set autoindent
+set colorcolumn=100
 set completeopt=menu,longest
 set cursorline
 set hidden
