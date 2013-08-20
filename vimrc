@@ -24,7 +24,7 @@ set hidden
 set hlsearch
 set incsearch
 set laststatus=2
-set relativenumber
+set number
 set ruler
 set shiftwidth=2
 set showcmd
