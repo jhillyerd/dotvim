@@ -5,7 +5,7 @@ runtime bundle/pathogen/autoload/pathogen.vim
 autocmd!
 filetype off
 
-call pathogen#runtime_append_all_bundles() 
+call pathogen#runtime_append_all_bundles()
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:syntastic_go_checker = 'gofmt'
