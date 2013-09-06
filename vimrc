@@ -12,7 +12,6 @@ let g:syntastic_go_checker = 'gofmt'
 
 "Options
 set autoindent
-set colorcolumn=100
 set completeopt=menu,longest
 set cursorline
 set hidden
@@ -26,6 +25,10 @@ set showcmd
 set smarttab
 set wildmode=longest,list,full
 set wildmenu
+
+if exists('+colorcolumn')
+  set colorcolumn=100
+endif
 
 let mapleader="\\"
 filetype plugin indent on
