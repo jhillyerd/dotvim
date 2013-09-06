@@ -1,10 +1,5 @@
 " James' attempt at a multiplatform vimrc
 
-if has("win32")
-  source $VIM/_vimrc
-  let &runtimepath=substitute(&runtimepath, "jamehi03/vimfiles", "jamehi03/.vim", "g")
-endif
-
 runtime bundle/pathogen/autoload/pathogen.vim
 
 autocmd!
@@ -50,7 +45,6 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 if has("win32")
   set guifont=Consolas:h11
-  set selectmode=""
 else
   set guifont=Monaco:h13
 endif
@@ -67,6 +61,7 @@ nmap <silent> _ :resize -2<CR>
 map 0 ^
 nmap <Left> <C-T>
 nmap <Right> <C-]>
+nnoremap Q gq
 
 "Enter directory listing for the directory of the current buffer
 map <leader>. :e %:p:h<CR>
