@@ -43,19 +43,22 @@ syntax enable
 if has("gui_running")
   set lines=50 columns=120
   let g:solarized_contrast="high"
-  set guioptions-=T  "remove toolbar
-  set guioptions-=L  "prevent window resizing
+  set guioptions-=T                    "remove toolbar
 else
   let g:solarized_termcolors=16
 endif
 set background=dark
 colorscheme solarized
-"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 if has("win32")
   set guifont=Consolas:h11
+  set guioptions-=L                    "prevent window resizing
 else
-  set guifont=Monaco:h13
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ Medium\ 11
+  else
+    set guifont=Monaco:h13
+  endif
 endif
 
 "Command mappings
