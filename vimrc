@@ -1,5 +1,9 @@
 " James' attempt at a multiplatform vimrc
 
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
 runtime bundle/pathogen/autoload/pathogen.vim
 
 autocmd!
@@ -11,20 +15,21 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:syntastic_go_checker = 'gofmt'
 
 "Options
-set autoindent
-set completeopt=menu,longest
-set cursorline
-set hidden
-set hlsearch
-set incsearch
-set laststatus=2
-set number
-set ruler
-set shiftwidth=2
-set showcmd
-set smarttab
-set wildmode=longest,list,full
-set wildmenu
+set autoindent                         " Copy indent from previous line
+set backspace=indent,eol,start         " Allow backspacing over everything
+set completeopt=menu,longest           " Popup a menu for completion
+set cursorline                         " Highlight the line the cursor is on
+set hidden                             " Allow hidden buffers
+set hlsearch                           " Highlight search hits
+set incsearch                          " Incremental search
+set laststatus=2                       " Always display a status line
+set number                             " Always display line numbers
+set ruler                              " Always display cursor row, col
+set shiftwidth=2                       " Number of spaces for autoindent
+set showcmd                            " Show commands as they are typed
+set smarttab                           " <Tab> uses shiftwidth at BOL
+set wildmode=longest,list,full         " Command line completion options
+set wildmenu                           " Display completion options
 
 if exists('+colorcolumn')
   set colorcolumn=100
@@ -39,12 +44,13 @@ if has("gui_running")
   set lines=50 columns=120
   let g:solarized_contrast="high"
   set guioptions-=T  "remove toolbar
+  set guioptions-=L  "prevent window resizing
 else
   let g:solarized_termcolors=16
 endif
 set background=dark
 colorscheme solarized
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+"set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 if has("win32")
   set guifont=Consolas:h11
@@ -52,11 +58,9 @@ else
   set guifont=Monaco:h13
 endif
 
-"Commands
-command Wide :set columns=180
-
 "Command mappings
 nmap <silent> <Leader>/ :nohlsearch<CR>
+nmap <silent> <Leader>w :set columns=180<CR>
 nmap <Leader>nt :NERDTreeToggle<CR>
 nmap <Leader>t :TagbarOpenAutoClose<CR>
 nmap <silent> + :resize +2<CR>
