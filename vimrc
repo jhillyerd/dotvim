@@ -62,10 +62,12 @@ else
 endif
 
 "Command mappings
-nmap <silent> <Leader>/ :nohlsearch<CR>
+nmap <silent> <Leader>f :NERDTreeToggle<CR>
+nmap <silent> <Leader>h :set hlsearch!<CR>
+nmap <silent> <Leader>n :set number!<CR>
+nmap <silent> <Leader>p :set paste!<CR>
+nmap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 nmap <silent> <Leader>w :set columns=180<CR>
-nmap <Leader>nt :NERDTreeToggle<CR>
-nmap <Leader>t :TagbarOpenAutoClose<CR>
 nmap <silent> + :resize +2<CR>
 nmap <silent> _ :resize -2<CR>
 map 0 ^
