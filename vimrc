@@ -63,7 +63,7 @@ endif
 
 "Command mappings
 nmap <silent> <Leader>f :NERDTreeToggle<CR>
-nmap <silent> <Leader>h :set hlsearch!<CR>
+nmap <silent> <Leader>h :nohlsearch<CR>
 nmap <silent> <Leader>n :set number!<CR>
 nmap <silent> <Leader>p :set paste!<CR>
 nmap <silent> <Leader>t :TagbarOpenAutoClose<CR>
