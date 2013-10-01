@@ -62,9 +62,9 @@ else
 endif
 
 "Command mappings
-nmap <silent> <Leader>f :NERDTreeToggle<CR>
 nmap <silent> <Leader>h :nohlsearch<CR>
 nmap <silent> <Leader>n :set number!<CR>
+nmap <silent> <Leader>nt :NERDTreeToggle<CR>
 nmap <silent> <Leader>p :set paste!<CR>
 nmap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 nmap <silent> <Leader>w :set columns=180<CR>
@@ -73,7 +73,7 @@ nmap <silent> _ :resize -2<CR>
 map 0 ^
 nmap <Left> <C-T>
 nmap <Right> <C-]>
-nnoremap Q gq
+map Q gq
 
 "Enter directory listing for the directory of the current buffer
 map <leader>. :e %:p:h<CR>
@@ -101,6 +101,12 @@ autocmd FileType ruby vmap <buffer> <Leader>eb :ScreenSend<CR>
 "Quickfix window
 autocmd QuickFixCmdPre * :update
 autocmd QuickFixCmdPost * :cwindow
+
+" Auto format golang on save
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+" Recognize .md as markdown, not modula2
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 "Use gotags for tagbar
 let g:tagbar_type_go = {
