@@ -3,13 +3,32 @@
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-
-runtime bundle/pathogen/autoload/pathogen.vim
-
 autocmd!
 filetype off
 
-call pathogen#runtime_append_all_bundles()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle (required)
+Bundle 'gmarik/vundle'
+
+" vimscripts plugins
+Bundle 'bufexplorer.zip'
+Bundle 'matchit.zip'
+
+" github plugins
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'bling/vim-airline'
+Bundle 'ervandew/supertab'
+Bundle 'kien/ctrlp.vim'
+Bundle 'majutsushi/tagbar'
+"Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'SirVer/ultisnips'
+Bundle 'tpope/vim-fugitive'
+Bundle 'xolox/vim-easytags'
+Bundle 'xolox/vim-misc'
+
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:syntastic_go_checker = 'gofmt'
@@ -70,7 +89,6 @@ nmap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 nmap <silent> <Leader>w :set columns=180<CR>
 nmap <silent> + :resize +2<CR>
 nmap <silent> _ :resize -2<CR>
-map 0 ^
 nmap <Left> <C-T>
 nmap <Right> <C-]>
 map Q gq

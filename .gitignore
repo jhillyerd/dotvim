@@ -214,5 +214,8 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-# Gocode maintained externally
-bundle/gocode
+# Only track certain add-ons
+bundle/**
+~bundle/gocode
+~bundle/golang
+~bundle/vundle
