@@ -25,6 +25,7 @@ Bundle 'majutsushi/tagbar'
 "Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
+Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-fugitive'
 Bundle 'xolox/vim-easytags'
 Bundle 'xolox/vim-misc'
@@ -33,30 +34,20 @@ let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:syntastic_go_checker = 'gofmt'
 
-"Options
-set autoindent                         " Copy indent from previous line
-set backspace=indent,eol,start         " Allow backspacing over everything
+"Options (many more set in vim-sensible)
 set completeopt=menu,longest           " Popup a menu for completion
 set cursorline                         " Highlight the line the cursor is on
 set hidden                             " Allow hidden buffers
 set hlsearch                           " Highlight search hits
-set incsearch                          " Incremental search
-set laststatus=2                       " Always display a status line
 set number                             " Always display line numbers
-set ruler                              " Always display cursor row, col
 set shiftwidth=2                       " Number of spaces for autoindent
-set showcmd                            " Show commands as they are typed
-set smarttab                           " <Tab> uses shiftwidth at BOL
 set wildmode=longest,list,full         " Command line completion options
-set wildmenu                           " Display completion options
 
 if exists('+colorcolumn')
   set colorcolumn=100
 endif
 
 let mapleader="\\"
-filetype plugin indent on
-syntax enable
 
 "Looks
 if has("gui_running")
