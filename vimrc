@@ -7,6 +7,7 @@ autocmd!
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
+set rtp+=$GOROOT/misc/vim
 call vundle#rc()
 
 " let Vundle manage Vundle (required)
@@ -33,7 +34,6 @@ Bundle 'xolox/vim-misc'
 
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-let g:syntastic_go_checker = 'gofmt'
 
 "Options (many more set in vim-sensible)
 set completeopt=menu,longest           " Popup a menu for completion
