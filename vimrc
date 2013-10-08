@@ -38,6 +38,8 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "Options (many more set in vim-sensible)
 set completeopt=menu,longest           " Popup a menu for completion
 set cursorline                         " Highlight the line the cursor is on
+set foldmethod=syntax                  " Fold based on file's syntax
+set foldnestmax=1                      " I prefer one level of folds
 set hidden                             " Allow hidden buffers
 set hlsearch                           " Highlight search hits
 set number                             " Always display line numbers
@@ -87,6 +89,7 @@ nmap <silent> _ :resize -2<CR>
 nmap <Left> <C-T>
 nmap <Right> <C-]>
 map Q gq
+nnoremap <Space> za
 
 "Enter directory listing for the directory of the current buffer
 map <leader>. :e %:p:h<CR>
@@ -102,24 +105,29 @@ imap `em james@hillyerd.com
 vmap < <gv
 vmap > >gv
 
-"Ruby ScreenShell mappings
-autocmd FileType ruby nmap <buffer> <Leader>ss :ScreenShell<CR>
-autocmd FileType ruby nmap <buffer> <Leader>sr :ScreenShell irb<CR>
-autocmd FileType ruby nmap <buffer> <Leader>sq :ScreenQuit<CR>
-autocmd FileType ruby nmap <buffer> <Leader>ef :ScreenSend<CR>
-autocmd FileType ruby nmap <buffer> <Leader>ep vip:ScreenSend<CR>
-autocmd FileType ruby nmap <buffer> <Leader>el V:ScreenSend<CR>
-autocmd FileType ruby vmap <buffer> <Leader>eb :ScreenSend<CR>
+if has("autocmd")
+  "Reload vimrc after save
+  autocmd bufwritepost .vimrc source $MYVIMRC
 
-"Quickfix window
-autocmd QuickFixCmdPre * :update
-autocmd QuickFixCmdPost * :cwindow
+  "Ruby ScreenShell mappings
+  autocmd FileType ruby nmap <buffer> <Leader>ss :ScreenShell<CR>
+  autocmd FileType ruby nmap <buffer> <Leader>sr :ScreenShell irb<CR>
+  autocmd FileType ruby nmap <buffer> <Leader>sq :ScreenQuit<CR>
+  autocmd FileType ruby nmap <buffer> <Leader>ef :ScreenSend<CR>
+  autocmd FileType ruby nmap <buffer> <Leader>ep vip:ScreenSend<CR>
+  autocmd FileType ruby nmap <buffer> <Leader>el V:ScreenSend<CR>
+  autocmd FileType ruby vmap <buffer> <Leader>eb :ScreenSend<CR>
 
-" Auto format golang on save
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
+  "Quickfix window
+  autocmd QuickFixCmdPre * :update
+  autocmd QuickFixCmdPost * :cwindow
 
-" Recognize .md as markdown, not modula2
-autocmd BufRead,BufNewFile *.md set filetype=markdown
+  " Auto format golang on save
+  autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+  " Recognize .md as markdown, not modula2
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+endif
 
 "Use gotags for tagbar
 let g:tagbar_type_go = {
@@ -149,3 +157,4 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
     \ }
+
