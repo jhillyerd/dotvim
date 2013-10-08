@@ -48,6 +48,9 @@ if exists('+colorcolumn')
   set colorcolumn=100
 endif
 
+"vim-sensible calls this, but it doesn't seem to work for 7.2
+syntax enable
+
 let mapleader="\\"
 
 "Looks
