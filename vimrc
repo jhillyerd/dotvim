@@ -26,6 +26,7 @@ Bundle 'majutsushi/tagbar'
 "Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
+Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
@@ -121,9 +122,6 @@ if has("autocmd")
   "Quickfix window
   autocmd QuickFixCmdPre * :update
   autocmd QuickFixCmdPost * :cwindow
-
-  " Auto format golang on save
-  autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
   " Recognize .md as markdown, not modula2
   autocmd BufRead,BufNewFile *.md set filetype=markdown
