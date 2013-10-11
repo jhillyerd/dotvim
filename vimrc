@@ -26,6 +26,7 @@ Bundle 'majutsushi/tagbar'
 "Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
+Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
@@ -38,6 +39,7 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 "Options (many more set in vim-sensible)
 set completeopt=menu,longest           " Popup a menu for completion
 set cursorline                         " Highlight the line the cursor is on
+set fillchars=vert:\|,fold:\           " Visual fill characters
 set foldmethod=syntax                  " Fold based on file's syntax
 set foldnestmax=1                      " I prefer one level of folds
 set hidden                             " Allow hidden buffers
@@ -78,7 +80,6 @@ else
 endif
 
 "Command mappings
-nmap <silent> <Leader>h :nohlsearch<CR>
 nmap <silent> <Leader>n :set number!<CR>
 nmap <silent> <Leader>nt :NERDTreeToggle<CR>
 nmap <silent> <Leader>p :set paste!<CR>
@@ -122,12 +123,21 @@ if has("autocmd")
   autocmd QuickFixCmdPre * :update
   autocmd QuickFixCmdPost * :cwindow
 
-  " Auto format golang on save
-  autocmd FileType go autocmd BufWritePre <buffer> Fmt
-
   " Recognize .md as markdown, not modula2
   autocmd BufRead,BufNewFile *.md set filetype=markdown
 endif
+
+function! NeatFoldText()
+  let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
+  let lines_count = v:foldend - v:foldstart + 1
+  let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
+  let foldchar = matchstr(&fillchars, 'fold:\zs.')
+  let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
+  let foldtextend = lines_count_text . repeat(foldchar, 8)
+  let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
+  return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+endfunction
+set foldtext=NeatFoldText()
 
 "Use gotags for tagbar
 let g:tagbar_type_go = {
