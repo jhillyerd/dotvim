@@ -19,6 +19,8 @@ Bundle 'matchit.zip'
 
 " github plugins
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'benmills/vimux'
+Bundle 'benmills/vimux-golang'
 Bundle 'bling/vim-airline'
 Bundle 'ervandew/supertab'
 Bundle 'kien/ctrlp.vim'
@@ -35,6 +37,8 @@ Bundle 'xolox/vim-misc'
 
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 "Options (many more set in vim-sensible)
 set completeopt=menu,longest           " Popup a menu for completion
@@ -87,10 +91,20 @@ nmap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 nmap <silent> <Leader>w :set columns=180<CR>
 nmap <silent> + :resize +2<CR>
 nmap <silent> _ :resize -2<CR>
+
+"Use cursor keys to navigate tags
 nmap <Left> <C-T>
 nmap <Right> <C-]>
+
 map Q gq
 nnoremap <Space> za
+
+"Vimux mappings
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>vi :VimuxInspectRunner<CR>
+map <Leader>vq :VimuxCloseRunner<CR>
+map <Leader>vc :VimuxClearRunnerHistory<CR>
 
 "Enter directory listing for the directory of the current buffer
 map <leader>. :e %:p:h<CR>
@@ -110,14 +124,9 @@ if has("autocmd")
   "Reload vimrc after save
   autocmd bufwritepost .vimrc source $MYVIMRC
 
-  "Ruby ScreenShell mappings
-  autocmd FileType ruby nmap <buffer> <Leader>ss :ScreenShell<CR>
-  autocmd FileType ruby nmap <buffer> <Leader>sr :ScreenShell irb<CR>
-  autocmd FileType ruby nmap <buffer> <Leader>sq :ScreenQuit<CR>
-  autocmd FileType ruby nmap <buffer> <Leader>ef :ScreenSend<CR>
-  autocmd FileType ruby nmap <buffer> <Leader>ep vip:ScreenSend<CR>
-  autocmd FileType ruby nmap <buffer> <Leader>el V:ScreenSend<CR>
-  autocmd FileType ruby vmap <buffer> <Leader>eb :ScreenSend<CR>
+  "Golang vimux mappings
+  autocmd FileType go map <buffer> <Leader>ra :GolangTestCurrentPackage<CR>
+  autocmd FileType go map <buffer> <Leader>rf :GolangTestFocused<CR>
 
   "Quickfix window
   autocmd QuickFixCmdPre * :update
