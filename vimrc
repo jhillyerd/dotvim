@@ -39,6 +39,7 @@ let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:VimuxUseNearestPane=0
 
 "Options (many more set in vim-sensible)
 set completeopt=menu,longest           " Popup a menu for completion
