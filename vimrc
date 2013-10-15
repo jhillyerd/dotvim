@@ -106,6 +106,7 @@ map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vi :VimuxInspectRunner<CR>
 map <Leader>vq :VimuxCloseRunner<CR>
 map <Leader>vc :VimuxClearRunnerHistory<CR>
+map <Leader>vk :VimuxInterruptRunner<CR>
 
 "Enter directory listing for the directory of the current buffer
 map <leader>. :e %:p:h<CR>
