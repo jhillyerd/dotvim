@@ -85,6 +85,7 @@ else
 endif
 
 "Command mappings
+nmap <silent> <Leader>l :set list!<CR>
 nmap <silent> <Leader>n :set number!<CR>
 nmap <silent> <Leader>nt :NERDTreeToggle<CR>
 nmap <silent> <Leader>p :set paste!<CR>
