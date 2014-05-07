@@ -214,6 +214,8 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
+# Vim work files
+.netrwhist
 # Only track certain add-ons
 bundle/**
 ~bundle/gocode
