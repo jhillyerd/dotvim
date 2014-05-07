@@ -85,6 +85,8 @@ function! NeatFoldText()
 endfunction
 set foldtext=NeatFoldText()
 
+" Prose mode
+" From http://alols.github.io/2012/11/07/writing-prose-with-vim/
 command! Prose inoremap <buffer> . .<C-G>u|
       \ inoremap <buffer> ! !<C-G>u|
       \ inoremap <buffer> ? ?<C-G>u|
@@ -94,3 +96,9 @@ command! Prose inoremap <buffer> . .<C-G>u|
       \   autocmd InsertEnter <buffer> set fo+=a|
       \   autocmd InsertLeave <buffer> set fo-=a|
       \ augroup END
+
+" Reformat document: soft wrap paragraphs
+" From http://alols.github.io/2012/11/07/writing-prose-with-vim/
+command! -range=% SoftWrap
+      \ <line2>put _ |
+      \ <line1>,<line2>g/.\+/ .;-/^$/ join |normal $x
