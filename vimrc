@@ -12,29 +12,29 @@ set rtp+=$GOROOT/misc/vim
 call vundle#rc()
 
 " let Vundle manage Vundle (required)
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " vimscripts plugins
-Bundle 'bufexplorer.zip'
-Bundle 'matchit.zip'
+Plugin 'bufexplorer.zip'
+Plugin 'matchit.zip'
 
 " github plugins
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'benmills/vimux'
-Bundle 'benmills/vimux-golang'
-Bundle 'bling/vim-airline'
-Bundle 'ervandew/supertab'
-Bundle 'kien/ctrlp.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/syntastic'
-Bundle 'SirVer/ultisnips'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-sensible'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-vinegar'
-Bundle 'xolox/vim-easytags'
-Bundle 'xolox/vim-misc'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'benmills/vimux'
+Plugin 'benmills/vimux-golang'
+Plugin 'bling/vim-airline'
+Plugin 'ervandew/supertab'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-vinegar'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
 
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
