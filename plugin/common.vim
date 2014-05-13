@@ -47,9 +47,6 @@ nmap <Right> <C-]>
 map Q gqap
 nnoremap <Space> za
 
-"Enter directory listing for the directory of the current buffer
-map <leader>. :e %:p:h<CR>
-
 "Place cursor at start of . command
 nmap . .`[
 

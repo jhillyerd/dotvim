@@ -1,5 +1,5 @@
 " James' attempt at a multiplatform vimrc
-" Note: Non-plugin specific stuff is in plugin/common.js
+" Note: Non-plugin specific stuff is in plugin/common.vim
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -8,7 +8,6 @@ autocmd!
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
-set rtp+=$GOROOT/misc/vim
 call vundle#rc()
 
 " let Vundle manage Vundle (required)
@@ -24,11 +23,13 @@ Plugin 'benmills/vimux'
 Plugin 'benmills/vimux-golang'
 Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
+Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
@@ -69,6 +70,9 @@ if has("autocmd")
   "Golang vimux mappings
   autocmd FileType go map <buffer> <Leader>ra :GolangTestCurrentPackage<CR>
   autocmd FileType go map <buffer> <Leader>rf :GolangTestFocused<CR>
+  " Golang vim-go mappings
+  autocmd FileType go nmap <Leader>gd <Plug>(go-doc-tab)
+  autocmd FileType go nmap <leader>gt <Plug>(go-test)
 endif
 
 "Use gotags for tagbar
