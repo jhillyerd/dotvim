@@ -62,9 +62,11 @@ nmap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vi :VimuxInspectRunner<CR>
+map <Leader>vt :VimuxTogglePane<CR>
 map <Leader>vq :VimuxCloseRunner<CR>
 map <Leader>vc :VimuxClearRunnerHistory<CR>
 map <Leader>vk :VimuxInterruptRunner<CR>
+map <Leader>vz :VimuxZoomRunner<CR>
 
 if has("autocmd")
   "Golang vimux mappings
