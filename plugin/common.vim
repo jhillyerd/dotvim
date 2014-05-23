@@ -32,6 +32,10 @@ else
   endif
 endif
 
+"N,V,O mappings
+map Q gqap
+map Y y$
+
 "Command mappings
 nmap <silent> <Leader>l :set list!<CR>
 nmap <silent> <Leader>n :set number!<CR>
@@ -44,7 +48,6 @@ nmap <silent> _ :resize -2<CR>
 nmap <Left> <C-T>
 nmap <Right> <C-]>
 
-map Q gqap
 nnoremap <Space> za
 
 "Place cursor at start of . command
