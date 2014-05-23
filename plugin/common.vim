@@ -64,6 +64,7 @@ vmap > >gv
 if has("autocmd")
   "Reload vimrc after save
   autocmd bufwritepost vimrc source $MYVIMRC
+  autocmd bufwritepost .vimrc source $MYVIMRC
 
   "Quickfix window
   autocmd QuickFixCmdPre * :update
