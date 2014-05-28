@@ -14,7 +14,6 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 
 " vimscripts plugins
-Plugin 'bufexplorer.zip'
 Plugin 'matchit.zip'
 
 " github plugins
@@ -24,9 +23,9 @@ Plugin 'benmills/vimux-golang'
 Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
-Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
+Plugin 'Shougo/unite.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
@@ -57,6 +56,11 @@ colorscheme solarized
 "Command mappings
 nmap <silent> <Leader>nt :NERDTreeToggle<CR>
 nmap <silent> <Leader>t :TagbarOpenAutoClose<CR>
+
+"Unite mappings
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <C-p> :<C-u>Unite -start-insert file_rec<CR>
+nmap <Leader>b :<C-u>Unite buffer<CR>
 
 "Vimux mappings
 map <Leader>vp :VimuxPromptCommand<CR>
