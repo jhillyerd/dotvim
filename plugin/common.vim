@@ -8,6 +8,7 @@ set foldmethod=syntax                  " Fold based on file's syntax
 set foldnestmax=1                      " I prefer one level of folds
 set hidden                             " Allow hidden buffers
 set hlsearch                           " Highlight search hits
+set expandtab                          " Uses spaces for indent
 set number                             " Always display line numbers
 set shiftwidth=2                       " Number of spaces for autoindent
 set wildmode=longest,list,full         " Command line completion options
