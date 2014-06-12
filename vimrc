@@ -65,6 +65,7 @@ nmap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 
 " Unite mappings
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#custom#source('buffer,file,file_rec', 'sorters', 'sorter_rank')
 nnoremap <C-p> :<C-u>Unite -start-insert file_rec<CR>
 nmap <Leader>b :<C-u>Unite buffer<CR>
 
