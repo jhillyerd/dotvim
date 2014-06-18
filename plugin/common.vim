@@ -58,10 +58,6 @@ nmap . .`[
 imap `jh James Hillyerd
 imap `em james@hillyerd.com
 
-"Visual mappings
-vmap < <gv
-vmap > >gv
-
 if has("autocmd")
   "Reload vimrc after save
   autocmd bufwritepost vimrc source $MYVIMRC
