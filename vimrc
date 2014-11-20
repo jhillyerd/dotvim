@@ -12,35 +12,45 @@ if &shell =~# 'fish$'
   set shell=sh
 endif
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+let win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
+let vimDir = win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
+let &runtimepath .= ',' . expand(vimDir . '/bundle/Vundle.vim')
+call vundle#begin(expand(vimDir . '/bundle'))
 
 " let Vundle manage Vundle (required)
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " vimscripts plugins
 Plugin 'matchit.zip'
 
-" github plugins
+" github plugins, windows friendly
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'benmills/vimux'
-Plugin 'benmills/vimux-golang'
 Plugin 'bling/vim-airline'
-Plugin 'dag/vim-fish'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/unite.vim'
-Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
-Plugin 'xolox/vim-easytags'
-Plugin 'xolox/vim-misc'
+
+" github plugs, unix preferred
+if !win_shell
+  Plugin 'benmills/vimux'
+  Plugin 'benmills/vimux-golang'
+  Plugin 'dag/vim-fish'
+  Plugin 'majutsushi/tagbar'
+  Plugin 'scrooloose/syntastic'
+  Plugin 'SirVer/ultisnips'
+  Plugin 'xolox/vim-easytags'
+  Plugin 'xolox/vim-misc'
+endif
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
