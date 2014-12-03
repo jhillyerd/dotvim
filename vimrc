@@ -28,6 +28,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
+Plugin 'miyakogi/conoline.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
@@ -52,6 +53,7 @@ endif
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+let g:conoline_use_colorscheme_default_normal=1
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"

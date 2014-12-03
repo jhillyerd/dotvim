@@ -2,7 +2,6 @@
 
 "Options (many more set in vim-sensible)
 set completeopt=menu,longest           " Popup a menu for completion
-set cursorline                         " Highlight the line the cursor is on
 set fillchars=vert:\|,fold:\           " Visual fill characters
 set foldmethod=syntax                  " Fold based on file's syntax
 set foldnestmax=1                      " I prefer one level of folds
