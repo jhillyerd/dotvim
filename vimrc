@@ -29,7 +29,6 @@ Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'miyakogi/conoline.vim'
-Plugin 'Shougo/unite.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
@@ -37,6 +36,9 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
+if v:version > 702
+  Plugin 'Shougo/unite.vim'
+endif
 
 " github plugs, unix preferred
 if !win_shell
@@ -45,9 +47,11 @@ if !win_shell
   Plugin 'dag/vim-fish'
   Plugin 'majutsushi/tagbar'
   Plugin 'scrooloose/syntastic'
-  Plugin 'SirVer/ultisnips'
   Plugin 'xolox/vim-easytags'
   Plugin 'xolox/vim-misc'
+  if v:version > 703
+    Plugin 'SirVer/ultisnips'
+  endif
 endif
 
 " All of your Plugins must be added before the following line
@@ -77,10 +81,12 @@ nmap <silent> <Leader>nt :NERDTreeToggle<CR>
 nmap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 
 " Unite mappings
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#custom#source('buffer,file,file_rec', 'sorters', 'sorter_rank')
-nnoremap <C-p> :<C-u>Unite -start-insert buffer file_rec<CR>
-nmap <Leader>b :<C-u>Unite buffer<CR>
+if exists('unite#version')
+  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  call unite#custom#source('buffer,file,file_rec', 'sorters', 'sorter_rank')
+  nnoremap <C-p> :<C-u>Unite -start-insert buffer file_rec<CR>
+  nmap <Leader>b :<C-u>Unite buffer<CR>
+endif
 
 " Vimux mappings
 map <Leader>vp :VimuxPromptCommand<CR>
