@@ -25,7 +25,8 @@ Plugin 'matchit.zip'
 
 " github plugins, windows friendly
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'miyakogi/conoline.vim'
