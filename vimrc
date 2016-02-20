@@ -104,6 +104,7 @@ if has("autocmd")
   autocmd FileType go map <buffer> <Leader>ra :GolangTestCurrentPackage<CR>
   autocmd FileType go map <buffer> <Leader>rf :GolangTestFocused<CR>
   " Golang vim-go mappings
+  autocmd FileType go nmap <leader>ga <Plug>(go-alternate-edit)
   autocmd FileType go nmap <Leader>gd <Plug>(go-doc-tab)
   autocmd FileType go nmap <leader>gt <Plug>(go-test)
 endif
