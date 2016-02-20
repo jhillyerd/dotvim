@@ -78,6 +78,9 @@ set background=dark
 colorscheme solarized
 
 " Command mappings
+nnoremap <leader>ev :tabedit $MYVIMRC<cr>
+nnoremap <leader>ec :execute "edit" expand(g:vimDir . "/plugin/common.vim")<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 nmap <silent> <Leader>nt :NERDTreeToggle<CR>
 nmap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 

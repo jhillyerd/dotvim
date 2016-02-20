@@ -58,10 +58,6 @@ imap `jh James Hillyerd
 imap `em james@hillyerd.com
 
 if has("autocmd")
-  "Reload vimrc after save
-  autocmd bufwritepost vimrc source $MYVIMRC
-  autocmd bufwritepost .vimrc source $MYVIMRC
-
   "Quickfix window
   autocmd QuickFixCmdPre * :update
   autocmd QuickFixCmdPost * :cwindow
