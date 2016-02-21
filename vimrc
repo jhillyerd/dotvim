@@ -68,7 +68,7 @@ let g:VimuxUseNearestPane=0
 
 " Sometimes when using both vim-go and syntastic Vim will start
 " lagging while saving and opening files.  Fix:
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " Looks
@@ -116,8 +116,10 @@ if has("autocmd")
   autocmd FileType go nmap <LocalLeader>c <Plug>(go-coverage)
   autocmd FileType go nmap <LocalLeader>d <Plug>(go-doc-tab)
   autocmd FileType go nmap <LocalLeader>e <Plug>(go-rename)
+  autocmd FileType go nmap <LocalLeader>i <Plug>(go-import)
   autocmd FileType go nmap <LocalLeader>l <Plug>(go-metalinter)
   autocmd FileType go nmap <LocalLeader>r <Plug>(go-run)
+  autocmd FileType go nmap <silent> <LocalLeader>s :SyntasticCheck<CR>:Errors<CR>
   autocmd FileType go nmap <LocalLeader>t <Plug>(go-test)
 endif
 
