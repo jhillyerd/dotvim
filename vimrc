@@ -66,6 +66,11 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:VimuxUseNearestPane=0
 
+" Sometimes when using both vim-go and syntastic Vim will start
+" lagging while saving and opening files.  Fix:
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
 " Looks
 if has("gui_running")
   set lines=50 columns=120
@@ -107,9 +112,14 @@ if has("autocmd")
   autocmd FileType go map <buffer> <Leader>ra :GolangTestCurrentPackage<CR>
   autocmd FileType go map <buffer> <Leader>rf :GolangTestFocused<CR>
   " Golang vim-go mappings
-  autocmd FileType go nmap <leader>ga <Plug>(go-alternate-edit)
-  autocmd FileType go nmap <Leader>gd <Plug>(go-doc-tab)
-  autocmd FileType go nmap <leader>gt <Plug>(go-test)
+  autocmd FileType go nmap <LocalLeader>a <Plug>(go-alternate-edit)
+  autocmd FileType go nmap <LocalLeader>b <Plug>(go-build)
+  autocmd FileType go nmap <LocalLeader>c <Plug>(go-coverage)
+  autocmd FileType go nmap <LocalLeader>d <Plug>(go-doc-tab)
+  autocmd FileType go nmap <LocalLeader>e <Plug>(go-rename)
+  autocmd FileType go nmap <LocalLeader>l <Plug>(go-metalinter)
+  autocmd FileType go nmap <LocalLeader>r <Plug>(go-run)
+  autocmd FileType go nmap <LocalLeader>t <Plug>(go-test)
 endif
 
 " Use gotags for tagbar

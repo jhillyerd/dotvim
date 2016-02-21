@@ -20,6 +20,7 @@ endif
 syntax enable
 
 let mapleader="\\"
+let maplocalleader=","
 
 if has("win32")
   set guifont=Consolas:h11
