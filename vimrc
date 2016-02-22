@@ -59,6 +59,8 @@ endif
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
 let g:conoline_use_colorscheme_default_normal=1
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
