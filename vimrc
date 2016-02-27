@@ -48,6 +48,7 @@ if !win_shell
   Plugin 'dag/vim-fish'
   Plugin 'majutsushi/tagbar'
   Plugin 'scrooloose/syntastic'
+  Plugin 'wincent/terminus'
   Plugin 'xolox/vim-easytags'
   Plugin 'xolox/vim-misc'
   if v:version > 703
@@ -59,8 +60,6 @@ endif
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 1
 let g:conoline_use_colorscheme_default_normal=1
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
@@ -89,6 +88,20 @@ nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 nnoremap <leader>ec :execute "edit" expand(g:vimDir . "/plugin/common.vim")<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nmap <silent> <Leader>t :TagbarOpenAutoClose<CR>
+
+" Airline tabline setup
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 
 " Unite mappings
 if v:version > 702
