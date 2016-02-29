@@ -5,6 +5,7 @@ set completeopt=menu,longest           " Popup a menu for completion
 set fillchars=vert:\|,fold:\           " Visual fill characters
 set foldmethod=syntax                  " Fold based on file's syntax
 set foldnestmax=1                      " I prefer one level of folds
+set nofoldenable                       " Folds are mostly annoying
 set hidden                             " Allow hidden buffers
 set hlsearch                           " Highlight search hits
 set expandtab                          " Uses spaces for indent
@@ -21,6 +22,7 @@ syntax enable
 
 let mapleader="\\"
 let maplocalleader=","
+let g:netrw_altfile=1
 
 if has("win32")
   set guifont=Consolas:h11

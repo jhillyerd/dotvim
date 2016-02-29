@@ -122,6 +122,8 @@ map <Leader>vk :VimuxInterruptRunner<CR>
 map <Leader>vz :VimuxZoomRunner<CR>
 
 if has("autocmd")
+  " Reformat comments using vim-commentary text object
+  autocmd FileType go map <buffer> Q gqgc
   " Golang vimux mappings
   autocmd FileType go map <buffer> <LocalLeader>ra :GolangTestCurrentPackage<CR>
   autocmd FileType go map <buffer> <LocalLeader>rf :GolangTestFocused<CR>
@@ -138,6 +140,4 @@ if has("autocmd")
   autocmd FileType go nmap <LocalLeader>sd <Plug>(go-doc-tab)
   autocmd FileType go nmap <LocalLeader>si <Plug>(go-implements)
   autocmd FileType go nmap <LocalLeader>sr <Plug>(go-referrers)
-
-  autocmd FileType go nmap <silent> <LocalLeader>s :SyntasticCheck<CR>:Errors<CR>
 endif
