@@ -1,6 +1,9 @@
 # Bundles handled by Vundle
 bundle/**
 
+# User dictionary additions
+spell/**
+
 # Vim work files
 .netrwhist
 view/**
