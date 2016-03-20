@@ -28,7 +28,7 @@ if !empty(globpath(&rtp, 'autoload/vundle.vim'))
   endif
 
   " github plugs, unix preferred
-  if !win_shell
+  if !has("win32")
     Plugin 'benmills/vimux'
     Plugin 'benmills/vimux-golang'
     Plugin 'dag/vim-fish'
