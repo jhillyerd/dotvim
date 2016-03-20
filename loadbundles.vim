@@ -42,8 +42,8 @@ if !empty(globpath(&rtp, 'autoload/vundle.vim'))
     endif
   endif
 
-  " All of your Plugins must be added before the following line
-  call vundle#end()            " required
+  " All of your Plugins must be added before the following line (required)
+  call vundle#end()
 
   let g:conoline_use_colorscheme_default_normal=1
   let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
@@ -75,7 +75,7 @@ if !empty(globpath(&rtp, 'autoload/vundle.vim'))
   nmap <leader>9 <Plug>AirlineSelectTab9
 
   " Unite mappings
-  if v:version > 702
+  if !empty(globpath(&rtp, 'autoload/unite.vim'))
     call unite#filters#matcher_default#use(['matcher_fuzzy'])
     call unite#custom#source('buffer,file,file_rec', 'sorters', 'sorter_rank')
     nnoremap <C-p> :<C-u>Unite -start-insert buffer file_rec<CR>

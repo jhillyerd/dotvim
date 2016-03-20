@@ -3,6 +3,9 @@ dotvim
 
 Platform agnostic, Vundle enabled, Golang friendly Vim configuration
 
+The vimrc is designed to be scalable in the sense that it will not blow up if
+plugins are not installed, or if Vundle is missing entirely.
+
 ## Unix Full Installation
 
 Clone the repository:
@@ -30,14 +33,11 @@ Launch `gvim.exe` (ignore errors), then install the bundles:
 
 ## Basic Installation
 
-Download or copy the following files from the dotvim repo while preserving the directory
-structure:
+Download or copy the following files from the dotvim repo while preserving the
+directory structure:
 
-    basic.vim
-    plugin/common.vim
+    vimrc
     plugin/sensible.vim
 
-Rename `basic.vim` to `vimrc`
-
-Zip up these files and place them in $HOME/.vim (Unix) or $HOME/vimfiles (Windows) on
-millions of computers.
+Zip up these files and place them in $HOME/.vim (Unix) or $HOME/vimfiles
+(Windows) on millions of computers.
