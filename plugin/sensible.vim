@@ -1,6 +1,6 @@
 " sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
-" Version:      1.0
+" Version:      1.1
 
 if exists('g:loaded_sensible') || &compatible
   finish
@@ -20,24 +20,21 @@ endif
 set autoindent
 set backspace=indent,eol,start
 set complete-=i
-set showmatch
 set smarttab
 
 set nrformats-=octal
-set shiftround
 
 set ttimeout
-set ttimeoutlen=50
+set ttimeoutlen=100
 
 set incsearch
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
 set laststatus=2
 set ruler
-set showcmd
 set wildmenu
 
 if !&scrolloff
@@ -54,9 +51,14 @@ endif
 
 if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-  if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
-    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
-  endif
+endif
+
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j " Delete comment character when joining commented lines
+endif
+
+if has('path_extra')
+  setglobal tags-=./tags tags-=./tags; tags^=./tags;
 endif
 
 if &shell =~# 'fish$'
@@ -64,7 +66,6 @@ if &shell =~# 'fish$'
 endif
 
 set autoread
-set fileformats+=mac
 
 if &history < 1000
   set history=1000
@@ -75,9 +76,10 @@ endif
 if !empty(&viminfo)
   set viminfo^=!
 endif
+set sessionoptions-=options
 
 " Allow color schemes to do bright colors without forcing bold.
-if &t_Co == 8 && $TERM !~# '^linux'
+if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
   set t_Co=16
 endif
 

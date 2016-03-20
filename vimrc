@@ -7,13 +7,8 @@ set nocompatible
 autocmd!
 filetype off
 
-" Vim doesn't grok fish
-if &shell =~# 'fish$'
-  set shell=sh
-endif
-
-let s:win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
-let g:vimDir = s:win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
+let g:win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
+let g:vimDir = g:win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
 
 " loadbundles.vim loads and configures our plugins (optional)
 runtime loadbundles.vim
@@ -23,15 +18,17 @@ filetype plugin indent on
 
 " Options (many more set in vim-sensible)
 set completeopt=menu,longest           " Popup a menu for completion
+set expandtab                          " Uses spaces for indent
 set fillchars=vert:\|,fold:\           " Visual fill characters
 set foldmethod=syntax                  " Fold based on file's syntax
 set foldnestmax=1                      " I prefer one level of folds
 set nofoldenable                       " But folds are mostly annoying
 set hidden                             " Allow hidden buffers
 set hlsearch                           " Highlight search hits
-set expandtab                          " Uses spaces for indent
 set number                             " Always display line numbers
 set shiftwidth=2                       " Number of spaces for autoindent
+set showcmd                            " Show partial commands, areas
+set showmatch                          " Highlight matching (){}[]
 set wildmode=longest,list,full         " Command line completion options
 
 if exists('+colorcolumn')
