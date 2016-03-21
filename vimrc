@@ -79,30 +79,30 @@ nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " N,V,O mappings
-map Q gqip
-map Y y$
+noremap Q gqip
+noremap Y y$
 
 " Command mappings
-nmap <silent> <Leader>l :set list!<CR>
-nmap <silent> <Leader>n :call ToggleNumber()<CR>
-nmap <silent> <Leader>p :set paste!<CR>
-nmap <silent> <Leader>w :set columns=180<CR>
-nmap <silent> + :resize +2<CR>
-nmap <silent> _ :resize -2<CR>
+nnoremap <silent> <Leader>l :set list!<CR>
+nnoremap <silent> <Leader>n :call ToggleNumber()<CR>
+nnoremap <silent> <Leader>p :set paste!<CR>
+nnoremap <silent> <Leader>w :set columns=180<CR>
+nnoremap <silent> + :resize +2<CR>
+nnoremap <silent> _ :resize -2<CR>
 
 " Use cursor keys to navigate in/out of tags
-nmap <Left> <C-T>
-nmap <Right> <C-]>
+nnoremap <Left> <C-T>
+nnoremap <Right> <C-]>
 
 " Toggle folds with spacebar
 nnoremap <Space> za
 
 " Place cursor at start of . command
-nmap . .`[
+nnoremap . .`[
 
 " Insert mappings
-imap `jh James Hillyerd
-imap `em james@hillyerd.com
+inoremap `jh James Hillyerd
+inoremap `em james@hillyerd.com
 
 if has("autocmd")
   " Quickfix window
