@@ -79,12 +79,12 @@ nnoremap <leader>ev :tabedit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " N,V,O mappings
-map Q gqap
+map Q gqip
 map Y y$
 
 " Command mappings
 nmap <silent> <Leader>l :set list!<CR>
-nmap <silent> <Leader>n :set number!<CR>
+nmap <silent> <Leader>n :call ToggleNumber()<CR>
 nmap <silent> <Leader>p :set paste!<CR>
 nmap <silent> <Leader>w :set columns=180<CR>
 nmap <silent> + :resize +2<CR>
@@ -112,6 +112,22 @@ if has("autocmd")
   autocmd BufRead,BufNewFile *.md set filetype=markdown
 endif
 
+" Toogle number and disable mouse for copying from terminal
+function! ToggleNumber()
+  if &number
+    set nonumber
+    if !has("gui_running")
+      let s:mouse_opts=&mouse
+      set mouse=
+    endif
+  else
+    set number
+    if !has("gui_running")
+      execute "set mouse=" . s:mouse_opts
+    endif
+  endif
+endfunction
+
 " Better looking folds
 function! NeatFoldText()
   let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
@@ -127,18 +143,28 @@ set foldtext=NeatFoldText()
 
 " Prose mode
 " From http://alols.github.io/2012/11/07/writing-prose-with-vim/
-command! Prose inoremap <buffer> . .<C-G>u|
-      \ inoremap <buffer> ! !<C-G>u|
-      \ inoremap <buffer> ? ?<C-G>u|
-      \ setlocal spell spelllang=en
-      \     nolist nowrap tw=74 fo=t1 |
-      \ augroup PROSE|
-      \   autocmd InsertEnter <buffer> set fo+=a|
-      \   autocmd InsertLeave <buffer> set fo-=a|
-      \ augroup END
+function! SetProse()
+  " Break undo sequence at the end of sentences
+  inoremap <buffer> . .<C-G>u
+  inoremap <buffer> ! !<C-G>u
+  inoremap <buffer> ? ?<C-G>u
+  setlocal spell spelllang=en nolist nowrap textwidth=74 formatoptions=t1
+  " Only auto-format during insert mode
+  augroup PROSE
+    autocmd!
+    autocmd InsertEnter <buffer> set formatoptions+=a
+    autocmd InsertLeave <buffer> set formatoptions-=a
+  augroup END
+  " Fix previous typo, return to cursor
+  nmap <silent> <buffer> <LocalLeader>f :normal mm[s1z=`m<CR>
+endfunction
+command! Prose call SetProse()
 
 " Reformat document: soft wrap paragraphs
-" From http://alols.github.io/2012/11/07/writing-prose-with-vim/
+" - Add a blank line to end of document
+" - Join all non-blank lines
+" - Remove trailing whitespace
+" - Double-space
 command! -range=% SoftWrap
       \ <line2>put _ |
-      \ <line1>,<line2>g/.\+/ .;-/^$/ join |normal $x
+      \ silent <line1>,<line2>g/\S/,/^\s*$/join | silent s/\s\+$// | put _
