@@ -105,11 +105,14 @@ inoremap `jh James Hillyerd
 inoremap `em james@hillyerd.com
 
 if has("autocmd")
-  " Quickfix window
-  autocmd QuickFixCmdPre * :update
-  autocmd QuickFixCmdPost * :cwindow
-  " Recognize .md as markdown, not modula2
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  augroup QUICKFIX
+    autocmd!
+    " Quickfix window
+    autocmd QuickFixCmdPre * :update
+    autocmd QuickFixCmdPost * :cwindow
+    " Recognize .md as markdown, not modula2
+    autocmd BufRead,BufNewFile *.md set filetype=markdown
+  augroup END
 endif
 
 " Toogle number and disable mouse for copying from terminal
