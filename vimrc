@@ -159,7 +159,7 @@ function! SetProse()
     autocmd InsertLeave <buffer> set formatoptions-=a
   augroup END
   " Fix previous typo, return to cursor
-  nmap <silent> <buffer> <LocalLeader>f :normal mm[s1z=`m<CR>
+  nnoremap <silent> <buffer> <LocalLeader>f :normal! mm[s1z=`m<CR>
 endfunction
 command! Prose call SetProse()
 
