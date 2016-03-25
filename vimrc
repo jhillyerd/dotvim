@@ -86,6 +86,7 @@ noremap Y y$
 nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>n :call ToggleNumber()<CR>
 nnoremap <silent> <Leader>p :set paste!<CR>
+nnoremap <silent> <Leader>q :call ToggleQFix()<CR>
 nnoremap <silent> <Leader>w :set columns=180<CR>
 nnoremap <silent> + :resize +2<CR>
 nnoremap <silent> _ :resize -2<CR>
@@ -105,7 +106,7 @@ inoremap `jh James Hillyerd
 inoremap `em james@hillyerd.com
 
 if has("autocmd")
-  augroup QUICKFIX
+  augroup VIMRC
     autocmd!
     " Quickfix window
     autocmd QuickFixCmdPre * :update
@@ -115,7 +116,18 @@ if has("autocmd")
   augroup END
 endif
 
-" Toogle number and disable mouse for copying from terminal
+" Toggle the quickfix window
+function! ToggleQFix()
+  for i in range(1, winnr('$'))
+    if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
+      cclose
+      return
+    endif
+  endfor
+  copen
+endfunction
+
+" Toggle number and disable mouse for copying from terminal
 function! ToggleNumber()
   if &number
     set nonumber
