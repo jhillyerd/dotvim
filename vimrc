@@ -1,5 +1,5 @@
 " James' attempt at a multiplatform vimrc
-" Note: Non-plugin specific stuff is in plugin/common.vim
+" Note: Plugin specific stuff is in loadbundles.vim
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -75,8 +75,9 @@ else
 endif
 
 " Command mappings
-nnoremap <leader>ev :tabedit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <Leader>ev :split $MYVIMRC<CR>
+nnoremap <Leader>ep :execute "split " . g:vimDir . "/loadbundles.vim"<CR>
+nnoremap <Leader>sv :source $MYVIMRC<CR>
 
 " N,V,O mappings
 noremap Q gqip
@@ -94,6 +95,8 @@ nnoremap <silent> _ :resize -2<CR>
 " Use cursor keys to navigate in/out of tags
 nnoremap <Left> <C-T>
 nnoremap <Right> <C-]>
+nnoremap <Up> <C-W>k
+nnoremap <Down> <C-W>j
 
 " Toggle folds with spacebar
 nnoremap <Space> za

@@ -79,7 +79,7 @@ nmap <Leader>9 <Plug>AirlineSelectTab9
 
 " Unite mappings
 if !empty(globpath(&rtp, 'autoload/unite.vim'))
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  "call unite#custom#source('buffer,file,file_rec', 'matchers', 'matcher_fuzzy')
   call unite#custom#source('buffer,file,file_rec', 'sorters', 'sorter_rank')
   nnoremap <C-p> :<C-u>Unite -start-insert buffer file_rec<CR>
   nnoremap <Leader>b :<C-u>Unite buffer<CR>
