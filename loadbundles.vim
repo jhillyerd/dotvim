@@ -61,7 +61,7 @@ let g:syntastic_go_checkers = ['go']
 let g:syntastic_mode_map = { 'mode': 'active' }
 
 " Tagbar
-nnoremap <silent> <Leader>t :TagbarOpenAutoClose<CR>
+nnoremap <silent> <Leader>t :<C-u>TagbarOpenAutoClose<CR>
 
 " Airline tabline setup
 let g:airline#extensions#tabline#enabled = 1
@@ -87,14 +87,14 @@ if !empty(globpath(&rtp, 'autoload/unite.vim'))
 endif
 
 " Vimux mappings
-noremap <Leader>vp :VimuxPromptCommand<CR>
-noremap <Leader>vl :VimuxRunLastCommand<CR>
-noremap <Leader>vi :VimuxInspectRunner<CR>
-noremap <Leader>vt :VimuxTogglePane<CR>
-noremap <Leader>vq :VimuxCloseRunner<CR>
-noremap <Leader>vc :VimuxClearRunnerHistory<CR>
-noremap <Leader>vk :VimuxInterruptRunner<CR>
-noremap <Leader>vz :VimuxZoomRunner<CR>
+noremap <Leader>vp :<C-u>VimuxPromptCommand<CR>
+noremap <Leader>vl :<C-u>VimuxRunLastCommand<CR>
+noremap <Leader>vi :<C-u>VimuxInspectRunner<CR>
+noremap <Leader>vt :<C-u>VimuxTogglePane<CR>
+noremap <Leader>vq :<C-u>VimuxCloseRunner<CR>
+noremap <Leader>vc :<C-u>VimuxClearRunnerHistory<CR>
+noremap <Leader>vk :<C-u>VimuxInterruptRunner<CR>
+noremap <Leader>vz :<C-u>VimuxZoomRunner<CR>
 
 if has("autocmd")
   augroup GOLANG
@@ -102,8 +102,8 @@ if has("autocmd")
     " Reformat comments using vim-commentary text object
     autocmd FileType go nmap <buffer> Q gqgc
     " Golang vimux mappings
-    autocmd FileType go noremap <buffer> <LocalLeader>ra :GolangTestCurrentPackage<CR>
-    autocmd FileType go noremap <buffer> <LocalLeader>rf :GolangTestFocused<CR>
+    autocmd FileType go noremap <buffer> <LocalLeader>ra :<C-u>GolangTestCurrentPackage<CR>
+    autocmd FileType go noremap <buffer> <LocalLeader>rf :<C-u>GolangTestFocused<CR>
     " vim-go mappings that perform an action
     autocmd FileType go nmap <LocalLeader>a <Plug>(go-alternate-edit)
     autocmd FileType go nmap <LocalLeader>b <Plug>(go-build)

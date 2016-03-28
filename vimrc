@@ -75,21 +75,21 @@ else
 endif
 
 " Command mappings
-nnoremap <Leader>ev :split $MYVIMRC<CR>
-nnoremap <Leader>ep :execute "split " . g:vimDir . "/loadbundles.vim"<CR>
+nnoremap <Leader>ev :<C-u>split $MYVIMRC<CR>
+nnoremap <Leader>ep :<C-u>execute "split " . g:vimDir . "/loadbundles.vim"<CR>
 
 " N,V,O mappings
 noremap Q gqip
 noremap Y y$
 
 " Command mappings
-nnoremap <silent> <Leader>l :set list!<CR>
-nnoremap <silent> <Leader>n :call ToggleNumber()<CR>
-nnoremap <silent> <Leader>p :set paste!<CR>
-nnoremap <silent> <Leader>q :call ToggleQFix()<CR>
-nnoremap <silent> <Leader>w :set columns=180<CR>
-nnoremap <silent> + :resize +2<CR>
-nnoremap <silent> _ :resize -2<CR>
+nnoremap <silent> <Leader>l :<C-u>set list!<CR>
+nnoremap <silent> <Leader>n :<C-u>call ToggleNumber()<CR>
+nnoremap <silent> <Leader>p :<C-u>set paste!<CR>
+nnoremap <silent> <Leader>q :<C-u>call ToggleQFix()<CR>
+nnoremap <silent> <Leader>w :<C-u>set columns=180<CR>
+nnoremap <silent> + :<C-u>resize +2<CR>
+nnoremap <silent> _ :<C-u>resize -2<CR>
 
 " Use cursor keys to navigate in/out of tags
 nnoremap <Left> <C-T>
@@ -116,7 +116,7 @@ if has("autocmd")
     " Recognize .md as markdown, not modula2
     autocmd BufRead,BufNewFile *.md set filetype=markdown
     " Run vimscript
-    autocmd FileType vim nnoremap <LocalLeader>r :source %<CR>
+    autocmd FileType vim nnoremap <LocalLeader>r :<C-u>source %<CR>
   augroup END
 endif
 
@@ -175,7 +175,7 @@ function! SetProse()
     autocmd InsertLeave <buffer> set formatoptions-=a
   augroup END
   " Fix previous typo, return to cursor
-  nnoremap <silent> <buffer> <LocalLeader>f :normal! mm[s1z=`m<CR>
+  nnoremap <silent> <buffer> <LocalLeader>f :<C-u>normal! mm[s1z=`m<CR>
 endfunction
 command! Prose call SetProse()
 
