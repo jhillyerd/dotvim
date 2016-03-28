@@ -60,6 +60,10 @@ let g:VimuxUseNearestPane=0
 let g:syntastic_go_checkers = ['go']
 let g:syntastic_mode_map = { 'mode': 'active' }
 
+" Fugitive
+nnoremap <Leader>gs :<C-u>Gstatus<CR>
+nnoremap <Leader>gb :Gblame<CR>
+
 " Tagbar
 nnoremap <silent> <Leader>t :<C-u>TagbarOpenAutoClose<CR>
 
