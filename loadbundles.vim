@@ -83,6 +83,7 @@ if !empty(globpath(&rtp, 'autoload/unite.vim'))
   call unite#custom#source('buffer,file,file_rec', 'sorters', 'sorter_rank')
   nnoremap <C-p> :<C-u>Unite -start-insert buffer file_rec<CR>
   nnoremap <Leader>b :<C-u>Unite buffer<CR>
+  nnoremap <Leader>/ :<C-u>Unite -start-insert line:buffers<CR>
 endif
 
 " Vimux mappings

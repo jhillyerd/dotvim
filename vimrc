@@ -77,7 +77,6 @@ endif
 " Command mappings
 nnoremap <Leader>ev :split $MYVIMRC<CR>
 nnoremap <Leader>ep :execute "split " . g:vimDir . "/loadbundles.vim"<CR>
-nnoremap <Leader>sv :source $MYVIMRC<CR>
 
 " N,V,O mappings
 noremap Q gqip
@@ -116,6 +115,8 @@ if has("autocmd")
     autocmd QuickFixCmdPost * :cwindow
     " Recognize .md as markdown, not modula2
     autocmd BufRead,BufNewFile *.md set filetype=markdown
+    " Run vimscript
+    autocmd FileType vim nnoremap <LocalLeader>r :source %<CR>
   augroup END
 endif
 
