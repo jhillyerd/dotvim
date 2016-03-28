@@ -1,6 +1,9 @@
 " James' attempt at a multiplatform vimrc
 " Note: Plugin specific stuff is in loadbundles.vim
+" vim:fdm=marker:ai:et:sw=2:ts=8:
 
+" Initialization ---------------------------------------------------------- {{{
+"
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -16,7 +19,9 @@ runtime loadbundles.vim
 " Post-plugin init
 filetype plugin indent on
 
-" Options (many more set in vim-sensible)
+" }}}
+" Options (many more set in vim-sensible) --------------------------------- {{{
+"
 set completeopt=menu,longest           " Popup a menu for completion
 set expandtab                          " Uses spaces for indent
 set fillchars=vert:\|,fold:\           " Visual fill characters
@@ -35,16 +40,15 @@ if exists('+colorcolumn')
   set colorcolumn=100
 endif
 
-" vim-sensible calls this, but it doesn't seem to work for 7.2
-syntax enable
-
-let mapleader="\\"
-let maplocalleader=","
-
 " netrw should never be my alternate file
 let g:netrw_altfile=1
 
-" Looks
+" vim-sensible calls this, but it doesn't seem to work for 7.2
+syntax enable
+
+" }}}
+" Colors & Fonts ---------------------------------------------------------- {{{
+"
 if has("gui_running")
   set lines=50 columns=120
   let g:solarized_contrast="high"
@@ -74,15 +78,30 @@ else
   colorscheme desert
 endif
 
-" Command mappings
-nnoremap <Leader>ev :<C-u>split $MYVIMRC<CR>
-nnoremap <Leader>ep :<C-u>execute "split " . g:vimDir . "/loadbundles.vim"<CR>
+" }}}
+" Normal Mode Mappings ---------------------------------------------------- {{{
+"
+let mapleader="\\"
+let maplocalleader=","
 
-" N,V,O mappings
-noremap Q gqip
-noremap Y y$
+" Format paragraph
+nnoremap Q gqip
+" Yank to end of line
+nnoremap Y y$
+" Left/right cursor keys navigate in/out of tags
+nnoremap <Left> <C-T>
+nnoremap <Right> <C-]>
+" Up/down cursor keys navigate windows
+nnoremap <Up> <C-W>k
+nnoremap <Down> <C-W>j
+" Toggle folds with spacebar
+nnoremap <Space> za
+" Place cursor at start of . command
+nnoremap . .`[
 
 " Command mappings
+nnoremap <silent> <Leader>ev :<C-u>split $MYVIMRC<CR>
+nnoremap <silent> <Leader>ep :<C-u>execute "split " . g:vimDir . "/loadbundles.vim"<CR>
 nnoremap <silent> <Leader>l :<C-u>set list!<CR>
 nnoremap <silent> <Leader>n :<C-u>call ToggleNumber()<CR>
 nnoremap <silent> <Leader>p :<C-u>set paste!<CR>
@@ -91,22 +110,15 @@ nnoremap <silent> <Leader>w :<C-u>set columns=180<CR>
 nnoremap <silent> + :<C-u>resize +2<CR>
 nnoremap <silent> _ :<C-u>resize -2<CR>
 
-" Use cursor keys to navigate in/out of tags
-nnoremap <Left> <C-T>
-nnoremap <Right> <C-]>
-nnoremap <Up> <C-W>k
-nnoremap <Down> <C-W>j
-
-" Toggle folds with spacebar
-nnoremap <Space> za
-
-" Place cursor at start of . command
-nnoremap . .`[
-
-" Insert mappings
+" }}}
+" Insert Mode Mappings ---------------------------------------------------- {{{
+"
 inoremap `jh James Hillyerd
 inoremap `em james@hillyerd.com
 
+" }}}
+" Auto Commands ----------------------------------------------------------- {{{
+"
 if has("autocmd")
   augroup VIMRC
     autocmd!
@@ -120,6 +132,8 @@ if has("autocmd")
   augroup END
 endif
 
+" }}}
+" Functions --------------------------------------------------------------- {{{
 " Toggle the quickfix window
 function! ToggleQFix()
   for i in range(1, winnr('$'))
@@ -160,7 +174,8 @@ function! NeatFoldText()
 endfunction
 set foldtext=NeatFoldText()
 
-" Prose mode
+" }}}
+" Prose Mode -------------------------------------------------------------- {{{
 " From http://alols.github.io/2012/11/07/writing-prose-with-vim/
 function! SetProse()
   " Break undo sequence at the end of sentences
@@ -187,3 +202,5 @@ command! Prose call SetProse()
 command! -range=% SoftWrap
       \ <line2>put _ |
       \ silent <line1>,<line2>g/\S/,/^\s*$/join | silent s/\s\+$// | put _
+
+" }}}
