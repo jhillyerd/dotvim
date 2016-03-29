@@ -10,15 +10,19 @@ set nocompatible
 autocmd!
 filetype off
 
-let g:win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
-let g:vimDir = g:win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
+" Platform Detection
+let g:OSX = has('macunix')
+let g:UNIX = has('unix') && !has('macunix') && !has('win32unix')
+let g:WINDOWS = (has('win32') || has('win64'))
+let g:POSIX = !(g:WINDOWS && &shellcmdflag =~ '/') 
+let g:vim_dir = g:POSIX ? '$HOME/.vim' : '$HOME/vimfiles'
 
 " Vundle List ------------------------------------------------------------ {{{1
 "
 " Detect Vundle
-let &runtimepath .= ',' . expand(vimDir . '/bundle/Vundle.vim')
+let &runtimepath .= ',' . expand(vim_dir . '/bundle/Vundle.vim')
 if !empty(globpath(&runtimepath, 'autoload/vundle.vim'))
-  call vundle#begin(expand(vimDir . '/bundle'))
+  call vundle#begin(expand(vim_dir . '/bundle'))
 
   " let Vundle manage Vundle (required)
   Plugin 'gmarik/Vundle.vim'
@@ -45,7 +49,7 @@ if !empty(globpath(&runtimepath, 'autoload/vundle.vim'))
   endif
 
   " github plugs, unix preferred
-  if !has("win32")
+  if !g:WINDOWS
     Plugin 'benmills/vimux'
     Plugin 'benmills/vimux-golang'
     Plugin 'dag/vim-fish'
@@ -102,7 +106,7 @@ nmap <Leader>8 <Plug>AirlineSelectTab8
 nmap <Leader>9 <Plug>AirlineSelectTab9
 
 " Unite mappings
-if !empty(globpath(&rtp, 'autoload/unite.vim'))
+if !empty(globpath(&runtimepath, 'autoload/unite.vim'))
   "call unite#custom#source('buffer,file,file_rec', 'matchers', 'matcher_fuzzy')
   call unite#custom#source('buffer,file,file_rec', 'sorters', 'sorter_rank')
   nnoremap <C-p> :<C-u>Unite -start-insert buffer file_rec<CR>
@@ -154,16 +158,13 @@ if has("gui_running")
   let g:solarized_contrast="high"
   set guioptions-=T " Remove toolbar
 
-  if has("win32")
+  if g:WINDOWS
     set guifont=Consolas:h11
     set guioptions-=L " Prevent window resizing
-  else
-    if has("gui_gtk2")
-      set guifont=Inconsolata\ Medium\ 11
-    else
-      " Assume OS X
-      set guifont=Monaco:h13
-    endif
+  elseif has("gui_gtk2")
+    set guifont=Inconsolata\ Medium\ 11
+  elseif g:OSX
+    set guifont=Monaco:h13
   endif
 else
   " Running in terminal
@@ -172,7 +173,7 @@ endif
 set background=dark
 
 " Solarize colors if available
-if !empty(globpath(&rtp, 'colors/solarized.vim'))
+if !empty(globpath(&runtimepath, 'colors/solarized.vim'))
   colorscheme solarized
 else
   colorscheme desert
@@ -230,6 +231,7 @@ if has("autocmd")
 endif
 
 " Functions -------------------------------------------------------------- {{{1
+"
 " Toggle the quickfix window
 function! ToggleQFix()
   for i in range(1, winnr('$'))
