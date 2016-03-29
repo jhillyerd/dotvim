@@ -115,6 +115,7 @@ nnoremap <silent> _ :<C-u>resize -2<CR>
 "
 inoremap `jh James Hillyerd
 inoremap `em james@hillyerd.com
+inoremap jk <ESC>
 
 " }}}
 " Auto Commands ----------------------------------------------------------- {{{
