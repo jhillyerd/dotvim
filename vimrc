@@ -1,7 +1,8 @@
 " vimrc
 " description: James' attempt at a multiplatform vim configuration
+" vim:fdm=marker:ai:et:sw=2:ts=8:
 
-" Initialization ---------------------------------------------------------- {{{
+" Initialization --------------------------------------------------------- {{{1
 "
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -12,8 +13,7 @@ filetype off
 let g:win_shell = (has('win32') || has('win64')) && &shellcmdflag =~ '/'
 let g:vimDir = g:win_shell ? '$HOME/vimfiles' : '$HOME/.vim'
 
-" }}}
-" Vundle List ------------------------------------------------------------- {{{
+" Vundle List ------------------------------------------------------------ {{{1
 "
 " Detect Vundle
 let &runtimepath .= ',' . expand(vimDir . '/bundle/Vundle.vim')
@@ -66,8 +66,7 @@ endif
 " Post-plugin init (not Vundle dependent)
 filetype plugin indent on
 
-" }}}
-" Plugin Configuration ---------------------------------------------------- {{{
+" Plugin Configuration --------------------------------------------------- {{{1
 "
 let g:conoline_use_colorscheme_default_normal=1
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
@@ -122,8 +121,7 @@ noremap <Leader>vk :<C-u>VimuxInterruptRunner<CR>
 noremap <Leader>vz :<C-u>VimuxZoomRunner<CR>
 
 
-" }}}
-" Options (many more set in vim-sensible) --------------------------------- {{{
+" Options (many more set in vim-sensible) -------------------------------- {{{1
 "
 set completeopt=menu,longest           " Popup a menu for completion
 set expandtab                          " Uses spaces for indent
@@ -149,8 +147,7 @@ let g:netrw_altfile=1
 " vim-sensible calls this, but it doesn't seem to work for 7.2
 syntax enable
 
-" }}}
-" Colors & Fonts ---------------------------------------------------------- {{{
+" Colors & Fonts --------------------------------------------------------- {{{1
 "
 if has("gui_running")
   set lines=50 columns=120
@@ -181,8 +178,7 @@ else
   colorscheme desert
 endif
 
-" }}}
-" Normal Mode Mappings ---------------------------------------------------- {{{
+" Normal Mode Mappings --------------------------------------------------- {{{1
 "
 let mapleader="\\"
 let maplocalleader=","
@@ -212,15 +208,13 @@ nnoremap <silent> <Leader>w :<C-u>set columns=180<CR>
 nnoremap <silent> + :<C-u>resize +2<CR>
 nnoremap <silent> _ :<C-u>resize -2<CR>
 
-" }}}
-" Insert Mode Mappings ---------------------------------------------------- {{{
+" Insert Mode Mappings --------------------------------------------------- {{{1
 "
 inoremap `jh James Hillyerd
 inoremap `em james@hillyerd.com
 inoremap jk <ESC>
 
-" }}}
-" Auto Commands ----------------------------------------------------------- {{{
+" Auto Commands ---------------------------------------------------------- {{{1
 "
 if has("autocmd")
   augroup VIMRC
@@ -235,8 +229,7 @@ if has("autocmd")
   augroup END
 endif
 
-" }}}
-" Functions --------------------------------------------------------------- {{{
+" Functions -------------------------------------------------------------- {{{1
 " Toggle the quickfix window
 function! ToggleQFix()
   for i in range(1, winnr('$'))
@@ -277,8 +270,7 @@ function! NeatFoldText()
 endfunction
 set foldtext=NeatFoldText()
 
-" }}}
-" Language: Go ------------------------------------------------------------ {{{
+" Language: Go ----------------------------------------------------------- {{{1
 "
 if has("autocmd")
   augroup GOLANG
@@ -304,8 +296,7 @@ if has("autocmd")
   augroup END
 endif
 
-" }}}
-" Prose Mode -------------------------------------------------------------- {{{
+" Prose Mode ------------------------------------------------------------- {{{1
 " From http://alols.github.io/2012/11/07/writing-prose-with-vim/
 function! SetProse()
   " Break undo sequence at the end of sentences
@@ -332,7 +323,3 @@ command! Prose call SetProse()
 command! -range=% SoftWrap
       \ <line2>put _ |
       \ silent <line1>,<line2>g/\S/,/^\s*$/join | silent s/\s\+$// | put _
-
-" }}}
-
-" vim:fdm=marker:ai:et:sw=2:ts=8:
