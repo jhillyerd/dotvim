@@ -14,7 +14,7 @@ filetype off
 let g:OSX = has('macunix')
 let g:UNIX = has('unix') && !has('macunix') && !has('win32unix')
 let g:WINDOWS = (has('win32') || has('win64'))
-let g:POSIX = !(g:WINDOWS && &shellcmdflag =~ '/') 
+let g:POSIX = !(g:WINDOWS && &shellcmdflag =~ '/')
 let g:vim_dir = g:POSIX ? '$HOME/.vim' : '$HOME/vimfiles'
 
 " Vundle List ------------------------------------------------------------ {{{1
@@ -72,40 +72,47 @@ filetype plugin indent on
 
 " Plugin Configuration --------------------------------------------------- {{{1
 "
-let g:conoline_use_colorscheme_default_normal=1
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:VimuxUseNearestPane=0
+" Airline Configuration
+if !empty(globpath(&runtimepath, 'autoload/airline.vim'))
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#show_buffers = 1
+  let g:airline#extensions#tabline#buffer_idx_mode = 1
+  nmap <Leader>1 <Plug>AirlineSelectTab1
+  nmap <Leader>2 <Plug>AirlineSelectTab2
+  nmap <Leader>3 <Plug>AirlineSelectTab3
+  nmap <Leader>4 <Plug>AirlineSelectTab4
+  nmap <Leader>5 <Plug>AirlineSelectTab5
+  nmap <Leader>6 <Plug>AirlineSelectTab6
+  nmap <Leader>7 <Plug>AirlineSelectTab7
+  nmap <Leader>8 <Plug>AirlineSelectTab8
+  nmap <Leader>9 <Plug>AirlineSelectTab9
+endif
 
+" Conoline Configuration
+let g:conoline_use_colorscheme_default_normal=1
+
+" Fugitive Configuration
+nnoremap <Leader>ga :<C-u>Gwrite<CR>
+nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>gs :<C-u>Gstatus<CR>
+
+" SuperTab Configuration
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+" Syntastic Configuration
 " Sometimes when using both vim-go and syntastic Vim will start
 " lagging while saving and opening files.  Fix:
 let g:syntastic_go_checkers = ['go']
 let g:syntastic_mode_map = { 'mode': 'active' }
 
-" Fugitive
-nnoremap <Leader>gs :<C-u>Gstatus<CR>
-nnoremap <Leader>gb :Gblame<CR>
-
-" Tagbar
+" Tagbar Configuration
 nnoremap <silent> <Leader>t :<C-u>TagbarOpenAutoClose<CR>
 
-" Airline tabline setup
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <Leader>1 <Plug>AirlineSelectTab1
-nmap <Leader>2 <Plug>AirlineSelectTab2
-nmap <Leader>3 <Plug>AirlineSelectTab3
-nmap <Leader>4 <Plug>AirlineSelectTab4
-nmap <Leader>5 <Plug>AirlineSelectTab5
-nmap <Leader>6 <Plug>AirlineSelectTab6
-nmap <Leader>7 <Plug>AirlineSelectTab7
-nmap <Leader>8 <Plug>AirlineSelectTab8
-nmap <Leader>9 <Plug>AirlineSelectTab9
+" UltiSnips Configuration
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" Unite mappings
+" Unite Configuration
 if !empty(globpath(&runtimepath, 'autoload/unite.vim'))
   "call unite#custom#source('buffer,file,file_rec', 'matchers', 'matcher_fuzzy')
   call unite#custom#source('buffer,file,file_rec', 'sorters', 'sorter_rank')
@@ -114,16 +121,18 @@ if !empty(globpath(&runtimepath, 'autoload/unite.vim'))
   nnoremap <Leader>/ :<C-u>Unite -start-insert line:buffers<CR>
 endif
 
-" Vimux mappings
-noremap <Leader>vp :<C-u>VimuxPromptCommand<CR>
-noremap <Leader>vl :<C-u>VimuxRunLastCommand<CR>
-noremap <Leader>vi :<C-u>VimuxInspectRunner<CR>
-noremap <Leader>vt :<C-u>VimuxTogglePane<CR>
-noremap <Leader>vq :<C-u>VimuxCloseRunner<CR>
-noremap <Leader>vc :<C-u>VimuxClearRunnerHistory<CR>
-noremap <Leader>vk :<C-u>VimuxInterruptRunner<CR>
-noremap <Leader>vz :<C-u>VimuxZoomRunner<CR>
-
+" Vimux Configuration
+if !empty(globpath(&runtimepath, 'plugin/vimux.vim'))
+  let g:VimuxUseNearestPane=0
+  noremap <Leader>vp :<C-u>VimuxPromptCommand<CR>
+  noremap <Leader>vl :<C-u>VimuxRunLastCommand<CR>
+  noremap <Leader>vi :<C-u>VimuxInspectRunner<CR>
+  noremap <Leader>vt :<C-u>VimuxTogglePane<CR>
+  noremap <Leader>vq :<C-u>VimuxCloseRunner<CR>
+  noremap <Leader>vc :<C-u>VimuxClearRunnerHistory<CR>
+  noremap <Leader>vk :<C-u>VimuxInterruptRunner<CR>
+  noremap <Leader>vz :<C-u>VimuxZoomRunner<CR>
+endif
 
 " Options (many more set in vim-sensible) -------------------------------- {{{1
 "
