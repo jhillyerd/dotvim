@@ -140,11 +140,12 @@ set completeopt=menu,longest           " Popup a menu for completion
 set expandtab                          " Uses spaces for indent
 set fillchars=vert:\|,fold:\           " Visual fill characters
 set foldmethod=syntax                  " Fold based on file's syntax
-set foldnestmax=1                      " I prefer one level of folds
+set foldnestmax=1                      " Use one level of folds
 set nofoldenable                       " But folds are mostly annoying
 set hidden                             " Allow hidden buffers
 set hlsearch                           " Highlight search hits
 set number                             " Always display line numbers
+set relativenumber                     " Relative line numbering
 set shiftwidth=2                       " Number of spaces for autoindent
 set showcmd                            " Show partial commands, areas
 set showmatch                          " Highlight matching (){}[]
@@ -210,11 +211,11 @@ nnoremap . .`[
 
 " Command mappings
 nnoremap <silent> <Leader>ev :<C-u>split $MYVIMRC<CR>
-nnoremap <silent> <Leader>l :<C-u>set list!<CR>
-nnoremap <silent> <Leader>n :<C-u>call ToggleNumber()<CR>
-nnoremap <silent> <Leader>p :<C-u>set paste!<CR>
-nnoremap <silent> <Leader>q :<C-u>call ToggleQFix()<CR>
-nnoremap <silent> <Leader>w :<C-u>set columns=180<CR>
+nnoremap <silent> <Leader>sl :<C-u>set list!<CR>
+nnoremap <silent> <Leader>sn :<C-u>call ToggleNumber()<CR>
+nnoremap <silent> <Leader>sp :<C-u>set paste!<CR>
+nnoremap <silent> <Leader>sr :<C-u>set relativenumber!<CR>
+nnoremap <silent> <Leader>sq :<C-u>call ToggleQFix()<CR>
 nnoremap <silent> + :<C-u>resize +2<CR>
 nnoremap <silent> _ :<C-u>resize -2<CR>
 
@@ -252,17 +253,22 @@ function! ToggleQFix()
   copen
 endfunction
 
-" Toggle number and disable mouse for copying from terminal
+" Toggle number+relativenumber and disable mouse for copying from terminal
 function! ToggleNumber()
   if &number
+    let s:rnum_state = &relativenumber
     set nonumber
+    set norelativenumber
     if !has("gui_running")
       let s:mouse_opts=&mouse
       set mouse=
     endif
   else
     set number
-    if !has("gui_running")
+    if exists("s:rnum_state")
+      let &relativenumber = s:rnum_state
+    endif
+    if exists("s:mouse_opts") && !has("gui_running")
       execute "set mouse=" . s:mouse_opts
     endif
   endif
