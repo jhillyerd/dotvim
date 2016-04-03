@@ -215,7 +215,7 @@ nnoremap <silent> <Leader>sl :<C-u>set list!<CR>
 nnoremap <silent> <Leader>sn :<C-u>call ToggleNumber()<CR>
 nnoremap <silent> <Leader>sp :<C-u>set paste!<CR>
 nnoremap <silent> <Leader>sr :<C-u>set relativenumber!<CR>
-nnoremap <silent> <Leader>sq :<C-u>call ToggleQFix()<CR>
+nnoremap <silent> <Leader>q :<C-u>call ToggleQFix()<CR>
 nnoremap <silent> + :<C-u>resize +2<CR>
 nnoremap <silent> _ :<C-u>resize -2<CR>
 
@@ -236,7 +236,7 @@ if has("autocmd")
     " Recognize .md as markdown, not modula2
     autocmd BufRead,BufNewFile *.md set filetype=markdown
     " Run vimscript
-    autocmd FileType vim nnoremap <LocalLeader>r :<C-u>source %<CR>
+    autocmd FileType vim nnoremap <buffer> <LocalLeader>r :<C-u>source %<CR>
   augroup END
 endif
 
