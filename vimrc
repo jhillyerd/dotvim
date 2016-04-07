@@ -31,12 +31,11 @@ if !empty(globpath(&runtimepath, 'autoload/vundle.vim'))
   Plugin 'matchit.zip'
 
   " github plugins, windows friendly
-  Plugin 'altercation/vim-colors-solarized'
   Plugin 'vim-airline/vim-airline'
-  Plugin 'vim-airline/vim-airline-themes'
   Plugin 'ervandew/supertab'
   Plugin 'fatih/vim-go'
   Plugin 'miyakogi/conoline.vim'
+  Plugin 'romainl/Apprentice'
   Plugin 'tpope/vim-abolish'
   Plugin 'tpope/vim-commentary'
   Plugin 'tpope/vim-fugitive'
@@ -165,7 +164,6 @@ syntax enable
 "
 if has("gui_running")
   set lines=50 columns=120
-  let g:solarized_contrast="high"
   set guioptions-=T " Remove toolbar
 
   if g:WINDOWS
@@ -178,15 +176,14 @@ if has("gui_running")
   endif
 else
   " Running in terminal
-  let g:solarized_termcolors=16
+  set t_Co=256
 endif
-set background=dark
 
 " Solarize colors if available
-if !empty(globpath(&runtimepath, 'colors/solarized.vim'))
-  colorscheme solarized
+if !empty(globpath(&runtimepath, 'colors/apprentice.vim'))
+  colorscheme apprentice
 else
-  colorscheme desert
+  colorscheme industry
 endif
 
 " Normal Mode Mappings --------------------------------------------------- {{{1
