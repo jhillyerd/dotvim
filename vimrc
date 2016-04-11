@@ -183,7 +183,7 @@ endif
 if !empty(globpath(&runtimepath, 'colors/apprentice.vim'))
   colorscheme apprentice
 else
-  colorscheme industry
+  colorscheme evening
 endif
 
 " Normal Mode Mappings --------------------------------------------------- {{{1
