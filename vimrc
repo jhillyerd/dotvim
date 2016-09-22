@@ -151,7 +151,7 @@ set showmatch                          " Highlight matching (){}[]
 set wildmode=longest,list,full         " Command line completion options
 
 if exists('+colorcolumn')
-  set colorcolumn=100
+  set colorcolumn=80
 endif
 
 " netrw should never be my alternate file
