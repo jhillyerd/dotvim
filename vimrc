@@ -17,6 +17,12 @@ let g:WINDOWS = (has('win32') || has('win64'))
 let g:POSIX = !(g:WINDOWS && &shellcmdflag =~ '/')
 let g:vim_dir = g:POSIX ? '$HOME/.vim' : '$HOME/vimfiles'
 
+" Google Init ------------------------------------------------------------ {{{1
+if g:UNIX && filereadable('/usr/share/vim/google/google.vim')
+  let g:GOOGLE = 1
+  source /usr/share/vim/google/google.vim
+end
+
 " Vundle List ------------------------------------------------------------ {{{1
 "
 " Detect Vundle
@@ -65,6 +71,11 @@ if !empty(globpath(&runtimepath, 'autoload/vundle.vim'))
   " All of your Plugins must be added before the following line (required)
   call vundle#end()
 endif
+
+" Glug Plugins ----------------------------------------------------------- {{{1
+if g:GOOGLE
+  Glug blaze plugin[mappings]='<LocalLeader>b'
+end
 
 " Post-plugin init (not Vundle dependent)
 filetype plugin indent on
