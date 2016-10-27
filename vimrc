@@ -61,11 +61,13 @@ if !empty(globpath(&runtimepath, 'autoload/vundle.vim'))
     Plugin 'majutsushi/tagbar'
     Plugin 'scrooloose/syntastic'
     Plugin 'wincent/terminus'
-    Plugin 'xolox/vim-easytags'
     Plugin 'xolox/vim-misc'
     if v:version > 703
       Plugin 'SirVer/ultisnips'
     endif
+    if !g:GOOGLE
+      Plugin 'xolox/vim-easytags'
+    end
   endif
 
   " All of your Plugins must be added before the following line (required)
