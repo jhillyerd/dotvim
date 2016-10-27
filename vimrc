@@ -77,6 +77,7 @@ endif
 " Glug Plugins ----------------------------------------------------------- {{{1
 if g:GOOGLE
   Glug blaze plugin[mappings]='<LocalLeader>b'
+  Glug syntastic-google
 end
 
 " Post-plugin init (not Vundle dependent)
@@ -116,6 +117,8 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " lagging while saving and opening files.  Fix:
 let g:syntastic_go_checkers = ['go']
 let g:syntastic_mode_map = { 'mode': 'active' }
+let g:syntastic_javascript_checkers = ['gjslint']
+let g:syntastic_javascript_gjslint_args = '--jslint_error=all'
 
 " Tagbar Configuration
 nnoremap <silent> <Leader>t :<C-u>TagbarOpenAutoClose<CR>
@@ -156,6 +159,7 @@ set foldnestmax=1                      " Use one level of folds
 set nofoldenable                       " But folds are mostly annoying
 set hidden                             " Allow hidden buffers
 set hlsearch                           " Highlight search hits
+set list listchars=tab:»\ ,trail:°     " Whitespace chars
 set number                             " Always display line numbers
 set relativenumber                     " Relative line numbering
 set shiftwidth=2                       " Number of spaces for autoindent
@@ -320,6 +324,15 @@ if has("autocmd")
     autocmd FileType go nmap <LocalLeader>sd <Plug>(go-doc-tab)
     autocmd FileType go nmap <LocalLeader>si <Plug>(go-implements)
     autocmd FileType go nmap <LocalLeader>sr <Plug>(go-referrers)
+  augroup END
+endif
+
+" Language: JavaScript --------------------------------------------------- {{{1
+"
+if has("autocmd")
+  augroup JAVASCRIPT
+    autocmd!
+    autocmd FileType javascript nmap <LocalLeader>l :<C-u>SyntasticCheck<CR>
   augroup END
 endif
 
