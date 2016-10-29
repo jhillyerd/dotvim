@@ -15,11 +15,11 @@ let g:OSX = has('macunix')
 let g:UNIX = has('unix') && !has('macunix') && !has('win32unix')
 let g:WINDOWS = (has('win32') || has('win64'))
 let g:POSIX = !(g:WINDOWS && &shellcmdflag =~ '/')
+let g:GOOGLE = g:UNIX && filereadable('/usr/share/vim/google/google.vim')
 let g:vim_dir = g:POSIX ? '$HOME/.vim' : '$HOME/vimfiles'
 
 " Google Init ------------------------------------------------------------ {{{1
-if g:UNIX && filereadable('/usr/share/vim/google/google.vim')
-  let g:GOOGLE = 1
+if g:GOOGLE
   source /usr/share/vim/google/google.vim
 end
 
@@ -159,7 +159,6 @@ set foldnestmax=1                      " Use one level of folds
 set nofoldenable                       " But folds are mostly annoying
 set hidden                             " Allow hidden buffers
 set hlsearch                           " Highlight search hits
-set list listchars=tab:»\ ,trail:°     " Whitespace chars
 set number                             " Always display line numbers
 set relativenumber                     " Relative line numbering
 set shiftwidth=2                       " Number of spaces for autoindent
