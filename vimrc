@@ -101,6 +101,13 @@ if !empty(globpath(&runtimepath, 'autoload/airline.vim'))
   nmap <Leader>9 <Plug>AirlineSelectTab9
 endif
 
+if g:GOOGLE
+  " Blaze Configuration
+  let g:blazevim_quickfix_autoopen = 1
+  let g:blazevim_ignore_warnings = 0
+  Glaive blaze show_warnings
+endif
+
 " Conoline Configuration
 let g:conoline_use_colorscheme_default_normal=1
 
@@ -179,7 +186,7 @@ syntax enable
 " Colors & Fonts --------------------------------------------------------- {{{1
 "
 if has("gui_running")
-  set lines=50 columns=120
+  set lines=72 columns=130
   set guioptions-=T " Remove toolbar
 
   if g:WINDOWS
