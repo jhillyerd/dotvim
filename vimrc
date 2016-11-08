@@ -105,7 +105,7 @@ if g:GOOGLE
   " Blaze Configuration
   let g:blazevim_quickfix_autoopen = 1
   let g:blazevim_ignore_warnings = 0
-  Glaive blaze show_warnings
+  Glaive blaze show_warnings use_external_parser
 endif
 
 " Conoline Configuration
@@ -230,7 +230,7 @@ nnoremap <Space> za
 nnoremap . .`[
 
 " Command mappings
-nnoremap <silent> <Leader>ev :<C-u>split $MYVIMRC<CR>
+nnoremap <silent> <Leader>ev :<C-u>edit $MYVIMRC<CR>
 nnoremap <silent> <Leader>sl :<C-u>set list!<CR>
 nnoremap <silent> <Leader>sn :<C-u>call ToggleNumber()<CR>
 nnoremap <silent> <Leader>sp :<C-u>set paste!<CR>
