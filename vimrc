@@ -193,7 +193,7 @@ if has("gui_running")
     set guifont=Consolas:h11
     set guioptions-=L " Prevent window resizing
   elseif has("gui_gtk2")
-    set guifont=Inconsolata\ Medium\ 11
+    set guifont=Inconsolata\ Medium\ 12
   elseif g:OSX
     set guifont=Monaco:h13
   endif
