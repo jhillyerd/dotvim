@@ -141,6 +141,16 @@ if !empty(globpath(&runtimepath, 'autoload/unite.vim'))
   nnoremap <C-p> :<C-u>Unite -start-insert buffer file_rec<CR>
   nnoremap <Leader>b :<C-u>Unite buffer<CR>
   nnoremap <Leader>/ :<C-u>Unite -start-insert line:buffers<CR>
+  function! s:unite_my_settings()
+    inoremap <silent><buffer><expr> <C-s>
+          \ unite#smart_map('<C-s>', unite#do_action('split'))
+    inoremap <silent><buffer><expr> <C-v>
+          \ unite#smart_map('<C-v>', unite#do_action('vsplit'))
+  endfunction
+  augroup UniteMaps
+    autocmd!
+    autocmd FileType unite call s:unite_my_settings()
+  augroup END
 endif
 
 " Vimux Configuration
