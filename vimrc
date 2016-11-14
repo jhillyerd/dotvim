@@ -55,6 +55,7 @@ if !empty(globpath(&runtimepath, 'autoload/vundle.vim'))
 
   " github plugs, unix preferred
   if !g:WINDOWS
+    Plugin 'airblade/vim-gitgutter'
     Plugin 'benmills/vimux'
     Plugin 'benmills/vimux-golang'
     Plugin 'dag/vim-fish'
@@ -181,6 +182,7 @@ set relativenumber                     " Relative line numbering
 set shiftwidth=2                       " Number of spaces for autoindent
 set showcmd                            " Show partial commands, areas
 set showmatch                          " Highlight matching (){}[]
+set updatetime=250                     " Make gitgutter update faster
 set wildmode=longest,list,full         " Command line completion options
 
 if exists('+colorcolumn')
