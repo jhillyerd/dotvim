@@ -1,6 +1,6 @@
 " vimrc
 " description: James' attempt at a multiplatform vim configuration
-" vim:fdm=marker:ai:et:sw=2:ts=8:
+" vim:fdm=marker:ai:et:sw=2:ts=8:tw=80
 
 " Initialization --------------------------------------------------------- {{{1
 "
@@ -23,56 +23,52 @@ if g:GOOGLE
   source /usr/share/vim/google/google.vim
 end
 
-" Vundle List ------------------------------------------------------------ {{{1
+" Plug List -------------------------------------------------------------- {{{1
 "
-" Detect Vundle
-let &runtimepath .= ',' . expand(vim_dir . '/bundle/Vundle.vim')
-if !empty(globpath(&runtimepath, 'autoload/vundle.vim'))
-  call vundle#begin(expand(vim_dir . '/bundle'))
-
-  " let Vundle manage Vundle (required)
-  Plugin 'gmarik/Vundle.vim'
+" Detect Plug
+if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
+  call plug#begin(expand(vim_dir . '/plugged'))
 
   " vimscripts plugins
-  Plugin 'matchit.zip'
+  Plug 'matchit.zip'
 
   " github plugins, windows friendly
-  Plugin 'vim-airline/vim-airline'
-  Plugin 'ervandew/supertab'
-  Plugin 'fatih/vim-go'
-  Plugin 'miyakogi/conoline.vim'
-  Plugin 'romainl/Apprentice'
-  Plugin 'tpope/vim-abolish'
-  Plugin 'tpope/vim-commentary'
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'tpope/vim-repeat'
-  Plugin 'tpope/vim-sensible'
-  Plugin 'tpope/vim-surround'
-  Plugin 'tpope/vim-vinegar'
+  Plug 'vim-airline/vim-airline'
+  Plug 'ervandew/supertab'
+  Plug 'fatih/vim-go', { 'for': 'go' }
+  Plug 'miyakogi/conoline.vim'
+  Plug 'romainl/Apprentice'
+  Plug 'tpope/vim-abolish'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-vinegar'
   if v:version > 702
-    Plugin 'Shougo/unite.vim'
+    Plug 'Shougo/unite.vim'
   endif
 
   " github plugs, unix preferred
   if !g:WINDOWS
-    Plugin 'airblade/vim-gitgutter'
-    Plugin 'benmills/vimux'
-    Plugin 'benmills/vimux-golang'
-    Plugin 'dag/vim-fish'
-    Plugin 'majutsushi/tagbar'
-    Plugin 'scrooloose/syntastic'
-    Plugin 'wincent/terminus'
-    Plugin 'xolox/vim-misc'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'benmills/vimux'
+    Plug 'benmills/vimux-golang'
+    Plug 'dag/vim-fish', { 'for': 'fish' }
+    Plug 'majutsushi/tagbar'
+    Plug 'scrooloose/syntastic'
+    Plug 'wincent/terminus'
+    Plug 'xolox/vim-misc'
     if v:version > 703
-      Plugin 'SirVer/ultisnips'
+      Plug 'SirVer/ultisnips'
     endif
     if !g:GOOGLE
-      Plugin 'xolox/vim-easytags'
+      Plug 'xolox/vim-easytags'
     end
   endif
 
   " All of your Plugins must be added before the following line (required)
-  call vundle#end()
+  call plug#end()
 endif
 
 " Glug Plugins ----------------------------------------------------------- {{{1

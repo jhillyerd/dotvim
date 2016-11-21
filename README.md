@@ -1,10 +1,11 @@
 dotvim
 ======
 
-Platform agnostic, Vundle enabled, Golang friendly Vim configuration
+Platform agnostic, Plug enabled, Golang friendly Vim configuration
 
 The vimrc is designed to be scalable in the sense that it will not blow up if
-plugins are not installed, or if Vundle is missing entirely.
+plugins are not installed, or if Plug is missing entirely.
+
 
 ## Unix Full Installation
 
@@ -12,10 +13,11 @@ Clone the repository:
 
     git clone https://github.com/jhillyerd/dotvim.git ~/.vim
 
-Install bundles:
+Install plugins:
 
     cd ~/.vim
-    ./init-vundle.sh
+    ./install-plug.sh
+
 
 ## Windows Full Installion
 
@@ -24,12 +26,12 @@ Install [git-for-windows](https://git-for-windows.github.io/)
 Open a git-bash shell, clone the repos:
 
     git clone https://github.com/jhillyerd/dotvim.git $HOME/vimfiles
-    git clone https://github.com/gmarik/Vundle.vim.git $HOME/vimfiles/bundle/Vundle.vim
 
-Launch `gvim.exe` (ignore errors), then install the bundles:
+Install plugins:
 
-    :PluginInstall
-    :qall
+    cd $HOME/vimfiles
+    ./install-plug.sh
+
 
 ## Basic Installation
 
