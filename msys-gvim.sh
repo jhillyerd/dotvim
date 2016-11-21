@@ -1,3 +1,4 @@
+#!/bin/bash
 # msys-gvim.sh
 # description: Launches an instance of GVim (standard Windows build) from
 # within an msys-bash shell.  Posix paths will be mapped to Windows paths.

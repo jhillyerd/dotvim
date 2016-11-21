@@ -27,10 +27,8 @@ Open a git-bash shell, clone the repos:
 
     git clone https://github.com/jhillyerd/dotvim.git $HOME/vimfiles
 
-Install plugins:
-
-    cd $HOME/vimfiles
-    ./install-plug.sh
+Install plugins by right clicking on `install-plug.ps1` in `$HOME/vimfiles` 
+and selecting *Run with PowerShell.*
 
 
 ## Basic Installation

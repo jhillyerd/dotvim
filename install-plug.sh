@@ -1,14 +1,11 @@
-#!/bin/sh
-if [ $MSYSTEM ]; then
-  # Windows Git Bash
-  vimdir="$HOME/vimfiles"
-  vimbin="gvim.exe"
-else
-  vimdir="$HOME/.vim"
-  vimbin="vim"
-fi
+#!/bin/bash
 
-curl -fLo "$vimdir/autoload/plug.vim" --create-dirs \
+set -eo pipefail
+
+vimdir="$HOME/.vim"
+
+mkdir -p "$vimdir/autoload"
+curl -fLo "$vimdir/autoload/plug.vim" \
   "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
-$vimbin +PlugInstall +qall
+vim +PlugInstall +qall
