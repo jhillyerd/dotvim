@@ -318,26 +318,34 @@ set foldtext=NeatFoldText()
 " Language: Go ----------------------------------------------------------- {{{1
 "
 if has("autocmd")
+  function! s:golang_settings()
+    " Reformat comments using vim-commentary text object
+    nmap <buffer> Q gqgc
+    " Golang vimux mappings
+    nnoremap <buffer> <LocalLeader>ra :<C-u>GolangTestCurrentPackage<CR>
+    nnoremap <buffer> <LocalLeader>rf :<C-u>GolangTestFocused<CR>
+    " vim-go mappings that perform an action
+    " go-def is not reliable right now
+    " nmap <buffer> <Right> <Plug>(go-def)
+    " nmap <buffer> <Left> <Plug>(go-def-pop)
+    nmap <buffer> <LocalLeader>a <Plug>(go-alternate-edit)
+    nmap <buffer> <LocalLeader>b <Plug>(go-build)
+    nmap <buffer> <LocalLeader>c <Plug>(go-coverage)
+    nmap <buffer> <LocalLeader>e <Plug>(go-rename)
+    nmap <buffer> <LocalLeader>i <Plug>(go-import)
+    nmap <buffer> <LocalLeader>I <Plug>(go-imports)
+    nmap <buffer> <LocalLeader>l <Plug>(go-metalinter)
+    nmap <buffer> <LocalLeader>r <Plug>(go-run)
+    nmap <buffer> <LocalLeader>t <Plug>(go-test)
+    nmap <buffer> <LocalLeader>* <Plug>(go-sameids)
+    " vim-go mappings that look up (show) something under the cursor
+    nmap <buffer> <LocalLeader>sd <Plug>(go-doc-tab)
+    nmap <buffer> <LocalLeader>si <Plug>(go-implements)
+    nmap <buffer> <LocalLeader>sr <Plug>(go-referrers)
+  endfunction
   augroup GOLANG
     autocmd!
-    " Reformat comments using vim-commentary text object
-    autocmd FileType go nmap <buffer> Q gqgc
-    " Golang vimux mappings
-    autocmd FileType go noremap <buffer> <LocalLeader>ra :<C-u>GolangTestCurrentPackage<CR>
-    autocmd FileType go noremap <buffer> <LocalLeader>rf :<C-u>GolangTestFocused<CR>
-    " vim-go mappings that perform an action
-    autocmd FileType go nmap <LocalLeader>a <Plug>(go-alternate-edit)
-    autocmd FileType go nmap <LocalLeader>b <Plug>(go-build)
-    autocmd FileType go nmap <LocalLeader>c <Plug>(go-coverage)
-    autocmd FileType go nmap <LocalLeader>e <Plug>(go-rename)
-    autocmd FileType go nmap <LocalLeader>i <Plug>(go-import)
-    autocmd FileType go nmap <LocalLeader>l <Plug>(go-metalinter)
-    autocmd FileType go nmap <LocalLeader>r <Plug>(go-run)
-    autocmd FileType go nmap <LocalLeader>t <Plug>(go-test)
-    " vim-go mappings that look up (show) something under the cursor
-    autocmd FileType go nmap <LocalLeader>sd <Plug>(go-doc-tab)
-    autocmd FileType go nmap <LocalLeader>si <Plug>(go-implements)
-    autocmd FileType go nmap <LocalLeader>sr <Plug>(go-referrers)
+    autocmd FileType go call s:golang_settings()
   augroup END
 endif
 
