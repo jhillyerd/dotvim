@@ -121,8 +121,12 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " lagging while saving and opening files.  Fix:
 let g:syntastic_go_checkers = ['go']
 let g:syntastic_mode_map = { 'mode': 'active' }
-let g:syntastic_javascript_checkers = ['gjslint']
-let g:syntastic_javascript_gjslint_args = '--jslint_error=all'
+if g:GOOGLE
+  " Google specific linting
+  let g:syntastic_javascript_checkers = ['gjslint']
+  let g:syntastic_javascript_gjslint_args = '--jslint_error=all'
+  let g:syntastic_python_checkers = ['gpylint']
+endif
 
 " Tagbar Configuration
 nnoremap <silent> <Leader>t :<C-u>TagbarOpenAutoClose<CR>
@@ -194,7 +198,6 @@ syntax enable
 " Colors & Fonts --------------------------------------------------------- {{{1
 "
 if has("gui_running")
-  set lines=72 columns=130
   set guioptions-=T " Remove toolbar
 
   if g:WINDOWS
