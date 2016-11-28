@@ -139,7 +139,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 if !empty(globpath(&runtimepath, 'autoload/unite.vim'))
   "call unite#custom#source('buffer,file,file_rec', 'matchers', 'matcher_fuzzy')
   call unite#custom#source('buffer,file,file_rec', 'sorters', 'sorter_rank')
-  nnoremap <C-p> :<C-u>Unite -start-insert buffer file_rec<CR>
+  nnoremap <C-p> :<C-u>Unite -start-insert file_rec<CR>
   nnoremap <Leader>b :<C-u>Unite buffer<CR>
   nnoremap <Leader>/ :<C-u>Unite -start-insert line:buffers<CR>
   function! s:unite_my_settings()
@@ -340,11 +340,13 @@ if has("autocmd")
     nmap <buffer> <LocalLeader>l <Plug>(go-metalinter)
     nmap <buffer> <LocalLeader>r <Plug>(go-run)
     nmap <buffer> <LocalLeader>t <Plug>(go-test)
+    nmap <buffer> <LocalLeader>tt <Plug>(go-test-func)
     nmap <buffer> <LocalLeader>* <Plug>(go-sameids)
     " vim-go mappings that look up (show) something under the cursor
-    nmap <buffer> <LocalLeader>sd <Plug>(go-doc-tab)
+    nmap <buffer> <LocalLeader>sd <Plug>(go-describe)
     nmap <buffer> <LocalLeader>si <Plug>(go-implements)
     nmap <buffer> <LocalLeader>sr <Plug>(go-referrers)
+    nmap <buffer> <LocalLeader>su <Plug>(go-info)
   endfunction
   augroup GOLANG
     autocmd!
