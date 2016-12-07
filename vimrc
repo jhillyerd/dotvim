@@ -203,7 +203,7 @@ if has("gui_running")
   if g:WINDOWS
     set guifont=Consolas:h11
     set guioptions-=L " Prevent window resizing
-  elseif has("gui_gtk2")
+  elseif has("gui_gtk2") || has("gui_gtk3")
     set guifont=Inconsolata\ Medium\ 12
   elseif g:OSX
     set guifont=Monaco:h13
@@ -241,7 +241,7 @@ nnoremap <Space> za
 nnoremap . .`[
 
 " Command mappings
-nnoremap <silent> <Leader>ev :<C-u>edit $MYVIMRC<CR>
+nnoremap <silent> <Leader>ev :<C-u>edit $MYVIMRC<CR>:set fdm=marker<CR>
 nnoremap <silent> <Leader>sl :<C-u>set list!<CR>
 nnoremap <silent> <Leader>sn :<C-u>call ToggleNumber()<CR>
 nnoremap <silent> <Leader>sp :<C-u>set paste!<CR>
