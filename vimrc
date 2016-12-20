@@ -246,6 +246,7 @@ nnoremap <silent> <Leader>sl :<C-u>set list!<CR>
 nnoremap <silent> <Leader>sn :<C-u>call ToggleNumber()<CR>
 nnoremap <silent> <Leader>sp :<C-u>set paste!<CR>
 nnoremap <silent> <Leader>sr :<C-u>set relativenumber!<CR>
+nnoremap <silent> <Leader>ss :<C-u>set spell!<CR>
 nnoremap <silent> <Leader>q :<C-u>call ToggleQFix()<CR>
 nnoremap <silent> + :<C-u>resize +2<CR>
 nnoremap <silent> _ :<C-u>resize -2<CR>
