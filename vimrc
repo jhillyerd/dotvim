@@ -182,6 +182,7 @@ set relativenumber                     " Relative line numbering
 set shiftwidth=2                       " Number of spaces for autoindent
 set showcmd                            " Show partial commands, areas
 set showmatch                          " Highlight matching (){}[]
+set noshowmode                         " Hide -- INSERT --
 set updatetime=250                     " Make gitgutter update faster
 set wildmode=longest,list,full         " Command line completion options
 
