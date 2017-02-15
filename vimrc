@@ -156,6 +156,11 @@ endif
 
 " Vimux Configuration
 if !empty(globpath(&runtimepath, 'plugin/vimux.vim'))
+  function! VimuxSlime()
+    call VimuxSendText(@v)
+    call VimuxSendKeys("Enter")
+  endfunction
+
   let g:VimuxUseNearestPane=0
   noremap <Leader>vp :<C-u>VimuxPromptCommand<CR>
   noremap <Leader>vl :<C-u>VimuxRunLastCommand<CR>
@@ -165,6 +170,11 @@ if !empty(globpath(&runtimepath, 'plugin/vimux.vim'))
   noremap <Leader>vc :<C-u>VimuxClearRunnerHistory<CR>
   noremap <Leader>vk :<C-u>VimuxInterruptRunner<CR>
   noremap <Leader>vz :<C-u>VimuxZoomRunner<CR>
+
+  " If text is selected, save it in the v buffer and send that buffer it to tmux
+  vnoremap <Leader>vs "vy:<C-u>call VimuxSlime()<CR>
+  " Select current paragraph and send it to tmux
+  nmap <Leader>vs vip<Leader>vs<CR>
 endif
 
 " Options (many more set in vim-sensible) -------------------------------- {{{1
