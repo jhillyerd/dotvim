@@ -29,9 +29,6 @@ end
 if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   call plug#begin(expand(vim_dir . '/plugged'))
 
-  " vimscripts plugins
-  Plug 'matchit.zip'
-
   " github plugins, windows friendly
   Plug 'vim-airline/vim-airline'
   Plug 'ervandew/supertab'
