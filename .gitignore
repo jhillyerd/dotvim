@@ -1,5 +1,5 @@
 # Bundles handled by Plug
-autoload/plug.vim
+autoload/plug.vim*
 plugged/**
 
 # User dictionary additions
