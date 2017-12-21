@@ -7,4 +7,5 @@ spell/**
 
 # Vim work files
 .netrwhist
+cache/**
 view/**
