@@ -331,6 +331,8 @@ set foldtext=NeatFoldText()
 "
 if has("autocmd")
   function! s:golang_settings()
+    let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck',
+          \ 'megacheck']
     " Reformat comments using vim-commentary text object
     nmap <buffer> Q gqgc
     " Golang vimux mappings
