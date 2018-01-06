@@ -34,6 +34,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'fatih/vim-go', { 'for': 'go' }
   Plug 'miyakogi/conoline.vim'
   Plug 'romainl/Apprentice'
+  Plug 'Shougo/unite.vim'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -41,9 +42,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-vinegar'
-  if v:version > 702
-    Plug 'Shougo/unite.vim'
-  endif
 
   " github plugs, unix preferred
   if !g:WINDOWS
@@ -51,13 +49,13 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'benmills/vimux'
     Plug 'benmills/vimux-golang'
     Plug 'dag/vim-fish', { 'for': 'fish' }
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
     Plug 'majutsushi/tagbar'
     Plug 'scrooloose/syntastic'
+    Plug 'SirVer/ultisnips'
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
-    if v:version > 703
-      Plug 'SirVer/ultisnips'
-    endif
     if !g:GOOGLE
       Plug 'Valloric/YouCompleteMe'
       Plug 'xolox/vim-easytags'
@@ -112,6 +110,11 @@ nnoremap <Leader>ga :<C-u>Gwrite<CR>
 nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gs :<C-u>Gstatus<CR>
 
+if !empty(globpath(&runtimepath, 'autoload/fzf/vim.vim'))
+  nnoremap <C-p> :<C-u>FZF --reverse<CR>
+  let g:fzf_layout = { 'up': '~30%' }
+endif
+
 " Syntastic Configuration
 " Sometimes when using both vim-go and syntastic Vim will start
 " lagging while saving and opening files.  Fix:
@@ -134,9 +137,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Unite Configuration
 if !empty(globpath(&runtimepath, 'autoload/unite.vim'))
-  "call unite#custom#source('buffer,file,file_rec', 'matchers', 'matcher_fuzzy')
   call unite#custom#source('buffer,file,file_rec', 'sorters', 'sorter_rank')
-  nnoremap <C-p> :<C-u>Unite -start-insert file_rec<CR>
   nnoremap <Leader>b :<C-u>Unite buffer<CR>
   nnoremap <Leader>/ :<C-u>Unite -start-insert line:buffers<CR>
   function! s:unite_my_settings()
