@@ -17,7 +17,8 @@ Install plugins:
 
     cd ~/.vim
     ./install-plug.sh
-
+    cd plugged/YouCompleteMe
+    python3 ./install.py --go-completer
 
 ## Windows Full Installion
 

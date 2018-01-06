@@ -31,7 +31,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
 
   " github plugins, windows friendly
   Plug 'vim-airline/vim-airline'
-  Plug 'ervandew/supertab'
   Plug 'fatih/vim-go', { 'for': 'go' }
   Plug 'miyakogi/conoline.vim'
   Plug 'romainl/Apprentice'
@@ -60,6 +59,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
       Plug 'SirVer/ultisnips'
     endif
     if !g:GOOGLE
+      Plug 'Valloric/YouCompleteMe'
       Plug 'xolox/vim-easytags'
     end
   endif
@@ -74,8 +74,6 @@ if g:GOOGLE
   "Glug blazedeps auto_filetypes=`['go']`
   Glug syntastic-google
   Glug youcompleteme-google
-  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 end
 
 " Post-plugin init (not Vundle dependent)
@@ -114,9 +112,6 @@ nnoremap <Leader>ga :<C-u>Gwrite<CR>
 nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gs :<C-u>Gstatus<CR>
 
-" SuperTab Configuration
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
 " Syntastic Configuration
 " Sometimes when using both vim-go and syntastic Vim will start
 " lagging while saving and opening files.  Fix:
@@ -133,6 +128,7 @@ endif
 nnoremap <silent> <Leader>t :<C-u>TagbarOpenAutoClose<CR>
 
 " UltiSnips Configuration
+let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
@@ -176,6 +172,12 @@ if !empty(globpath(&runtimepath, 'plugin/vimux.vim'))
   vnoremap <Leader>vs "vy:<C-u>call VimuxSlime()<CR>
   " Select current paragraph and send it to tmux
   nmap <Leader>vs vip<Leader>vs<CR>
+endif
+
+" YouCompleteMe Configuration
+if !empty(globpath(&runtimepath, 'plugin/youcompleteme.vim'))
+  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 endif
 
 " Options (many more set in vim-sensible) -------------------------------- {{{1
