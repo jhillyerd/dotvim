@@ -71,7 +71,11 @@ endif
 " Glug Plugins ----------------------------------------------------------- {{{1
 if g:GOOGLE
   Glug blaze plugin[mappings]='<LocalLeader>b'
+  "Glug blazedeps auto_filetypes=`['go']`
   Glug syntastic-google
+  Glug youcompleteme-google
+  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 end
 
 " Post-plugin init (not Vundle dependent)
@@ -333,6 +337,7 @@ if has("autocmd")
   function! s:golang_settings()
     let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck',
           \ 'megacheck']
+    let g:go_list_type = "quickfix"
     " Reformat comments using vim-commentary text object
     nmap <buffer> Q gqgc
     " Golang vimux mappings
