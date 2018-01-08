@@ -175,10 +175,8 @@ if !empty(globpath(&runtimepath, 'plugin/vimux.vim'))
 endif
 
 " YouCompleteMe Configuration
-if !empty(globpath(&runtimepath, 'plugin/youcompleteme.vim'))
-  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-endif
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 " Options (many more set in vim-sensible) -------------------------------- {{{1
 "
