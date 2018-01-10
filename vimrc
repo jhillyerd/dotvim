@@ -336,6 +336,7 @@ set foldtext=NeatFoldText()
 "
 if has("autocmd")
   function! s:golang_settings()
+    let g:go_fmt_experimental = 1
     let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck',
           \ 'megacheck']
     let g:go_list_type = "quickfix"
