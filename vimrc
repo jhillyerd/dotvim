@@ -282,7 +282,6 @@ if has("autocmd")
     autocmd!
     " Quickfix window
     autocmd QuickFixCmdPre * :update
-    autocmd QuickFixCmdPost * :cwindow
     " Recognize .md as markdown, not modula2
     autocmd BufRead,BufNewFile *.md set filetype=markdown
     " Run vimscript
