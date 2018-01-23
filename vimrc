@@ -261,7 +261,6 @@ nnoremap <silent> <Leader>sp :<C-u>set paste!<CR>
 nnoremap <silent> <Leader>sr :<C-u>set relativenumber!<CR>
 nnoremap <silent> <Leader>ss :<C-u>set spell!<CR>
 nnoremap <silent> <Leader>q :<C-u>call ToggleQFix()<CR>
-nnoremap <silent> <Leader>z :<C-u>botright terminal ++close fish<CR>
 nnoremap <silent> + :<C-u>resize +2<CR>
 nnoremap <silent> _ :<C-u>resize -2<CR>
 
@@ -273,7 +272,10 @@ inoremap jk <ESC>
 
 " Terminal Mode Mappings ------------------------------------------------- {{{1
 "
-tnoremap jk <C-W>N
+if has('terminal')
+  nnoremap <silent> <Leader>z :<C-u>botright terminal ++close fish<CR>
+  tnoremap jk <C-W>N
+end
 
 " Auto Commands ---------------------------------------------------------- {{{1
 "
