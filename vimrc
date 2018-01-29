@@ -261,6 +261,7 @@ nnoremap <silent> <Leader>sp :<C-u>set paste!<CR>
 nnoremap <silent> <Leader>sr :<C-u>set relativenumber!<CR>
 nnoremap <silent> <Leader>ss :<C-u>set spell!<CR>
 nnoremap <silent> <Leader>q :<C-u>call ToggleQFix()<CR>
+nnoremap <silent> <Leader>x :<C-u>e ~/buffer.md<CR>
 nnoremap <silent> + :<C-u>resize +2<CR>
 nnoremap <silent> _ :<C-u>resize -2<CR>
 
@@ -290,6 +291,10 @@ if has("autocmd")
     autocmd FileType vim nnoremap <buffer> <LocalLeader>r :<C-u>source %<CR>
   augroup END
 endif
+
+" Commands --------------------------------------------------------------- {{{1
+"
+command! Here :cd %:p:h
 
 " Functions -------------------------------------------------------------- {{{1
 "
@@ -384,6 +389,16 @@ if has("autocmd")
   augroup JAVASCRIPT
     autocmd!
     autocmd FileType javascript nmap <LocalLeader>l :<C-u>SyntasticCheck<CR>
+  augroup END
+endif
+
+" Language: Markdown ----------------------------------------------------- {{{1
+"
+if has("autocmd")
+  augroup MARKDOWN
+    autocmd!
+    autocmd FileType markdown set spell
+    autocmd FileType markdown nnoremap <silent> <buffer> <LocalLeader>f :<C-u>normal! mm[s1z=`m<CR>
   augroup END
 endif
 
