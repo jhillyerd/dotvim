@@ -260,6 +260,7 @@ nnoremap <silent> <Leader>sn :<C-u>call ToggleNumber()<CR>
 nnoremap <silent> <Leader>sp :<C-u>set paste!<CR>
 nnoremap <silent> <Leader>sr :<C-u>set relativenumber!<CR>
 nnoremap <silent> <Leader>ss :<C-u>set spell!<CR>
+nnoremap <silent> <Leader>* mxgg"*yG`x
 nnoremap <silent> <Leader>q :<C-u>call ToggleQFix()<CR>
 nnoremap <silent> <Leader>x :<C-u>e ~/buffer.md<CR>
 nnoremap <silent> + :<C-u>resize +2<CR>
