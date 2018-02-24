@@ -398,7 +398,7 @@ endif
 if has("autocmd")
   augroup MARKDOWN
     autocmd!
-    autocmd FileType markdown set spell
+    autocmd FileType markdown setlocal spell
     autocmd FileType markdown nnoremap <silent> <buffer> <LocalLeader>f :<C-u>normal! mm[s1z=`m<CR>
   augroup END
 endif
