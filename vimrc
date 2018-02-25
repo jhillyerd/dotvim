@@ -175,6 +175,9 @@ if !empty(globpath(&runtimepath, 'plugin/vimux.vim'))
   nmap <Leader>vs vip<Leader>vs<CR>
 endif
 
+" Wiki Configuration
+let g:wiki_home = '~/wiki'
+
 " YouCompleteMe Configuration
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
@@ -262,6 +265,7 @@ nnoremap <silent> <Leader>sr :<C-u>set relativenumber!<CR>
 nnoremap <silent> <Leader>ss :<C-u>set spell!<CR>
 nnoremap <silent> <Leader>* mxgg"*yG`x
 nnoremap <silent> <Leader>q :<C-u>call ToggleQFix()<CR>
+nnoremap <silent> <Leader>wj :<C-u>call wiki#journal()<CR>
 nnoremap <silent> <Leader>x :<C-u>e ~/buffer.md<CR>
 nnoremap <silent> + :<C-u>resize +2<CR>
 nnoremap <silent> _ :<C-u>resize -2<CR>
