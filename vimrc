@@ -290,6 +290,8 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.md set filetype=markdown
     " Run vimscript
     autocmd FileType vim nnoremap <buffer> <LocalLeader>r :<C-u>source %<CR>
+    " Delete hidden netrw buffers
+    autocmd FileType netrw setlocal bufhidden=wipe
   augroup END
 endif
 
