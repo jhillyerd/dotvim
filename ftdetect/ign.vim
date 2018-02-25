@@ -1,1 +1,1 @@
-set filetype=json
+autocmd BufRead,BufNewFile *.ign set filetype=json
