@@ -34,7 +34,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'fatih/vim-go', { 'for': 'go' }
   Plug 'miyakogi/conoline.vim'
   Plug 'romainl/Apprentice'
-  Plug 'Shougo/unite.vim'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -51,7 +50,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'dag/vim-fish', { 'for': 'fish' }
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-    Plug 'majutsushi/tagbar'
     Plug 'scrooloose/syntastic'
     Plug 'SirVer/ultisnips'
     Plug 'wincent/terminus'
@@ -110,9 +108,12 @@ nnoremap <Leader>ga :<C-u>Gwrite<CR>
 nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gs :<C-u>Gstatus<CR>
 
+" FZF Configuration
 if !empty(globpath(&runtimepath, 'autoload/fzf/vim.vim'))
-  nnoremap <C-p> :<C-u>FZF --reverse<CR>
   let g:fzf_layout = { 'up': '~30%' }
+  nnoremap <C-p> :<C-u>FZF --reverse<CR>
+  nnoremap <silent> <Leader>b :<C-u>Buffers<CR>
+  nnoremap <silent> <Leader>t :<C-u>BTags<CR>
 endif
 
 " Syntastic Configuration
@@ -127,30 +128,10 @@ if g:GOOGLE
   let g:syntastic_python_checkers = ['gpylint']
 endif
 
-" Tagbar Configuration
-nnoremap <silent> <Leader>t :<C-u>TagbarOpenAutoClose<CR>
-
 " UltiSnips Configuration
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" Unite Configuration
-if !empty(globpath(&runtimepath, 'autoload/unite.vim'))
-  call unite#custom#source('buffer,file,file_rec', 'sorters', 'sorter_rank')
-  nnoremap <Leader>b :<C-u>Unite buffer<CR>
-  nnoremap <Leader>/ :<C-u>Unite -start-insert line:buffers<CR>
-  function! s:unite_my_settings()
-    inoremap <silent><buffer><expr> <C-s>
-          \ unite#smart_map('<C-s>', unite#do_action('split'))
-    inoremap <silent><buffer><expr> <C-v>
-          \ unite#smart_map('<C-v>', unite#do_action('vsplit'))
-  endfunction
-  augroup UniteMaps
-    autocmd!
-    autocmd FileType unite call s:unite_my_settings()
-  augroup END
-endif
 
 " Vimux Configuration
 if !empty(globpath(&runtimepath, 'plugin/vimux.vim'))
