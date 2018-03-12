@@ -222,6 +222,8 @@ endif
 let mapleader="\\"
 let maplocalleader=","
 
+" Transpose current word to the right
+nnoremap gl "xdiwdwep"xp
 " Format paragraph
 nnoremap Q gqip
 " Yank to end of line
@@ -238,6 +240,7 @@ nnoremap <Space> za
 nnoremap . .`[
 
 " Command mappings
+nnoremap <silent> <Leader>d <C-^>:bdelete #<CR>
 nnoremap <silent> <Leader>ev :<C-u>edit $MYVIMRC<CR>:set fdm=marker<CR>
 nnoremap <silent> <Leader>sl :<C-u>set list!<CR>
 nnoremap <silent> <Leader>sn :<C-u>call ToggleNumber()<CR>
@@ -260,7 +263,7 @@ inoremap jk <ESC>
 " Terminal Mode Mappings ------------------------------------------------- {{{1
 "
 if has('terminal')
-  nnoremap <silent> <Leader>z :<C-u>botright terminal ++close fish<CR>
+  nnoremap <silent> <Leader>z :<C-u>belowright terminal ++close fish<CR>
   tnoremap jk <C-W>N
 end
 
@@ -283,6 +286,7 @@ endif
 " Commands --------------------------------------------------------------- {{{1
 "
 command! Here :cd %:p:h
+command! Only :1,$bdelete|edit #
 
 " Functions -------------------------------------------------------------- {{{1
 "
