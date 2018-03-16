@@ -32,6 +32,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   " github plugins, windows friendly
   Plug 'vim-airline/vim-airline'
   Plug 'fatih/vim-go', { 'for': 'go' }
+  Plug 'mhinz/vim-startify'
   Plug 'miyakogi/conoline.vim'
   Plug 'romainl/Apprentice'
   Plug 'tpope/vim-abolish'
@@ -41,6 +42,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-vinegar'
+  Plug 'vim-scripts/bufkill.vim'
 
   " github plugs, unix preferred
   if !g:WINDOWS
@@ -240,7 +242,6 @@ nnoremap <Space> za
 nnoremap . .`[
 
 " Command mappings
-nnoremap <silent> <Leader>d <C-^>:bdelete #<CR>
 nnoremap <silent> <Leader>ev :<C-u>edit $MYVIMRC<CR>:set fdm=marker<CR>
 nnoremap <silent> <Leader>sl :<C-u>set list!<CR>
 nnoremap <silent> <Leader>sn :<C-u>call ToggleNumber()<CR>
