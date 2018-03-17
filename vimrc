@@ -52,8 +52,8 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'dag/vim-fish', { 'for': 'fish' }
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-    Plug 'scrooloose/syntastic'
     Plug 'SirVer/ultisnips'
+    Plug 'w0rp/ale'
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
     if !g:GOOGLE
@@ -70,7 +70,6 @@ endif
 if g:GOOGLE
   Glug blaze plugin[mappings]='<LocalLeader>b'
   "Glug blazedeps auto_filetypes=`['go']`
-  Glug syntastic-google
   Glug youcompleteme-google
 end
 
@@ -117,6 +116,9 @@ if !empty(globpath(&runtimepath, 'autoload/fzf/vim.vim'))
   nnoremap <silent> <Leader>b :<C-u>Buffers<CR>
   nnoremap <silent> <Leader>t :<C-u>BTags<CR>
 endif
+
+" Startify Configuration
+let g:startify_change_to_vcs_root = 1
 
 " Syntastic Configuration
 " Sometimes when using both vim-go and syntastic Vim will start
@@ -287,7 +289,6 @@ endif
 " Commands --------------------------------------------------------------- {{{1
 "
 command! Here :cd %:p:h
-command! Only :1,$bdelete|edit #
 
 " Functions -------------------------------------------------------------- {{{1
 "
