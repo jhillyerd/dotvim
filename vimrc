@@ -32,6 +32,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   " github plugins, windows friendly
   Plug 'vim-airline/vim-airline'
   Plug 'fatih/vim-go', { 'for': 'go' }
+  Plug 'jlanzarotta/bufexplorer'
   Plug 'mhinz/vim-startify'
   Plug 'miyakogi/conoline.vim'
   Plug 'romainl/Apprentice'
@@ -42,7 +43,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-vinegar'
-  Plug 'vim-scripts/bufkill.vim'
 
   " github plugs, unix preferred
   if !g:WINDOWS
@@ -101,6 +101,10 @@ if g:GOOGLE
   Glaive blaze show_warnings use_external_parser
 endif
 
+" BufExplorer Configuration
+let g:bufExplorerDisableDefaultKeyMapping=1
+nnoremap <silent> <Leader>b :BufExplorerHorizontalSplit<CR> 
+
 " Conoline Configuration
 let g:conoline_use_colorscheme_default_normal=1
 
@@ -113,7 +117,6 @@ nnoremap <Leader>gs :<C-u>Gstatus<CR>
 if !empty(globpath(&runtimepath, 'autoload/fzf/vim.vim'))
   let g:fzf_layout = { 'up': '~30%' }
   nnoremap <C-p> :<C-u>FZF --reverse<CR>
-  nnoremap <silent> <Leader>b :<C-u>Buffers<CR>
   nnoremap <silent> <Leader>t :<C-u>BTags<CR>
 endif
 
