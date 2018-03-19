@@ -52,6 +52,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'dag/vim-fish', { 'for': 'fish' }
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
+    Plug 'kassio/neoterm'
     Plug 'SirVer/ultisnips'
     Plug 'w0rp/ale'
     Plug 'wincent/terminus'
@@ -122,6 +123,11 @@ endif
 
 " Startify Configuration
 let g:startify_change_to_vcs_root = 1
+
+" Neoterm Configuration
+nmap gt <Plug>(neoterm-repl-send)
+nmap gtl <Plug>(neoterm-repl-send-line)
+xmap gt <Plug>(neoterm-repl-send)
 
 " Syntastic Configuration
 " Sometimes when using both vim-go and syntastic Vim will start
