@@ -235,6 +235,8 @@ endif
 let mapleader="\\"
 let maplocalleader=","
 
+" Copy entire buffer into * register
+nnoremap <silent> <Leader>* mxgg"*yG`x
 " Transpose current word to the right
 nnoremap gl "xdiwdwep"xp
 " Format paragraph
@@ -247,6 +249,8 @@ nnoremap <Right> <C-]>
 " Up/down cursor keys navigate windows
 nnoremap <Up> <C-W>k
 nnoremap <Down> <C-W>j
+" Open vertical split, move right
+nnoremap <silent> <Leader>v <C-W>v<C-W>l
 " Toggle folds with spacebar
 nnoremap <Space> za
 " Place cursor at start of . command
@@ -259,7 +263,6 @@ nnoremap <silent> <Leader>sn :<C-u>call ToggleNumber()<CR>
 nnoremap <silent> <Leader>sp :<C-u>set paste!<CR>
 nnoremap <silent> <Leader>sr :<C-u>set relativenumber!<CR>
 nnoremap <silent> <Leader>ss :<C-u>set spell!<CR>
-nnoremap <silent> <Leader>* mxgg"*yG`x
 nnoremap <silent> <Leader>q :<C-u>call ToggleQFix()<CR>
 nnoremap <silent> <Leader>wj :<C-u>call wiki#journal()<CR>
 nnoremap <silent> <Leader>x :<C-u>e ~/buffer.md<CR>
