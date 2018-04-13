@@ -34,6 +34,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'fatih/vim-go', { 'for': 'go' }
   Plug 'jlanzarotta/bufexplorer'
   Plug 'miyakogi/conoline.vim'
+  Plug 'posva/vim-vue', { 'for': 'vue' }
   Plug 'romainl/Apprentice'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
@@ -103,8 +104,8 @@ if g:GOOGLE
 endif
 
 " BufExplorer Configuration
-let g:bufExplorerDisableDefaultKeyMapping=1
-nnoremap <silent> <Leader>b :BufExplorerHorizontalSplit<CR> 
+" let g:bufExplorerDisableDefaultKeyMapping=1
+" nnoremap <silent> <Leader>b :BufExplorerHorizontalSplit<CR>
 
 " Conoline Configuration
 let g:conoline_use_colorscheme_default_normal=1
@@ -271,8 +272,6 @@ nnoremap <silent> _ :<C-u>resize -2<CR>
 
 " Insert Mode Mappings --------------------------------------------------- {{{1
 "
-inoremap `jh James Hillyerd
-inoremap `em james@hillyerd.com
 inoremap jk <ESC>
 
 " Terminal Mode Mappings ------------------------------------------------- {{{1
