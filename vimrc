@@ -33,7 +33,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'vim-airline/vim-airline'
   Plug 'fatih/vim-go', { 'for': 'go' }
   Plug 'jlanzarotta/bufexplorer'
-  Plug 'mhinz/vim-startify'
   Plug 'miyakogi/conoline.vim'
   Plug 'romainl/Apprentice'
   Plug 'tpope/vim-abolish'
@@ -58,6 +57,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
     if !g:GOOGLE
+      Plug 'mhinz/vim-startify'
       Plug 'Valloric/YouCompleteMe'
       Plug 'xolox/vim-easytags'
     end
