@@ -32,7 +32,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   " github plugins, windows friendly
   Plug 'vim-airline/vim-airline'
   Plug 'elmcast/elm-vim'
-  Plug 'fatih/vim-go', { 'for': 'go' }
+  Plug 'fatih/vim-go', { 'for': 'go', 'tag': 'v*' }
   Plug 'jlanzarotta/bufexplorer'
   Plug 'miyakogi/conoline.vim'
   Plug 'posva/vim-vue', { 'for': 'vue' }
