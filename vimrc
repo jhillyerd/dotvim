@@ -251,9 +251,9 @@ nnoremap Y y$
 " Left/right cursor keys navigate in/out of tags
 nnoremap <Left> <C-T>
 nnoremap <Right> <C-]>
-" Up/down cursor keys navigate windows
-nnoremap <Up> <C-W>k
-nnoremap <Down> <C-W>j
+" Up/down cursor keys navigate quickfix items
+nnoremap <silent> <Up> :<C-u>cprevious<CR>
+nnoremap <silent> <Down> :<C-u>cnext<CR>
 " Open vertical split, move right
 nnoremap <silent> <Leader>v <C-W>v<C-W>l
 " Toggle folds with spacebar
