@@ -104,10 +104,6 @@ if g:GOOGLE
   Glaive blaze show_warnings use_external_parser
 endif
 
-" BufExplorer Configuration
-" let g:bufExplorerDisableDefaultKeyMapping=1
-" nnoremap <silent> <Leader>b :BufExplorerHorizontalSplit<CR>
-
 " Conoline Configuration
 let g:conoline_use_colorscheme_default_normal=1
 
