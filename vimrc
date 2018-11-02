@@ -256,6 +256,12 @@ nnoremap <silent> <Leader>v <C-W>v<C-W>l
 nnoremap <Space> za
 " Place cursor at start of . command
 nnoremap . .`[
+" Window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <silent> <Leader><Leader> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 " Command mappings
 nnoremap <silent> <Leader>ev :<C-u>edit $MYVIMRC<CR>:set fdm=marker<CR>
@@ -279,6 +285,10 @@ inoremap jk <ESC>
 if has('terminal')
   nnoremap <silent> <Leader>z :<C-u>belowright terminal ++close fish<CR>
   tnoremap jk <C-W>N
+  tnoremap <C-h> <C-w>h
+  tnoremap <C-j> <C-w>j
+  tnoremap <C-k> <C-w>k
+  tnoremap <C-l> <C-w>l
 end
 
 " Auto Commands ---------------------------------------------------------- {{{1
