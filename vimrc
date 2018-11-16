@@ -59,9 +59,9 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
     if !g:GOOGLE
+      Plug 'ludovicchabant/vim-gutentags'
       Plug 'mhinz/vim-startify'
       Plug 'Valloric/YouCompleteMe'
-      Plug 'xolox/vim-easytags'
     end
   endif
 
