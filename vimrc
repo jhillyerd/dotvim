@@ -18,6 +18,10 @@ let g:POSIX = !(g:WINDOWS && &shellcmdflag =~ '/')
 let g:GOOGLE = g:UNIX && filereadable('/usr/share/vim/google/google.vim')
 let g:vim_dir = g:POSIX ? '$HOME/.vim' : '$HOME/vimfiles'
 
+" Leader Keys
+let mapleader = "\\"
+let maplocalleader = ","
+
 " Google Init ------------------------------------------------------------ {{{1
 if g:GOOGLE
   source /usr/share/vim/google/google.vim
@@ -128,9 +132,12 @@ if !empty(globpath(&runtimepath, 'autoload/fzf/vim.vim'))
 endif
 
 " Neoterm Configuration
-nmap gt <Plug>(neoterm-repl-send)
-nmap gtl <Plug>(neoterm-repl-send-line)
-xmap gt <Plug>(neoterm-repl-send)
+let g:neoterm_auto_repl_cmd = 0
+let g:neoterm_default_mod = "belowright split"
+let g:neoterm_shell = "fish"
+nmap <LocalLeader>gt <Plug>(neoterm-repl-send)
+nmap <LocalLeader>gtl <Plug>(neoterm-repl-send-line)
+xmap <LocalLeader>gt <Plug>(neoterm-repl-send)
 
 " UltiSnips Configuration
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -223,9 +230,6 @@ endif
 
 " Normal Mode Mappings --------------------------------------------------- {{{1
 "
-let mapleader="\\"
-let maplocalleader=","
-
 " Copy entire buffer into * register
 nnoremap <silent> <Leader>* mxgg"*yG`x
 " Transpose current word to the right
@@ -272,7 +276,18 @@ inoremap jk <ESC>
 
 " Terminal Mode Mappings ------------------------------------------------- {{{1
 "
-if has('terminal')
+if has('nvim')
+  nnoremap <silent> <Leader>z :<C-u>belowright split \| terminal fish<CR>
+  tnoremap jk <C-\><C-N>
+  tnoremap <C-h> <C-\><C-N><C-w>h
+  tnoremap <C-j> <C-\><C-N><C-w>j
+  tnoremap <C-k> <C-\><C-N><C-w>k
+  tnoremap <C-l> <C-\><C-N><C-w>l
+  augroup VIMRCTERM
+    autocmd TermOpen * setlocal nonumber
+    autocmd TermOpen * setlocal norelativenumber
+  augroup END
+elseif has('terminal')
   nnoremap <silent> <Leader>z :<C-u>belowright terminal ++close fish<CR>
   tnoremap jk <C-W>N
   tnoremap <C-h> <C-w>h
