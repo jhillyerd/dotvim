@@ -58,9 +58,12 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'w0rp/ale'
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
+    if has('nvim')
+      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+      Plug 'zchee/deoplete-go', { 'do': 'make'}
+    end
     if !g:GOOGLE
       Plug 'ludovicchabant/vim-gutentags'
-      Plug 'Valloric/YouCompleteMe'
     end
   endif
 
@@ -105,6 +108,9 @@ endif
 
 " Conoline Configuration
 let g:conoline_use_colorscheme_default_normal=1
+
+" Deoplete Configuration
+let g:deoplete#enable_at_startup = 1
 
 " Elm Configuration
 let g:elm_setup_keybindings = 0
