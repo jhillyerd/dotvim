@@ -60,7 +60,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'xolox/vim-misc'
     if !g:GOOGLE
       Plug 'ludovicchabant/vim-gutentags'
-      Plug 'mhinz/vim-startify'
       Plug 'Valloric/YouCompleteMe'
     end
   endif
@@ -122,25 +121,10 @@ if !empty(globpath(&runtimepath, 'autoload/fzf/vim.vim'))
   nnoremap <silent> <Leader>t :<C-u>BTags<CR>
 endif
 
-" Startify Configuration
-let g:startify_change_to_vcs_root = 1
-
 " Neoterm Configuration
 nmap gt <Plug>(neoterm-repl-send)
 nmap gtl <Plug>(neoterm-repl-send-line)
 xmap gt <Plug>(neoterm-repl-send)
-
-" Syntastic Configuration
-" Sometimes when using both vim-go and syntastic Vim will start
-" lagging while saving and opening files.  Fix:
-let g:syntastic_go_checkers = ['go']
-let g:syntastic_mode_map = { 'mode': 'active' }
-if g:GOOGLE
-  " Google specific linting
-  let g:syntastic_javascript_checkers = ['gjslint']
-  let g:syntastic_javascript_gjslint_args = '--jslint_error=all'
-  let g:syntastic_python_checkers = ['gpylint']
-endif
 
 " UltiSnips Configuration
 let g:UltiSnipsExpandTrigger="<tab>"
