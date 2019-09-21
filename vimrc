@@ -277,7 +277,7 @@ inoremap jk <ESC>
 " Terminal Mode Mappings ------------------------------------------------- {{{1
 "
 if has('nvim')
-  nnoremap <silent> <Leader>z :<C-u>belowright split \| terminal fish<CR>
+  nnoremap <silent> <Leader>z :<C-u>belowright split \| startinsert \| terminal fish<CR>
   tnoremap jk <C-\><C-N>
   tnoremap <C-h> <C-\><C-N><C-w>h
   tnoremap <C-j> <C-\><C-N><C-w>j
@@ -286,6 +286,8 @@ if has('nvim')
   augroup VIMRCTERM
     autocmd TermOpen * setlocal nonumber
     autocmd TermOpen * setlocal norelativenumber
+    autocmd TermClose term://*fish | :close
+    autocmd BufEnter term://*fish | :startinsert
   augroup END
 elseif has('terminal')
   nnoremap <silent> <Leader>z :<C-u>belowright terminal ++close fish<CR>
