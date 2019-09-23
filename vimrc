@@ -41,6 +41,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'miyakogi/conoline.vim'
   Plug 'posva/vim-vue', { 'for': 'vue' }
   Plug 'romainl/Apprentice'
+  Plug 'rust-lang/rust.vim', { 'for': 'rust' }
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -435,6 +436,21 @@ if has("autocmd")
     autocmd!
     autocmd FileType markdown setlocal spell
     autocmd FileType markdown nnoremap <silent> <buffer> <LocalLeader>f :<C-u>normal! mm[s1z=`m<CR>
+  augroup END
+endif
+
+" Language: Rust---------------------------------------------------------- {{{1
+"
+if has("autocmd")
+  function! s:rust_settings()
+    let g:rustfmt_autosave = 1
+
+    nmap <buffer> <LocalLeader>r :<C-u>Crun<CR>
+  endfunction
+
+  augroup RUST
+    autocmd!
+    autocmd FileType rust call s:rust_settings()
   augroup END
 endif
 
