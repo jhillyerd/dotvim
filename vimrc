@@ -446,6 +446,8 @@ if has("autocmd")
     let g:rustfmt_autosave = 1
 
     nmap <buffer> <LocalLeader>r :<C-u>Crun<CR>
+    nmap <buffer> <LocalLeader>t :<C-u>RustTest!<CR>
+    nmap <buffer> <LocalLeader>tt :<C-u>RustTest<CR>
   endfunction
 
   augroup RUST
