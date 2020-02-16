@@ -388,6 +388,7 @@ if has("autocmd")
     let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck',
           \ 'megacheck']
     let g:go_list_type = "quickfix"
+    let g:go_term_mode = "belowright split"
     " Reformat comments using vim-commentary text object
     nmap <buffer> Q gqgc
     " Golang vimux mappings
