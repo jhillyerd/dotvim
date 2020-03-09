@@ -24,7 +24,10 @@ let maplocalleader = ","
 
 " Google Init ------------------------------------------------------------ {{{1
 if g:GOOGLE
-  source /usr/share/vim/google/google.vim
+  let s:googlevim = g:vim_dir . "/google.vim"
+  if filereadable(s:googlevim)
+    execute "source " . s:googlevim
+  end
 end
 
 " Plug List -------------------------------------------------------------- {{{1
@@ -76,13 +79,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   call plug#end()
 endif
 
-" Glug Plugins ----------------------------------------------------------- {{{1
-if g:GOOGLE
-  Glug blaze plugin[mappings]='<LocalLeader>b'
-  "Glug blazedeps auto_filetypes=`['go']`
-  Glug youcompleteme-google
-end
-
 " Post-plugin init (not Vundle dependent)
 filetype plugin indent on
 
@@ -102,13 +98,6 @@ if !empty(globpath(&runtimepath, 'autoload/airline.vim'))
   nmap <Leader>7 <Plug>AirlineSelectTab7
   nmap <Leader>8 <Plug>AirlineSelectTab8
   nmap <Leader>9 <Plug>AirlineSelectTab9
-endif
-
-if g:GOOGLE
-  " Blaze Configuration
-  let g:blazevim_quickfix_autoopen = 1
-  let g:blazevim_ignore_warnings = 0
-  Glaive blaze show_warnings use_external_parser
 endif
 
 " Conoline Configuration
