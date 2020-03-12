@@ -231,9 +231,6 @@ nnoremap Y y$
 " Left/right cursor keys navigate in/out of tags
 nnoremap <Left> <C-T>
 nnoremap <Right> <C-]>
-" Up/down cursor keys navigate quickfix items
-nnoremap <silent> <Up> :<C-u>cprevious<CR>
-nnoremap <silent> <Down> :<C-u>cnext<CR>
 " Open vertical split, move right
 nnoremap <silent> <Leader>v <C-W>v<C-W>l
 " Toggle folds with spacebar
@@ -310,6 +307,25 @@ command! Here :cd %:p:h
 
 " Functions -------------------------------------------------------------- {{{1
 "
+" diff mode settings
+if has("autocmd")
+  function! s:diff_settings()
+    if &diff
+      " Up/down cursor keys navigate diff hunks
+      nmap <Up> [cz.
+      nmap <Down> ]cz.
+    else
+      " Up/down cursor keys navigate quickfix items
+      nmap <silent> <Up> :<C-u>cprevious<CR>
+      nmap <silent> <Down> :<C-u>cnext<CR>
+    endif
+  endfunction
+  augroup DIFF
+    autocmd!
+    autocmd BufEnter * call s:diff_settings()
+  augroup END
+endif
+
 " Toggle the quickfix window
 function! ToggleQFix()
   for i in range(1, winnr('$'))
