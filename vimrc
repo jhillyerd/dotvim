@@ -25,7 +25,7 @@ let maplocalleader = ","
 " Google Init ------------------------------------------------------------ {{{1
 if g:GOOGLE
   let s:googlevim = g:vim_dir . "/google.vim"
-  if filereadable(s:googlevim)
+  if filereadable(expand(s:googlevim))
     execute "source " . s:googlevim
   end
 end
