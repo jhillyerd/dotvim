@@ -70,7 +70,10 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
       Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
       Plug 'zchee/deoplete-go', { 'do': 'make'}
     end
-    if !g:GOOGLE
+    if g:GOOGLE
+      Plug 'prabirshrestha/async.vim'
+      Plug 'prabirshrestha/vim-lsp'
+    else
       Plug 'ludovicchabant/vim-gutentags'
     end
   endif
