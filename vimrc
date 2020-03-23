@@ -66,15 +66,16 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'SirVer/ultisnips'
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
-    if has('nvim')
-      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-      Plug 'zchee/deoplete-go', { 'do': 'make'}
-    end
+    " if has('nvim')
+    "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    "   Plug 'zchee/deoplete-go', { 'do': 'make'}
+    " end
     if g:GOOGLE
       Plug 'prabirshrestha/async.vim'
       Plug 'prabirshrestha/vim-lsp'
     else
       Plug 'dense-analysis/ale'
+      Plug 'neoclide/coc.nvim', {'branch': 'release'}
       Plug 'ludovicchabant/vim-gutentags'
     end
   endif
@@ -102,6 +103,27 @@ if !empty(globpath(&runtimepath, 'autoload/airline.vim'))
   nmap <Leader>7 <Plug>AirlineSelectTab7
   nmap <Leader>8 <Plug>AirlineSelectTab8
   nmap <Leader>9 <Plug>AirlineSelectTab9
+endif
+
+" CoC Configuration
+if !empty(globpath(&runtimepath, 'autoload/coc.vim'))
+  " Use <c-space> to trigger completion.
+  inoremap <silent><expr> <c-space> coc#refresh()
+
+  " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+  " position. Coc only does snippet and additional edit on confirm.
+  "imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+  " GoTo code navigation.
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+
+  nmap <LocalLeader>e <Plug>(coc-rename)
+
+  " Highlight the symbol and its references when holding the cursor.
+  autocmd CursorHold * silent call CocActionAsync('highlight')
 endif
 
 " Conoline Configuration
@@ -167,6 +189,9 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 " Options (many more set in vim-sensible) -------------------------------- {{{1
 "
+set nobackup
+set nowritebackup
+set cmdheight=2
 set completeopt=menu,longest           " Popup a menu for completion
 set expandtab                          " Uses spaces for indent
 set fillchars=vert:\|,fold:\           " Visual fill characters
@@ -178,8 +203,10 @@ set hlsearch                           " Highlight search hits
 set number                             " Always display line numbers
 set relativenumber                     " Relative line numbering
 set shiftwidth=2                       " Number of spaces for autoindent
+set shortmess+=c                       " Don't pass to ins-completion-menu
 set showcmd                            " Show partial commands, areas
 set showmatch                          " Highlight matching (){}[]
+set signcolumn=yes
 set noshowmode                         " Hide -- INSERT --
 set updatetime=250                     " Make gitgutter update faster
 set wildmode=longest,list,full         " Command line completion options
