@@ -214,7 +214,7 @@ else
   set t_Co=256
 endif
 
-" Solarize colors if available
+set background=dark
 if !empty(globpath(&runtimepath, 'colors/apprentice.vim'))
   colorscheme apprentice
 else
