@@ -63,7 +63,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'junegunn/fzf.vim'
     Plug 'kassio/neoterm'
     Plug 'SirVer/ultisnips'
-    Plug 'w0rp/ale'
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
     if has('nvim')
@@ -75,6 +74,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
       Plug 'prabirshrestha/vim-lsp'
     else
       Plug 'ludovicchabant/vim-gutentags'
+      Plug 'w0rp/ale'
     end
   endif
 
