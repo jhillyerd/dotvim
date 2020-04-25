@@ -41,6 +41,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'elmcast/elm-vim'
   Plug 'fatih/vim-go', { 'for': 'go', 'tag': 'v*' }
   Plug 'jlanzarotta/bufexplorer'
+  Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
   Plug 'posva/vim-vue', { 'for': 'vue' }
   Plug 'romainl/Apprentice'
