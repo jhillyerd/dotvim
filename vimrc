@@ -343,9 +343,14 @@ if has("autocmd")
       nmap <Up> [cz.
       nmap <Down> ]cz.
     else
-      " Up/down cursor keys navigate quickfix items
-      nmap <silent> <Up> :<C-u>cprevious<CR>
-      nmap <silent> <Down> :<C-u>cnext<CR>
+      if !empty(globpath(&runtimepath, 'autoload/coc.vim'))
+        nmap <silent> <Up> <Plug>(coc-diagnostic-prev)
+        nmap <silent> <Down> <Plug>(coc-diagnostic-next)
+      else
+        " Up/down cursor keys navigate quickfix items
+        nmap <silent> <Up> :<C-u>cprevious<CR>
+        nmap <silent> <Down> :<C-u>cnext<CR>
+      endif
     endif
   endfunction
   augroup DIFF
