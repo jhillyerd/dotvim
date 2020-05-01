@@ -63,19 +63,16 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'kassio/neoterm'
-    Plug 'SirVer/ultisnips'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Plug 'SirVer/ultisnips'
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
     " if has('nvim')
     "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     "   Plug 'zchee/deoplete-go', { 'do': 'make'}
     " end
-    if g:GOOGLE
-      Plug 'prabirshrestha/async.vim'
-      Plug 'prabirshrestha/vim-lsp'
-    else
+    if !g:GOOGLE
       Plug 'dense-analysis/ale'
-      Plug 'neoclide/coc.nvim', {'branch': 'release'}
       Plug 'ludovicchabant/vim-gutentags'
     end
   endif
@@ -107,12 +104,33 @@ endif
 
 " CoC Configuration
 if !empty(globpath(&runtimepath, 'autoload/coc.vim'))
+  let g:coc_global_extensions = [
+        \ 'coc-css',
+        \ 'coc-html',
+        \ 'coc-json' ]
+
+  " Use tab for trigger completion with characters ahead and navigate.
+  inoremap <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
   " Use <c-space> to trigger completion.
   inoremap <silent><expr> <c-space> coc#refresh()
 
   " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
   " position. Coc only does snippet and additional edit on confirm.
-  "imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  if exists('*complete_info')
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  else
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  endif
 
   " GoTo code navigation.
   nmap <silent> gd <Plug>(coc-definition)
@@ -153,9 +171,9 @@ nmap <LocalLeader>gtl <Plug>(neoterm-repl-send-line)
 xmap <LocalLeader>gt <Plug>(neoterm-repl-send)
 
 " UltiSnips Configuration
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Vimux Configuration
 if !empty(globpath(&runtimepath, 'plugin/vimux.vim'))
