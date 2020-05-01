@@ -74,8 +74,8 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
       Plug 'prabirshrestha/async.vim'
       Plug 'prabirshrestha/vim-lsp'
     else
+      Plug 'dense-analysis/ale'
       Plug 'ludovicchabant/vim-gutentags'
-      Plug 'w0rp/ale'
     end
   endif
 
