@@ -37,8 +37,8 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   call plug#begin(expand(vim_dir . '/plugged'))
 
   " github plugins, windows friendly
+  Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
   Plug 'vim-airline/vim-airline'
-  Plug 'elmcast/elm-vim'
   Plug 'fatih/vim-go', { 'for': 'go', 'tag': 'v*' }
   Plug 'jlanzarotta/bufexplorer'
   Plug 'LnL7/vim-nix'
@@ -109,9 +109,6 @@ let g:conoline_use_colorscheme_default_normal=1
 
 " Deoplete Configuration
 let g:deoplete#enable_at_startup = 1
-
-" Elm Configuration
-let g:elm_setup_keybindings = 0
 
 " Fugitive Configuration
 nnoremap <Leader>ga :<C-u>Gwrite<CR>
@@ -377,17 +374,17 @@ set foldtext=NeatFoldText()
 
 " Language: Elm ---------------------------------------------------------- {{{1
 "
-if has("autocmd")
-  function! s:elm_settings()
-    nmap <buffer> K <Plug>(elm-show-docs)
-    nmap <buffer> <LocalLeader>b <Plug>(elm-make)
-    nmap <buffer> <LocalLeader>se <Plug>(elm-error-detail)
-  endfunction
-  augroup ELM
-    autocmd!
-    autocmd FileType elm call s:elm_settings()
-  augroup END
-endif
+" if has("autocmd")
+"   function! s:elm_settings()
+"     nmap <buffer> K <Plug>(elm-show-docs)
+"     nmap <buffer> <LocalLeader>b <Plug>(elm-make)
+"     nmap <buffer> <LocalLeader>se <Plug>(elm-error-detail)
+"   endfunction
+"   augroup ELM
+"     autocmd!
+"     autocmd FileType elm call s:elm_settings()
+"   augroup END
+" endif
 
 " Language: Go ----------------------------------------------------------- {{{1
 "
