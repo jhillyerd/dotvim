@@ -38,11 +38,11 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
 
   " github plugins, windows friendly
   Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
-  Plug 'vim-airline/vim-airline'
   Plug 'fatih/vim-go', { 'for': 'go', 'tag': 'v*' }
   Plug 'jlanzarotta/bufexplorer'
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
+  Plug 'neoclide/jsonc.vim'
   Plug 'posva/vim-vue', { 'for': 'vue' }
   Plug 'romainl/Apprentice'
   Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -53,6 +53,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-vinegar'
+  Plug 'vim-airline/vim-airline'
 
   " github plugs, unix preferred
   if !g:WINDOWS
