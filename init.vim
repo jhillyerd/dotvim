@@ -116,6 +116,7 @@ if !empty(globpath(&runtimepath, 'autoload/fzf/vim.vim'))
   let g:fzf_layout = { 'up': '~30%' }
   nnoremap <C-p> :<C-u>FZF --reverse<CR>
   nnoremap <silent> <Leader>t :<C-u>BTags<CR>
+  nnoremap <silent> <Leader>l :<C-u>BLines<CR>
 endif
 
 " Neoterm Configuration
@@ -125,11 +126,6 @@ let g:neoterm_shell = "fish"
 nmap <LocalLeader>gt <Plug>(neoterm-repl-send)
 nmap <LocalLeader>gtl <Plug>(neoterm-repl-send-line)
 xmap <LocalLeader>gt <Plug>(neoterm-repl-send)
-
-" UltiSnips Configuration
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Vimux Configuration
 if !empty(globpath(&runtimepath, 'plugin/vimux.vim'))
