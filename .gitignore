@@ -1,7 +1,3 @@
-# Bundles handled by Plug
-autoload/plug.vim*
-plugged/**
-
 # User dictionary additions
 spell/**
 

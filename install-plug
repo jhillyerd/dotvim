@@ -2,10 +2,10 @@
 
 set -eo pipefail
 
-vimdir="$HOME/.vim"
+vimdir="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site"
 
 mkdir -p "$vimdir/autoload"
 curl -fLo "$vimdir/autoload/plug.vim" \
   "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 
-vim +PlugInstall +qall
+nvim +PlugInstall +qall

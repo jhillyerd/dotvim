@@ -16,7 +16,7 @@ let g:UNIX = has('unix') && !has('macunix') && !has('win32unix')
 let g:WINDOWS = (has('win32') || has('win64'))
 let g:POSIX = !(g:WINDOWS && &shellcmdflag =~ '/')
 let g:GOOGLE = g:UNIX && filereadable('/usr/share/vim/google/google.vim')
-let g:vim_dir = g:POSIX ? '$HOME/.vim' : '$HOME/vimfiles'
+let g:vim_dir = g:POSIX ? stdpath('config') : '$HOME/vimfiles'
 
 " Leader Keys
 let mapleader = "\\"
@@ -34,7 +34,7 @@ end
 "
 " Detect Plug
 if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
-  call plug#begin(expand(vim_dir . '/plugged'))
+  call plug#begin(stdpath('data') . '/plugged')
 
   " github plugins, windows friendly
   Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
@@ -68,10 +68,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     " Plug 'SirVer/ultisnips'
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
-    " if has('nvim')
-    "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    "   Plug 'zchee/deoplete-go', { 'do': 'make'}
-    " end
     if !g:GOOGLE
       Plug 'dense-analysis/ale'
       Plug 'ludovicchabant/vim-gutentags'
@@ -148,9 +144,6 @@ endif
 
 " Conoline Configuration
 let g:conoline_use_colorscheme_default_normal=1
-
-" Deoplete Configuration
-let g:deoplete#enable_at_startup = 1
 
 " Fugitive Configuration
 nnoremap <Leader>ga :<C-u>Gwrite<CR>
@@ -262,8 +255,6 @@ endif
 set background=dark
 if !empty(globpath(&runtimepath, 'colors/apprentice.vim'))
   colorscheme apprentice
-else
-  colorscheme evening
 endif
 
 " Normal Mode Mappings --------------------------------------------------- {{{1
