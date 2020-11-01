@@ -1,16 +1,19 @@
 " neoclide/coc.nvim plugin configuration
 "
-
 let g:coc_global_extensions = [
       \ 'coc-css',
       \ 'coc-html',
       \ 'coc-json',
       \ 'coc-rust-analyzer',
+      \ 'coc-snippets',
       \ 'coc-tsserver' ]
+
+let g:coc_snippet_next = '<tab>'
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -38,6 +41,8 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 nmap <LocalLeader>e <Plug>(coc-rename)
+
+nmap <silent> <Leader>es :<C-u>CocCommand snippets.editSnippets<CR>
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
