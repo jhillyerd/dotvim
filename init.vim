@@ -263,27 +263,18 @@ inoremap jk <ESC>
 
 " Terminal Mode Mappings ------------------------------------------------- {{{1
 "
-if has('nvim')
-  nnoremap <silent> <Leader>z :<C-u>belowright split \| startinsert \| terminal fish<CR>
-  tnoremap jk <C-\><C-N>
-  tnoremap <C-h> <C-\><C-N><C-w>h
-  tnoremap <C-j> <C-\><C-N><C-w>j
-  tnoremap <C-k> <C-\><C-N><C-w>k
-  tnoremap <C-l> <C-\><C-N><C-w>l
-  augroup VIMRCTERM
-    autocmd TermOpen * setlocal nonumber
-    autocmd TermOpen * setlocal norelativenumber
-    autocmd TermClose term://*fish | :close
-    autocmd BufEnter term://*fish | :startinsert
-  augroup END
-elseif has('terminal')
-  nnoremap <silent> <Leader>z :<C-u>belowright terminal ++close fish<CR>
-  tnoremap jk <C-W>N
-  tnoremap <C-h> <C-w>h
-  tnoremap <C-j> <C-w>j
-  tnoremap <C-k> <C-w>k
-  tnoremap <C-l> <C-w>l
-end
+nnoremap <silent> <Leader>z :<C-u>belowright split \| startinsert \| terminal fish<CR>
+tnoremap jk <C-\><C-N>
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+augroup VIMRCTERM
+  autocmd TermOpen * setlocal nonumber
+  autocmd TermOpen * setlocal norelativenumber
+  autocmd TermClose term://*fish | :close
+  autocmd BufEnter term://*fish | :startinsert
+augroup END
 
 " Auto Commands ---------------------------------------------------------- {{{1
 "
@@ -376,20 +367,6 @@ function! NeatFoldText()
 endfunction
 set foldtext=NeatFoldText()
 
-" Language: Elm ---------------------------------------------------------- {{{1
-"
-" if has("autocmd")
-"   function! s:elm_settings()
-"     nmap <buffer> K <Plug>(elm-show-docs)
-"     nmap <buffer> <LocalLeader>b <Plug>(elm-make)
-"     nmap <buffer> <LocalLeader>se <Plug>(elm-error-detail)
-"   endfunction
-"   augroup ELM
-"     autocmd!
-"     autocmd FileType elm call s:elm_settings()
-"   augroup END
-" endif
-
 " Language: Go ----------------------------------------------------------- {{{1
 "
 if has("autocmd")
@@ -405,9 +382,6 @@ if has("autocmd")
     nnoremap <buffer> <LocalLeader>ra :<C-u>GolangTestCurrentPackage<CR>
     nnoremap <buffer> <LocalLeader>rf :<C-u>GolangTestFocused<CR>
     " vim-go mappings that perform an action
-    " go-def is not reliable right now
-    " nmap <buffer> <Right> <Plug>(go-def)
-    " nmap <buffer> <Left> <Plug>(go-def-pop)
     nmap <buffer> <LocalLeader>a <Plug>(go-alternate-edit)
     nmap <buffer> <LocalLeader>b <Plug>(go-build)
     nmap <buffer> <LocalLeader>c <Plug>(go-coverage-toggle)
