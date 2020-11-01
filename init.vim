@@ -64,12 +64,10 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'junegunn/fzf.vim'
     Plug 'kassio/neoterm'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " Plug 'SirVer/ultisnips'
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
     if !g:GOOGLE
       Plug 'dense-analysis/ale'
-      Plug 'ludovicchabant/vim-gutentags'
     end
   endif
 
@@ -115,7 +113,6 @@ nnoremap <Leader>gs :<C-u>Gstatus<CR>
 if !empty(globpath(&runtimepath, 'autoload/fzf/vim.vim'))
   let g:fzf_layout = { 'up': '~30%' }
   nnoremap <C-p> :<C-u>FZF --reverse<CR>
-  nnoremap <silent> <Leader>t :<C-u>BTags<CR>
   nnoremap <silent> <Leader>l :<C-u>BLines<CR>
 endif
 

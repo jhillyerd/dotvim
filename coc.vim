@@ -43,6 +43,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <LocalLeader>e <Plug>(coc-rename)
 
 nmap <silent> <Leader>es :<C-u>CocList snippets<CR>
+nmap <silent> <LocalLeader>o :<C-u>CocList outline<CR>
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
