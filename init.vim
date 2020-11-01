@@ -105,6 +105,7 @@ if !empty(globpath(&runtimepath, 'autoload/coc.vim'))
         \ 'coc-css',
         \ 'coc-html',
         \ 'coc-json',
+        \ 'coc-rust-analyzer',
         \ 'coc-tsserver' ]
 
   " Use tab for trigger completion with characters ahead and navigate.
