@@ -16,7 +16,6 @@ let g:UNIX = has('unix') && !has('macunix') && !has('win32unix')
 let g:WINDOWS = (has('win32') || has('win64'))
 let g:POSIX = !(g:WINDOWS && &shellcmdflag =~ '/')
 let g:GOOGLE = g:UNIX && filereadable('/usr/share/vim/google/google.vim')
-let g:vim_dir = g:POSIX ? stdpath('config') : '$HOME/vimfiles'
 
 " Leader Keys
 let mapleader = "\\"
@@ -24,8 +23,8 @@ let maplocalleader = ","
 
 " Google Init ------------------------------------------------------------ {{{1
 if g:GOOGLE
-  let s:googlevim = g:vim_dir . "/google.vim"
-  if filereadable(expand(s:googlevim))
+  let s:googlevim = stdpath('config') . "/google.vim"
+  if filereadable(s:googlevim)
     execute "source " . s:googlevim
   end
 end
