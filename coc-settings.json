@@ -7,8 +7,8 @@
       "filetypes": ["elm"],
       "rootPatterns": ["elm.json"],
       "initializationOptions": {
-        "elmAnalyseTrigger": "change",
-      },
-    },
-  },
+        "elmAnalyseTrigger": "change"
+      }
+    }
+  }
 }
