@@ -106,8 +106,8 @@ let g:conoline_use_colorscheme_default_normal=1
 
 " Fugitive Configuration
 nnoremap <Leader>ga :<C-u>Gwrite<CR>
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gs :<C-u>Gstatus<CR>
+nnoremap <Leader>gb :<C-u>Git blame<CR>
+nnoremap <Leader>gs :<C-u>Git<CR>
 
 " FZF Configuration
 if !empty(globpath(&runtimepath, 'autoload/fzf/vim.vim'))
