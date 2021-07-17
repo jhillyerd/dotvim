@@ -23,6 +23,11 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet derive "#[derive(Debug, Clone, ..." b
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+${1}
+endsnippet
+
 snippet tests "#[cfg(test)] mod tests..." b
 #[cfg(test)]
 mod tests {
