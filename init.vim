@@ -417,6 +417,15 @@ if has("autocmd")
   augroup END
 endif
 
+" Language: Nix ----------------------------------------------------------
+"
+if has("autocmd")
+  augroup NIX
+    autocmd!
+    autocmd FileType nix nnoremap <silent> <buffer> <LocalLeader>q :<C-u>%!nixfmt<CR>
+  augroup END
+endif
+
 " Language: Rust---------------------------------------------------------- {{{1
 "
 if has("autocmd")
