@@ -36,12 +36,12 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   call plug#begin(stdpath('data') . '/plugged')
 
   " github plugins, windows friendly
+  Plug 'ellisonleao/gruvbox.nvim'
   Plug 'jlanzarotta/bufexplorer'
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
   Plug 'neoclide/jsonc.vim'
   Plug 'posva/vim-vue', { 'for': 'vue' }
-  Plug 'romainl/Apprentice'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -197,8 +197,8 @@ else
 endif
 
 set background=dark
-if !empty(globpath(&runtimepath, 'colors/apprentice.vim'))
-  colorscheme apprentice
+if !empty(globpath(&runtimepath, 'colors/gruvbox.lua'))
+  colorscheme gruvbox
 endif
 
 " Normal Mode Mappings --------------------------------------------------- {{{1
