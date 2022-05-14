@@ -43,7 +43,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'neoclide/jsonc.vim'
   Plug 'posva/vim-vue', { 'for': 'vue' }
   Plug 'romainl/Apprentice'
-  Plug 'rust-lang/rust.vim', { 'for': 'rust' }
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -377,24 +376,6 @@ if has("autocmd")
   augroup NIX
     autocmd!
     autocmd FileType nix nnoremap <silent> <buffer> <LocalLeader>q :<C-u>%!nixfmt<CR>
-  augroup END
-endif
-
-" Language: Rust---------------------------------------------------------- {{{1
-"
-if has("autocmd")
-  function! s:rust_settings()
-    let g:rustfmt_autosave = 1
-
-    nmap <buffer> <LocalLeader>b :<C-u>Ccheck<CR>
-    nmap <buffer> <LocalLeader>r :<C-u>Crun<CR>
-    nmap <buffer> <LocalLeader>t :<C-u>RustTest!<CR>
-    nmap <buffer> <LocalLeader>tt :<C-u>RustTest<CR>
-  endfunction
-
-  augroup RUST
-    autocmd!
-    autocmd FileType rust call s:rust_settings()
   augroup END
 endif
 
