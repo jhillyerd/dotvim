@@ -349,15 +349,6 @@ if has("autocmd")
   augroup END
 endif
 
-" Language: Nix ----------------------------------------------------------
-"
-if has("autocmd")
-  augroup NIX
-    autocmd!
-    autocmd FileType nix nnoremap <silent> <buffer> <LocalLeader>q :<C-u>%!nixfmt<CR>
-  augroup END
-endif
-
 " Prose Mode ------------------------------------------------------------- {{{1
 " From http://alols.github.io/2012/11/07/writing-prose-with-vim/
 function! SetProse()
