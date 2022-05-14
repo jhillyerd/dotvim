@@ -65,9 +65,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'kassio/neoterm'
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
-    if !g:GOOGLE
-      Plug 'dense-analysis/ale'
-    end
   endif
 
   " All of your Plugins must be added before the following line (required)
