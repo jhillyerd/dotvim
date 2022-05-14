@@ -41,7 +41,9 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
   Plug 'neoclide/jsonc.vim'
+  Plug 'neovim/nvim-lspconfig'
   Plug 'posva/vim-vue', { 'for': 'vue' }
+  Plug 'ray-x/lsp_signature.nvim'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -67,6 +69,8 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   " All of your Plugins must be added before the following line (required)
   call plug#end()
 endif
+
+lua require('config')
 
 " Post-plugin init (not Vundle dependent)
 filetype plugin indent on
