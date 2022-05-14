@@ -63,7 +63,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'kassio/neoterm'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
     if !g:GOOGLE
@@ -94,11 +93,6 @@ if !empty(globpath(&runtimepath, 'autoload/airline.vim'))
   nmap <Leader>7 <Plug>AirlineSelectTab7
   nmap <Leader>8 <Plug>AirlineSelectTab8
   nmap <Leader>9 <Plug>AirlineSelectTab9
-endif
-
-" CoC Configuration
-if !empty(globpath(&runtimepath, 'autoload/coc.vim'))
-  execute 'source ' . stdpath('config') . '/coc.vim'
 endif
 
 " Conoline Configuration
