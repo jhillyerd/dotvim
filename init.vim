@@ -37,7 +37,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
 
   " github plugins, windows friendly
   Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
-  Plug 'fatih/vim-go', { 'for': 'go', 'tag': 'v*' }
   Plug 'jlanzarotta/bufexplorer'
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
@@ -352,44 +351,6 @@ function! NeatFoldText()
   return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 set foldtext=NeatFoldText()
-
-" Language: Go ----------------------------------------------------------- {{{1
-"
-if has("autocmd")
-  function! s:golang_settings()
-    let g:go_fmt_experimental = 1
-    let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck',
-          \ 'megacheck']
-    let g:go_list_type = "quickfix"
-    let g:go_term_mode = "belowright split"
-    " Reformat comments using vim-commentary text object
-    nmap <buffer> Q gqgc
-    " Golang vimux mappings
-    nnoremap <buffer> <LocalLeader>ra :<C-u>GolangTestCurrentPackage<CR>
-    nnoremap <buffer> <LocalLeader>rf :<C-u>GolangTestFocused<CR>
-    " vim-go mappings that perform an action
-    nmap <buffer> <LocalLeader>a <Plug>(go-alternate-edit)
-    nmap <buffer> <LocalLeader>b <Plug>(go-build)
-    nmap <buffer> <LocalLeader>c <Plug>(go-coverage-toggle)
-    nmap <buffer> <LocalLeader>e <Plug>(go-rename)
-    nmap <buffer> <LocalLeader>i <Plug>(go-import)
-    nmap <buffer> <LocalLeader>I <Plug>(go-imports)
-    nmap <buffer> <LocalLeader>l <Plug>(go-metalinter)
-    nmap <buffer> <LocalLeader>r <Plug>(go-run)
-    nmap <buffer> <LocalLeader>t <Plug>(go-test)
-    nmap <buffer> <LocalLeader>tt <Plug>(go-test-func)
-    nmap <buffer> <LocalLeader>* <Plug>(go-sameids)
-    " vim-go mappings that look up (show) something under the cursor
-    nmap <buffer> <LocalLeader>sd <Plug>(go-describe)
-    nmap <buffer> <LocalLeader>si <Plug>(go-implements)
-    nmap <buffer> <LocalLeader>sr <Plug>(go-referrers)
-    nmap <buffer> <LocalLeader>su <Plug>(go-info)
-  endfunction
-  augroup GOLANG
-    autocmd!
-    autocmd FileType go call s:golang_settings()
-  augroup END
-endif
 
 " Language: JavaScript --------------------------------------------------- {{{1
 "
