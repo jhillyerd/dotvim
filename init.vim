@@ -36,7 +36,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   call plug#begin(stdpath('data') . '/plugged')
 
   " github plugins, windows friendly
-  Plug 'andys8/vim-elm-syntax', { 'for': 'elm' }
   Plug 'jlanzarotta/bufexplorer'
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
