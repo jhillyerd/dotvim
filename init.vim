@@ -281,30 +281,6 @@ command! Here :cd %:p:h
 
 " Functions -------------------------------------------------------------- {{{1
 "
-" diff mode settings
-if has("autocmd")
-  function! s:diff_settings()
-    if &diff
-      " Up/down cursor keys navigate diff hunks
-      nmap <Up> [cz.
-      nmap <Down> ]cz.
-    else
-      if !empty(globpath(&runtimepath, 'autoload/coc.vim'))
-        nmap <silent> <Up> <Plug>(coc-diagnostic-prev)
-        nmap <silent> <Down> <Plug>(coc-diagnostic-next)
-      else
-        " Up/down cursor keys navigate quickfix items
-        nmap <silent> <Up> :<C-u>cprevious<CR>
-        nmap <silent> <Down> :<C-u>cnext<CR>
-      endif
-    endif
-  endfunction
-  augroup DIFF
-    autocmd!
-    autocmd BufEnter * call s:diff_settings()
-  augroup END
-endif
-
 " Toggle the quickfix window
 function! ToggleQFix()
   for i in range(1, winnr('$'))
