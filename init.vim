@@ -35,14 +35,18 @@ end
 if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   call plug#begin(stdpath('data') . '/plugged')
 
+  " dependencies
+  Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'neovim/nvim-lspconfig'
+
   " github plugins, windows friendly
   Plug 'ellisonleao/gruvbox.nvim'
   Plug 'jlanzarotta/bufexplorer'
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
   Plug 'neoclide/jsonc.vim'
-  Plug 'neovim/nvim-lspconfig'
   Plug 'posva/vim-vue', { 'for': 'vue' }
+  Plug 'ray-x/go.nvim'
   Plug 'ray-x/lsp_signature.nvim'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'

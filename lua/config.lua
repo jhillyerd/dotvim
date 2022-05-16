@@ -34,7 +34,7 @@ end
 local cmp = require('cmp')
 cmp.setup({
   snippet = {
-    expand = function(args) vim.fn["vsnip#anonymous"](args.body) end,
+    expand = function(args) require'luasnip'.lsp_expand(args.body) end,
   },
   mapping = {
     ['<up>'] = cmp.mapping.select_prev_item(),
@@ -64,4 +64,9 @@ end
 require'lsp_signature'.setup({
   doc_lines = 2,
   hint_enable = false,
+})
+
+-- go lang
+require('go').setup({
+  gofmt = 'gopls',
 })
