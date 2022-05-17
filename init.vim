@@ -183,6 +183,7 @@ set showmatch                          " Highlight matching (){}[]
 set signcolumn=yes
 set noshowmode                         " Hide -- INSERT --
 set updatetime=250                     " Make gitgutter update faster
+set virtualedit=block
 set wildmode=longest,list,full         " Command line completion options
 
 if exists('+colorcolumn')
@@ -362,7 +363,7 @@ if has("autocmd")
   augroup END
 endif
 
-" Prose Mode ------------------------------------------------------------- {{{1
+" Language: Prose -------------------------------------------------------- {{{1
 " From http://alols.github.io/2012/11/07/writing-prose-with-vim/
 function! SetProse()
   " Break undo sequence at the end of sentences
