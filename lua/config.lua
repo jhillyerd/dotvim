@@ -67,19 +67,21 @@ require'lsp_signature'.setup({
 })
 
 -- Language: Go
-require('go').setup({
-  gofmt = 'gopls',
-})
 local group = vim.api.nvim_create_augroup('go-nvim', {})
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = "*.go",
   group = group,
-  callback = require('go.format').gofmt,
+  callback = function()
+    require('go.format').gofmt()
+  end,
 })
 vim.api.nvim_create_autocmd('FileType', {
   pattern = "go",
   group = group,
   callback = function()
+    require('go').setup({
+      gofmt = 'gopls',
+    })
     vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>a', '<cmd>GoAlt<cr>', { noremap = true })
   end,
 })
