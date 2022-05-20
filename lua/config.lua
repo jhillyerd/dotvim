@@ -1,3 +1,9 @@
+-- Colors
+--
+local Color, colors, Group, groups, styles = require('colorbuddy').setup()
+require('colorbuddy').colorscheme('gruvbuddy')
+Group.new('ColorColumn', colors.foreground, colors.background:light())
+
 -- LSP setup
 --
 -- Mappings.

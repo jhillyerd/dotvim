@@ -38,9 +38,9 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   " dependencies
   Plug 'nvim-treesitter/nvim-treesitter'
   Plug 'neovim/nvim-lspconfig'
+  Plug 'tjdevries/colorbuddy.vim'
 
   " github plugins, windows friendly
-  Plug 'ellisonleao/gruvbox.nvim'
   Plug 'jlanzarotta/bufexplorer'
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
@@ -48,6 +48,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'posva/vim-vue', { 'for': 'vue' }
   Plug 'ray-x/go.nvim'
   Plug 'ray-x/lsp_signature.nvim'
+  Plug 'tjdevries/gruvbuddy.nvim'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -212,11 +213,6 @@ if has("gui_running")
 else
   " Running in terminal
   set t_Co=256
-endif
-
-set background=dark
-if !empty(globpath(&runtimepath, 'colors/gruvbox.lua'))
-  colorscheme gruvbox
 endif
 
 " Normal Mode Mappings --------------------------------------------------- {{{1
