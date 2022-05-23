@@ -165,6 +165,7 @@ set expandtab                          " Uses spaces for indent
 set fillchars=vert:\|,fold:\           " Visual fill characters
 set foldmethod=syntax                  " Fold based on file's syntax
 set foldnestmax=1                      " Use one level of folds
+set formatoptions=cqlj                 " Control comment formatting
 set nofoldenable                       " But folds are mostly annoying
 set hidden                             " Allow hidden buffers
 set hlsearch                           " Highlight search hits
