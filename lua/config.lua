@@ -1,18 +1,28 @@
--- Colors
+-- Useful definitions
 --
-local Color, colors, Group, groups, styles = require('colorbuddy').setup()
-require('colorbuddy').colorscheme('gruvbuddy')
-Group.new('ColorColumn', colors.foreground, colors.background:light())
+local map_opts = { noremap=true, silent=true }
+
+-- Colors
+do
+  local Color, colors, Group, groups, styles = require('colorbuddy').setup()
+  require('colorbuddy').colorscheme('gruvbuddy')
+  Group.new('ColorColumn', colors.foreground, colors.background:light())
+end
+
+-- Treesitter
+--
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "go", "http", "json", "lua", "nix", "rust" },
+}
 
 -- LSP setup
 --
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
-vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<up>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<down>', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
--- vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', map_opts)
+vim.api.nvim_set_keymap('n', '<up>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', map_opts)
+vim.api.nvim_set_keymap('n', '<down>', '<cmd>lua vim.diagnostic.goto_next()<CR>', map_opts)
+-- vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', map_opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -22,18 +32,18 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>q', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>q', '<cmd>lua vim.lsp.buf.formatting()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', map_opts)
 end
 
 -- Setup nvim-cmp, tell it to source completions from nvim-lsp.
@@ -73,21 +83,23 @@ require'lsp_signature'.setup({
 })
 
 -- Language: Go
-local group = vim.api.nvim_create_augroup('go-nvim', {})
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = "*.go",
-  group = group,
-  callback = function()
-    require('go.format').gofmt()
-  end,
-})
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = "go",
-  group = group,
-  callback = function()
-    require('go').setup({
-      gofmt = 'gopls',
-    })
-    vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>a', '<cmd>GoAlt<cr>', { noremap = true })
-  end,
-})
+do
+  local group = vim.api.nvim_create_augroup('go-nvim', {})
+  vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = "*.go",
+    group = group,
+    callback = function()
+      require('go.format').gofmt()
+    end,
+  })
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = "go",
+    group = group,
+    callback = function()
+      require('go').setup({
+        gofmt = 'gopls',
+      })
+      vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>a', '<cmd>GoAlt<cr>', map_opts)
+    end,
+  })
+end

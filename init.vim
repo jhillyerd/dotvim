@@ -36,7 +36,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   call plug#begin(stdpath('data') . '/plugged')
 
   " dependencies
-  Plug 'nvim-treesitter/nvim-treesitter'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'neovim/nvim-lspconfig'
   Plug 'tjdevries/colorbuddy.vim'
 
