@@ -49,6 +49,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'posva/vim-vue', { 'for': 'vue' }
   Plug 'ray-x/go.nvim'
   Plug 'ray-x/lsp_signature.nvim'
+  Plug 'simrat39/rust-tools.nvim'
   Plug 'tjdevries/gruvbuddy.nvim'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
