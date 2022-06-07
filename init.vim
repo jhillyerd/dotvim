@@ -42,6 +42,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
 
   " github plugins, windows friendly
   Plug 'jlanzarotta/bufexplorer'
+  Plug 'lervag/wiki.vim'
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
   Plug 'neoclide/jsonc.vim'
@@ -155,7 +156,16 @@ if !empty(globpath(&runtimepath, 'plugin/vimux.vim'))
 endif
 
 " Wiki Configuration
-let g:wiki_home = '~/wiki'
+if !empty(globpath(&runtimepath, 'autoload/wiki.vim'))
+  let g:wiki_root = '~/wiki'
+  let g:wiki_filetypes = ['md']
+  let g:wiki_link_extension = '.md'
+
+  let g:wiki_mappings_local_journal = {
+        \ '<plug>(wiki-journal-prev)' : '<A-Left>',
+        \ '<plug>(wiki-journal-next)' : '<A-Right>',
+        \}
+endif
 
 " YouCompleteMe Configuration
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -249,7 +259,6 @@ nnoremap <silent> <Leader>sp :<C-u>set paste!<CR>
 nnoremap <silent> <Leader>sr :<C-u>set relativenumber!<CR>
 nnoremap <silent> <Leader>ss :<C-u>set spell!<CR>
 nnoremap <silent> <Leader>q :<C-u>call ToggleQFix()<CR>
-nnoremap <silent> <Leader>wj :<C-u>call wiki#journal()<CR>
 nnoremap <silent> <Leader>x :<C-u>e ~/buffer.md<CR>
 nnoremap <silent> + :<C-u>resize +2<CR>
 nnoremap <silent> _ :<C-u>resize -2<CR>
