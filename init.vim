@@ -362,9 +362,9 @@ endif
 " Language: Markdown ----------------------------------------------------- {{{1
 "
 if has("autocmd")
+  let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sh']
   augroup MARKDOWN
     autocmd!
-    autocmd FileType markdown setlocal spell
     autocmd FileType markdown nnoremap <silent> <buffer> <LocalLeader>f :<C-u>normal! mm[s1z=`m<CR>
   augroup END
 endif
