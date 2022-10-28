@@ -38,6 +38,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   " dependencies
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/plenary.nvim'
   Plug 'tjdevries/colorbuddy.vim'
 
   " github plugins, windows friendly
@@ -46,6 +47,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
   Plug 'neoclide/jsonc.vim'
+  Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
   Plug 'posva/vim-vue', { 'for': 'vue' }
   Plug 'ray-x/go.nvim'
   Plug 'ray-x/lsp_signature.nvim'
@@ -75,8 +77,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'benmills/vimux'
     Plug 'benmills/vimux-golang'
     Plug 'dag/vim-fish', { 'for': 'fish' }
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
     Plug 'kassio/neoterm'
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
@@ -117,13 +117,6 @@ nnoremap <Leader>ga :<C-u>Gwrite<CR>
 nnoremap <Leader>gb :<C-u>Git blame<CR>
 nnoremap <Leader>gd :<C-u>Gdiffsplit<CR>
 nnoremap <Leader>gs :<C-u>Git<CR>
-
-" FZF Configuration
-if !empty(globpath(&runtimepath, 'autoload/fzf/vim.vim'))
-  let g:fzf_layout = { 'up': '~30%' }
-  nnoremap <C-p> :<C-u>FZF --reverse<CR>
-  nnoremap <silent> <Leader>l :<C-u>BLines<CR>
-endif
 
 " Neoterm Configuration
 let g:neoterm_auto_repl_cmd = 0
