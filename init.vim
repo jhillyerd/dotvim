@@ -18,7 +18,7 @@ let g:POSIX = !(g:WINDOWS && &shellcmdflag =~ '/')
 let g:GOOGLE = g:UNIX && filereadable('/usr/share/vim/google/google.vim')
 
 " Leader Keys
-let mapleader = "\\"
+let mapleader = " "
 let maplocalleader = ","
 
 " Google Init ------------------------------------------------------------ {{{1
@@ -235,8 +235,6 @@ nnoremap <Left> <C-T>
 nnoremap <Right> <C-]>
 " Open vertical split, move right
 nnoremap <silent> <Leader>v <C-W>v<C-W>l
-" Toggle folds with spacebar
-nnoremap <Space> za
 " Place cursor at start of . command
 nnoremap . .`[
 " Window navigation
