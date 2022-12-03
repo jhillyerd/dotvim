@@ -158,3 +158,15 @@ do
     end,
   })
 end
+
+-- Language: Unison
+do
+  local group = vim.api.nvim_create_augroup('unison', {})
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = "unison",
+    group = group,
+    callback = function()
+      vim.bo.commentstring = '-- %s'
+    end,
+  })
+end
