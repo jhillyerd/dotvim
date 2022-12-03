@@ -79,6 +79,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'benmills/vimux-golang'
     Plug 'dag/vim-fish', { 'for': 'fish' }
     Plug 'kassio/neoterm'
+    Plug 'unisonweb/unison', { 'branch': 'trunk', 'rtp': 'editor-support/vim' }
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
   endif
