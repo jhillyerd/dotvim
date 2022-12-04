@@ -75,8 +75,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   " github plugs, unix preferred
   if !g:WINDOWS
     Plug 'airblade/vim-gitgutter'
-    Plug 'benmills/vimux'
-    Plug 'benmills/vimux-golang'
     Plug 'dag/vim-fish', { 'for': 'fish' }
     Plug 'unisonweb/unison', { 'branch': 'trunk', 'rtp': 'editor-support/vim' }
     Plug 'wincent/terminus'
@@ -118,29 +116,6 @@ nnoremap <Leader>ga :<C-u>Gwrite<CR>
 nnoremap <Leader>gb :<C-u>Git blame<CR>
 nnoremap <Leader>gd :<C-u>Gdiffsplit<CR>
 nnoremap <Leader>gs :<C-u>Git<CR>
-
-" Vimux Configuration
-if !empty(globpath(&runtimepath, 'plugin/vimux.vim'))
-  function! VimuxSlime()
-    call VimuxSendText(@v)
-    call VimuxSendKeys("Enter")
-  endfunction
-
-  let g:VimuxUseNearestPane=0
-  noremap <Leader>vp :<C-u>VimuxPromptCommand<CR>
-  noremap <Leader>vl :<C-u>VimuxRunLastCommand<CR>
-  noremap <Leader>vi :<C-u>VimuxInspectRunner<CR>
-  noremap <Leader>vt :<C-u>VimuxTogglePane<CR>
-  noremap <Leader>vq :<C-u>VimuxCloseRunner<CR>
-  noremap <Leader>vc :<C-u>VimuxClearRunnerHistory<CR>
-  noremap <Leader>vk :<C-u>VimuxInterruptRunner<CR>
-  noremap <Leader>vz :<C-u>VimuxZoomRunner<CR>
-
-  " If text is selected, save it in the v buffer and send that buffer it to tmux
-  vnoremap <Leader>vs "vy:<C-u>call VimuxSlime()<CR>
-  " Select current paragraph and send it to tmux
-  nmap <Leader>vs vip<Leader>vs<CR>
-endif
 
 " Wiki Configuration
 if !empty(globpath(&runtimepath, 'autoload/wiki.vim'))
