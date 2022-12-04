@@ -106,6 +106,18 @@ do
   vim.keymap.set('n', '<leader>fl', builtin.current_buffer_fuzzy_find, {})
 end
 
+-- Plugin: ToggleTerm
+do
+  require('toggleterm').setup{
+    open_mapping = [[<leader>t]],
+    insert_mappings = false,
+    terminal_mappings = false,
+
+    direction = 'vertical',
+    size = vim.o.columns * 0.4,
+  }
+end
+
 -- Language: Go
 do
   local group = vim.api.nvim_create_augroup('go-nvim', {})
