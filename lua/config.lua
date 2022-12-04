@@ -153,7 +153,6 @@ do
     pattern = "rust",
     group = group,
     callback = function()
-      vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>r', '<cmd>GoAlt<cr>', map_opts)
       vim.keymap.set('n', '<localleader>r', cargo_run_cmd, { buffer = 0 })
     end,
   })
@@ -167,6 +166,7 @@ do
     group = group,
     callback = function()
       vim.bo.commentstring = '-- %s'
+      vim.keymap.set('n', '<localleader>r', '<cmd>botright vsplit term://ucm<cr>', { buffer = 0 })
     end,
   })
 end
