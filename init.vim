@@ -78,7 +78,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'benmills/vimux'
     Plug 'benmills/vimux-golang'
     Plug 'dag/vim-fish', { 'for': 'fish' }
-    Plug 'kassio/neoterm'
     Plug 'unisonweb/unison', { 'branch': 'trunk', 'rtp': 'editor-support/vim' }
     Plug 'wincent/terminus'
     Plug 'xolox/vim-misc'
@@ -119,14 +118,6 @@ nnoremap <Leader>ga :<C-u>Gwrite<CR>
 nnoremap <Leader>gb :<C-u>Git blame<CR>
 nnoremap <Leader>gd :<C-u>Gdiffsplit<CR>
 nnoremap <Leader>gs :<C-u>Git<CR>
-
-" Neoterm Configuration
-let g:neoterm_auto_repl_cmd = 0
-let g:neoterm_default_mod = "belowright split"
-let g:neoterm_shell = "fish"
-nmap <LocalLeader>gt <Plug>(neoterm-repl-send)
-nmap <LocalLeader>gtl <Plug>(neoterm-repl-send-line)
-xmap <LocalLeader>gt <Plug>(neoterm-repl-send)
 
 " Vimux Configuration
 if !empty(globpath(&runtimepath, 'plugin/vimux.vim'))
