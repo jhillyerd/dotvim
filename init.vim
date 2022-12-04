@@ -206,10 +206,10 @@ nnoremap <silent> <Leader>v <C-W>v<C-W>l
 " Place cursor at start of . command
 nnoremap . .`[
 " Window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
 nnoremap <silent> <Leader><Leader> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
 " Command mappings
@@ -232,10 +232,10 @@ inoremap jk <ESC>
 "
 nnoremap <silent> <Leader>z :<C-u>belowright split \| startinsert \| terminal fish<CR>
 tnoremap jk <C-\><C-N>
-tnoremap <C-h> <C-\><C-N><C-w>h
-tnoremap <C-j> <C-\><C-N><C-w>j
-tnoremap <C-k> <C-\><C-N><C-w>k
-tnoremap <C-l> <C-\><C-N><C-w>l
+tnoremap <M-h> <C-\><C-N><C-w>h
+tnoremap <M-j> <C-\><C-N><C-w>j
+tnoremap <M-k> <C-\><C-N><C-w>k
+tnoremap <M-l> <C-\><C-N><C-w>l
 augroup VIMRCTERM
   autocmd TermOpen * setlocal nonumber
   autocmd TermOpen * setlocal norelativenumber
