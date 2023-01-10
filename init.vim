@@ -140,24 +140,6 @@ set wildmode=longest,list,full         " Command line completion options
 " netrw should never be my alternate file
 let g:netrw_altfile=1
 
-" Colors & Fonts --------------------------------------------------------- {{{1
-"
-if has("gui_running")
-  set guioptions-=T " Remove toolbar
-
-  if g:WINDOWS
-    set guifont=Consolas:h11
-    set guioptions-=L " Prevent window resizing
-  elseif has("gui_gtk2") || has("gui_gtk3")
-    set guifont=Inconsolata\ Medium\ 12
-  elseif g:OSX
-    set guifont=Monaco:h13
-  endif
-else
-  " Running in terminal
-  set t_Co=256
-endif
-
 " Normal Mode Mappings --------------------------------------------------- {{{1
 "
 " Copy entire buffer into * register
