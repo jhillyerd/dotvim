@@ -119,39 +119,26 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 " Options (many more set in vim-sensible) -------------------------------- {{{1
 "
-set nobackup
-set nowritebackup
 set cmdheight=2
-set completeopt=menu,longest           " Popup a menu for completion
+set colorcolumn=+1
 set expandtab                          " Uses spaces for indent
-set fillchars=vert:\|,fold:\           " Visual fill characters
 set foldmethod=syntax                  " Fold based on file's syntax
 set foldnestmax=1                      " Use one level of folds
 set formatoptions=cqlj                 " Control comment formatting
 set nofoldenable                       " But folds are mostly annoying
-set hidden                             " Allow hidden buffers
 set hlsearch                           " Highlight search hits
 set number                             " Always display line numbers
 set relativenumber                     " Relative line numbering
 set shiftwidth=2                       " Number of spaces for autoindent
-set shortmess+=c                       " Don't pass to ins-completion-menu
-set showcmd                            " Show partial commands, areas
 set showmatch                          " Highlight matching (){}[]
 set signcolumn=yes
 set noshowmode                         " Hide -- INSERT --
-set updatetime=250                     " Make gitgutter update faster
+set updatetime=500                     " Make gitgutter update faster
 set virtualedit=block
 set wildmode=longest,list,full         " Command line completion options
 
-if exists('+colorcolumn')
-  set colorcolumn=+1
-endif
-
 " netrw should never be my alternate file
 let g:netrw_altfile=1
-
-" vim-sensible calls this, but it doesn't seem to work for 7.2
-syntax enable
 
 " Colors & Fonts --------------------------------------------------------- {{{1
 "
