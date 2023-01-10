@@ -32,9 +32,10 @@ vim.keymap.set("n", "<M-l>", "<C-w>l", map_opts)
 vim.keymap.set("n", "<Leader>v", "<C-w>v<C-w>l", map_opts)
 
 -- Redraw window
-vim.keymap.set("n", "<C-l>", ":nohlsearch<C-r>=has('diff')?'<Bar>diffupdate':''<cr><cr><C-l>", map_opts)
+vim.keymap.set("n", "<C-l>", "<C-r>=has('diff')?'<Bar>diffupdate':''<cr><cr><C-l>", map_opts)
 
 -- Command mappings
+vim.keymap.set("n", "<Leader>sh", ":<C-u>set hlsearch!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>sl", ":<C-u>set list!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>sn", ":<C-u>call ToggleNumber()<cr>", map_opts)
 vim.keymap.set("n", "<Leader>sp", ":<C-u>set paste!<cr>", map_opts)

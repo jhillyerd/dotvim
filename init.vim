@@ -126,7 +126,7 @@ set foldmethod=syntax                  " Fold based on file's syntax
 set foldnestmax=1                      " Use one level of folds
 set formatoptions=cqlj                 " Control comment formatting
 set nofoldenable                       " But folds are mostly annoying
-set hlsearch                           " Highlight search hits
+set nohlsearch
 set number                             " Always display line numbers
 set relativenumber                     " Relative line numbering
 set shiftwidth=2                       " Number of spaces for autoindent
