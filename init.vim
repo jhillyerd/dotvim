@@ -140,54 +140,6 @@ set wildmode=longest,list,full         " Command line completion options
 " netrw should never be my alternate file
 let g:netrw_altfile=1
 
-" Normal Mode Mappings --------------------------------------------------- {{{1
-"
-" Copy entire buffer into * register
-nnoremap <silent> <Leader>* mxgg"*yG`x
-" Transpose current word to the right
-nnoremap gl "xdiwdwep"xp
-" Format paragraph
-nnoremap Q gqip
-" Yank to end of line
-nnoremap Y y$
-" Left/right cursor keys navigate in/out of tags
-nnoremap <Left> <C-T>
-nnoremap <Right> <C-]>
-" Open vertical split, move right
-nnoremap <silent> <Leader>v <C-W>v<C-W>l
-" Place cursor at start of . command
-nnoremap . .`[
-" Window navigation
-nnoremap <M-h> <C-w>h
-nnoremap <M-j> <C-w>j
-nnoremap <M-k> <C-w>k
-nnoremap <M-l> <C-w>l
-nnoremap <silent> <C-l> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-l>
-
-" Command mappings
-nnoremap <silent> <Leader>ev :<C-u>edit $MYVIMRC<CR>:set fdm=marker<CR>
-nnoremap <silent> <Leader>sl :<C-u>set list!<CR>
-nnoremap <silent> <Leader>sn :<C-u>call ToggleNumber()<CR>
-nnoremap <silent> <Leader>sp :<C-u>set paste!<CR>
-nnoremap <silent> <Leader>sr :<C-u>set relativenumber!<CR>
-nnoremap <silent> <Leader>ss :<C-u>set spell!<CR>
-nnoremap <silent> <Leader>q :<C-u>call ToggleQFix()<CR>
-nnoremap <silent> <Leader>x :<C-u>e ~/buffer.md<CR>
-nnoremap <silent> + :<C-u>resize +2<CR>
-nnoremap <silent> _ :<C-u>resize -2<CR>
-
-" Insert Mode Mappings --------------------------------------------------- {{{1
-"
-inoremap jk <ESC>
-
-" Terminal Mode Mappings ------------------------------------------------- {{{1
-"
-nnoremap <silent> <Leader>z :<C-u>belowright split \| startinsert \| terminal fish<CR>
-tnoremap jk <C-\><C-N>
-tnoremap <M-h> <C-\><C-N><C-w>h
-tnoremap <M-j> <C-\><C-N><C-w>j
-tnoremap <M-k> <C-\><C-N><C-w>k
-tnoremap <M-l> <C-\><C-N><C-w>l
 augroup VIMRCTERM
   autocmd TermOpen * setlocal nonumber
   autocmd TermOpen * setlocal norelativenumber

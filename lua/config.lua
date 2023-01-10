@@ -1,3 +1,5 @@
+require "my.keymaps"
+
 -- Useful definitions
 --
 local map_opts = { noremap=true, silent=true }
