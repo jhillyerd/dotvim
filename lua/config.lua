@@ -1,4 +1,5 @@
 require "my.keymaps"
+require "my.augroups"
 
 -- Useful definitions
 --

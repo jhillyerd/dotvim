@@ -140,13 +140,6 @@ set wildmode=longest,list,full         " Command line completion options
 " netrw should never be my alternate file
 let g:netrw_altfile=1
 
-augroup VIMRCTERM
-  autocmd TermOpen * setlocal nonumber
-  autocmd TermOpen * setlocal norelativenumber
-  autocmd TermClose term://*fish | :close
-  autocmd BufEnter term://*fish | :startinsert
-augroup END
-
 " Auto Commands ---------------------------------------------------------- {{{1
 "
 if has("autocmd")
