@@ -140,22 +140,6 @@ set wildmode=longest,list,full         " Command line completion options
 " netrw should never be my alternate file
 let g:netrw_altfile=1
 
-" Auto Commands ---------------------------------------------------------- {{{1
-"
-if has("autocmd")
-  augroup VIMRC
-    autocmd!
-    " Quickfix window
-    autocmd QuickFixCmdPre * :update
-    " Recognize .md as markdown, not modula2
-    autocmd BufRead,BufNewFile *.md set filetype=markdown
-    " Run vimscript
-    autocmd FileType vim nnoremap <buffer> <LocalLeader>r :<C-u>source %<CR>
-    " Delete hidden netrw buffers
-    autocmd FileType netrw setlocal bufhidden=wipe
-  augroup END
-endif
-
 " Commands --------------------------------------------------------------- {{{1
 "
 command! Here :cd %:p:h
