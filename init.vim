@@ -144,19 +144,6 @@ let g:netrw_altfile=1
 "
 command! Here :cd %:p:h
 
-" Functions -------------------------------------------------------------- {{{1
-"
-" Toggle the quickfix window
-function! ToggleQFix()
-  for i in range(1, winnr('$'))
-    if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
-      cclose
-      return
-    endif
-  endfor
-  copen
-endfunction
-
 " Language: Markdown ----------------------------------------------------- {{{1
 "
 if has("autocmd")

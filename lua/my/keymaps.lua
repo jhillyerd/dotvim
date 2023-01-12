@@ -27,6 +27,17 @@ local toggle_number = function()
   end
 end
 
+-- Toggle the quickfix window
+local toggle_quickfix = function()
+  for _, win_id in pairs(vim.api.nvim_list_wins()) do
+    if vim.fn.win_gettype(win_id) == "quickfix" then
+      vim.cmd("cclose")
+    else
+      vim.cmd("copen")
+    end
+  end
+end
+
 --
 -- Normal mode mappings
 --
@@ -66,7 +77,7 @@ vim.keymap.set("n", "<Leader>sn", toggle_number(), map_opts)
 vim.keymap.set("n", "<Leader>sp", ":<C-u>set paste!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>sr", ":<C-u>set relativenumber!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>ss", ":<C-u>set spell!<cr>", map_opts)
-vim.keymap.set("n", "<Leader>q", ":<C-u>call ToggleQFix()<cr>", map_opts)
+vim.keymap.set("n", "<Leader>q", toggle_quickfix, map_opts)
 vim.keymap.set("n", "<Leader>x", ":<C-u>e ~/scratch.md<cr>", map_opts)
 vim.keymap.set("n", "<Leader>z", ":<C-u>belowright split | startinsert | terminal fish<cr>", map_opts)
 vim.keymap.set("n", "+", ":<C-u>resize +2<cr>", map_opts)
