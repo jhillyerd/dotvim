@@ -157,27 +157,6 @@ function! ToggleQFix()
   copen
 endfunction
 
-" Toggle number+relativenumber and disable mouse for copying from terminal
-function! ToggleNumber()
-  if &number
-    let s:rnum_state = &relativenumber
-    set nonumber
-    set norelativenumber
-    if !has("gui_running")
-      let s:mouse_opts=&mouse
-      set mouse=
-    endif
-  else
-    set number
-    if exists("s:rnum_state")
-      let &relativenumber = s:rnum_state
-    endif
-    if exists("s:mouse_opts") && !has("gui_running")
-      execute "set mouse=" . s:mouse_opts
-    endif
-  endif
-endfunction
-
 " Language: Markdown ----------------------------------------------------- {{{1
 "
 if has("autocmd")

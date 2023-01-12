@@ -3,6 +3,31 @@
 local map_opts = { noremap=true, silent=true }
 
 --
+-- Supporting functions
+--
+
+-- Toggle number+relativenumber and disable mouse for copying from terminal
+local toggle_number = function()
+  local prev_relative_state = false
+  local prev_mouse_state = ""
+
+  return function()
+    if vim.o.number then
+      prev_relative_state = vim.o.relativenumber
+      vim.o.number = false
+      vim.o.relativenumber = false
+
+      prev_mouse_state = vim.o.mouse
+      vim.o.mouse = ""
+    else
+      vim.o.number = true
+      vim.o.relativenumber = prev_relative_state
+      vim.o.mouse = prev_mouse_state
+    end
+  end
+end
+
+--
 -- Normal mode mappings
 --
 
@@ -37,7 +62,7 @@ vim.keymap.set("n", "<C-l>", "<C-r>=has('diff')?'<Bar>diffupdate':''<cr><cr><C-l
 -- Command mappings
 vim.keymap.set("n", "<Leader>sh", ":<C-u>set hlsearch!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>sl", ":<C-u>set list!<cr>", map_opts)
-vim.keymap.set("n", "<Leader>sn", ":<C-u>call ToggleNumber()<cr>", map_opts)
+vim.keymap.set("n", "<Leader>sn", toggle_number(), map_opts)
 vim.keymap.set("n", "<Leader>sp", ":<C-u>set paste!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>sr", ":<C-u>set relativenumber!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>ss", ":<C-u>set spell!<cr>", map_opts)
