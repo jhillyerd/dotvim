@@ -178,15 +178,6 @@ function! ToggleNumber()
   endif
 endfunction
 
-" Language: JavaScript --------------------------------------------------- {{{1
-"
-if has("autocmd")
-  augroup JAVASCRIPT
-    autocmd!
-    autocmd FileType javascript nmap <LocalLeader>l :<C-u>SyntasticCheck<CR>
-  augroup END
-endif
-
 " Language: Markdown ----------------------------------------------------- {{{1
 "
 if has("autocmd")
