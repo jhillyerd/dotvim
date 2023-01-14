@@ -3,6 +3,7 @@ if !exists(':Abolish')
   finish
 endif
 
-Abolish teh the
-Abolish seperate separate
 Abolish desparate desperate
+Abolish emtpy empty
+Abolish seperate separate
+Abolish teh the
