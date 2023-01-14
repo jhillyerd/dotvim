@@ -144,28 +144,6 @@ do
   }
 end
 
--- Language: Go
-do
-  local group = vim.api.nvim_create_augroup('go-nvim', {})
-  vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = "*.go",
-    group = group,
-    callback = function()
-      require('go.format').gofmt()
-    end,
-  })
-  vim.api.nvim_create_autocmd('FileType', {
-    pattern = "go",
-    group = group,
-    callback = function()
-      require('go').setup({
-        gofmt = 'gopls',
-      })
-      vim.api.nvim_buf_set_keymap(0, 'n', '<localleader>a', '<cmd>GoAlt<cr>', map_opts)
-    end,
-  })
-end
-
 -- Language: Rust
 do
   require('rust-tools').setup({

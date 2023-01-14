@@ -39,6 +39,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'ray-x/guihua.lua'
   Plug 'tjdevries/colorbuddy.vim'
 
   " github plugins, windows friendly
