@@ -125,6 +125,7 @@ do
   vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
   vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
   vim.keymap.set('n', '<leader>fl', builtin.current_buffer_fuzzy_find, {})
+  vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
 end
 
 -- Plugin: ToggleTerm
