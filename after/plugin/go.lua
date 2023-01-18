@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function()
     require('go').setup({
       gofmt = 'gopls',
+      luasnip = 'true',
     })
     vim.keymap.set("n", "<LocalLeader>a", "<Cmd>GoAlt<cr>", map_opts)
     vim.keymap.set("n", "<LocalLeader>I", "<Cmd>GoImport<cr>", map_opts)

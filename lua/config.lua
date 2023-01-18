@@ -49,22 +49,6 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', map_opts)
 end
 
--- Setup nvim-cmp, tell it to source completions from nvim-lsp.
-local cmp = require('cmp')
-cmp.setup({
-  snippet = {
-    expand = function(args) require'luasnip'.lsp_expand(args.body) end,
-  },
-  mapping = {
-    ['<up>'] = cmp.mapping.select_prev_item(),
-    ['<down>'] = cmp.mapping.select_next_item(),
-    ['<cr>'] = cmp.mapping.confirm({ select = true }),
-  },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-  })
-})
-
 -- Load local LSP config if present.
 local ok, lspcfg = pcall(require, 'local/lsp')
 if not ok then
