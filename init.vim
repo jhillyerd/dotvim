@@ -11,10 +11,8 @@ autocmd!
 filetype off
 
 " Platform Detection
-let g:OSX = has('macunix')
 let g:UNIX = has('unix') && !has('macunix') && !has('win32unix')
 let g:WINDOWS = (has('win32') || has('win64'))
-let g:POSIX = !(g:WINDOWS && &shellcmdflag =~ '/')
 let g:GOOGLE = g:UNIX && filereadable('/usr/share/vim/google/google.vim')
 
 " Leader Keys
