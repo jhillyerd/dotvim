@@ -84,12 +84,6 @@ filetype plugin indent on
 " Conoline Configuration
 let g:conoline_use_colorscheme_default_normal=1
 
-" Fugitive Configuration
-nnoremap <Leader>ga :<C-u>Gwrite<CR>
-nnoremap <Leader>gb :<C-u>Git blame<CR>
-nnoremap <Leader>gd :<C-u>Gdiffsplit<CR>
-nnoremap <Leader>gs :<C-u>Git<CR>
-
 " Options (many more set in vim-sensible) -------------------------------- {{{1
 "
 set cmdheight=2
