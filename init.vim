@@ -13,19 +13,10 @@ filetype off
 " Platform Detection
 let g:UNIX = has('unix') && !has('macunix') && !has('win32unix')
 let g:WINDOWS = (has('win32') || has('win64'))
-let g:GOOGLE = g:UNIX && filereadable('/usr/share/vim/google/google.vim')
 
 " Leader Keys
 let mapleader = " "
 let maplocalleader = ","
-
-" Google Init ------------------------------------------------------------ {{{1
-if g:GOOGLE
-  let s:googlevim = stdpath('config') . "/google.vim"
-  if filereadable(s:googlevim)
-    execute "source " . s:googlevim
-  end
-end
 
 " Plug List -------------------------------------------------------------- {{{1
 "
@@ -111,10 +102,6 @@ if !empty(globpath(&runtimepath, 'autoload/wiki.vim'))
         \ '<plug>(wiki-journal-next)' : '<A-Right>',
         \}
 endif
-
-" YouCompleteMe Configuration
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 " Options (many more set in vim-sensible) -------------------------------- {{{1
 "
