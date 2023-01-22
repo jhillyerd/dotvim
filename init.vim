@@ -32,7 +32,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'tjdevries/colorbuddy.vim'
 
   " github plugins, windows friendly
-  Plug 'lervag/wiki.vim'
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
   Plug 'neoclide/jsonc.vim'
@@ -90,18 +89,6 @@ nnoremap <Leader>ga :<C-u>Gwrite<CR>
 nnoremap <Leader>gb :<C-u>Git blame<CR>
 nnoremap <Leader>gd :<C-u>Gdiffsplit<CR>
 nnoremap <Leader>gs :<C-u>Git<CR>
-
-" Wiki Configuration
-if !empty(globpath(&runtimepath, 'autoload/wiki.vim'))
-  let g:wiki_root = '~/wiki'
-  let g:wiki_filetypes = ['md']
-  let g:wiki_link_extension = '.md'
-
-  let g:wiki_mappings_local_journal = {
-        \ '<plug>(wiki-journal-prev)' : '<A-Left>',
-        \ '<plug>(wiki-journal-next)' : '<A-Right>',
-        \}
-endif
 
 " Options (many more set in vim-sensible) -------------------------------- {{{1
 "
