@@ -20,7 +20,7 @@ cmp.setup({
   mapping = {
     ["<Up>"] = cmp.mapping.select_prev_item(),
     ["<Down>"] = cmp.mapping.select_next_item(),
-    ["<cr>"] = cmp.mapping.confirm({ select = true }),
+    ["<cr>"] = cmp.mapping.confirm({ select = false }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       -- Super Tab.
       if cmp.visible() then
