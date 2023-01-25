@@ -12,12 +12,6 @@ do
   Group.new('ColorColumn', colors.foreground, colors.background:light())
 end
 
--- Treesitter
---
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "go", "http", "json", "lua", "nix", "rust" },
-}
-
 -- LSP setup
 --
 -- Mappings.

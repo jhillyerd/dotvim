@@ -25,7 +25,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   call plug#begin(stdpath('data') . '/plugged')
 
   " dependencies
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'ray-x/guihua.lua'
@@ -36,6 +35,8 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'miyakogi/conoline.vim'
   Plug 'neoclide/jsonc.vim'
   Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'posva/vim-vue', { 'for': 'vue' }
   Plug 'ray-x/go.nvim'
   Plug 'ray-x/lsp_signature.nvim'
