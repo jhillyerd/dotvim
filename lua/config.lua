@@ -43,6 +43,9 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', map_opts)
 end
 
+-- Neovim/Lua plugin dev tools.
+require("neodev").setup()
+
 -- LSP configuration via lspconfig plugin.
 do
   -- Local LSP config overrides when present.
@@ -52,6 +55,7 @@ do
       servers = {
         elmls = {},
         gopls = {},
+        sumneko_lua = {},
         rnix = {},
         tsserver = {},
       },

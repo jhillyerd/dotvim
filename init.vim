@@ -31,6 +31,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'tjdevries/colorbuddy.vim'
 
   " github plugins, windows friendly
+  Plug 'folke/neodev.nvim'
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
   Plug 'neoclide/jsonc.vim'
