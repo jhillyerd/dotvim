@@ -43,23 +43,32 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', map_opts)
 end
 
--- Load local LSP config if present.
-local ok, lspcfg = pcall(require, 'local/lsp')
-if not ok then
-  lspcfg = { servers = { 'elmls', 'gopls', 'rnix', 'tsserver' } }
-end
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-for _, lsp in pairs(lspcfg.servers) do
-  require('lspconfig')[lsp].setup {
-    capabilities = require'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
+-- LSP configuration via lspconfig plugin.
+do
+  -- Local LSP config overrides when present.
+  local ok, myconfig = pcall(require, 'local/lsp')
+  if not ok then
+    myconfig = {
+      servers = {
+        elmls = {},
+        gopls = {},
+        rnix = {},
+        tsserver = {},
+      },
     }
-  }
+  end
+
+  local lspconfig = require("lspconfig")
+  local def_cap = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+  -- Use a loop to conveniently call 'setup' on multiple servers and
+  -- map buffer local keybindings when the language server attaches
+  for name, config in pairs(myconfig.servers) do
+    config.capabilities = def_cap
+    config.on_attach = on_attach
+
+    lspconfig[name].setup(config)
+  end
 end
 
 -- Add function signature help.
