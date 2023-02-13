@@ -109,6 +109,16 @@ do
     direction = 'vertical',
     size = vim.o.columns * 0.4,
   }
+
+  local Terminal = require("toggleterm.terminal").Terminal
+
+  -- lazygit in a floating terminal.
+  local lazygit = Terminal:new({
+    cmd = "lazygit",
+    direction = "float",
+    hidden = true,
+  })
+  vim.keymap.set("n", "<leader>gg", function() lazygit:toggle() end, map_opts)
 end
 
 -- Language: Rust

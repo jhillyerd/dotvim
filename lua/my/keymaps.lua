@@ -87,13 +87,13 @@ vim.keymap.set("n", "_", ":<C-u>resize -2<cr>", map_opts)
 -- Insert mode mappings
 --
 
-vim.keymap.set("i", "jk", "<ESC>", map_opts)
+vim.keymap.set("i", "jk", "<Esc>", map_opts)
 
 --
 -- Terminal mode mappings
 --
 
-vim.keymap.set("t", "jk", "<C-\\><C-N>", map_opts)
+vim.keymap.set("t", "<M-Esc>", "<C-\\><C-N>", map_opts)
 vim.keymap.set("t", "<M-h>", "<C-\\><C-N><C-w>h", map_opts)
 vim.keymap.set("t", "<M-j>", "<C-\\><C-N><C-w>j", map_opts)
 vim.keymap.set("t", "<M-k>", "<C-\\><C-N><C-w>k", map_opts)
