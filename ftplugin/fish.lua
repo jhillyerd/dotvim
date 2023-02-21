@@ -11,4 +11,4 @@ vim.opt_local.foldmethod = "expr"
 
 -- Saves and runs this fish script in a terminal.
 vim.keymap.set("n", "<LocalLeader>r",
-  "<Cmd>write | TermExec cmd='fish %'<cr>", map_opts)
+  "<Cmd>write | TermExec go_back=0 cmd='fish %'<cr>", map_opts)
