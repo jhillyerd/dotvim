@@ -1,5 +1,15 @@
 require("nvim-treesitter.configs").setup {
-  ensure_installed = { "go", "http", "json", "lua", "nix", "rust" },
+  ensure_installed = {
+    "go", "http", "json", "lua", "nix", "rust", "terraform"
+  },
+
+  highlight = {
+    enable = true,
+  },
+
+  indent = {
+    enable = true,
+  },
 
   textobjects = {
     select = {
