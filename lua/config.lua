@@ -21,9 +21,9 @@ vim.api.nvim_set_keymap('n', '<up>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', 
 vim.api.nvim_set_keymap('n', '<down>', '<cmd>lua vim.diagnostic.goto_next()<CR>', map_opts)
 -- vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', map_opts)
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+-- Use an on_attach function to only map the following keys after the language
+-- server attaches to the current buffer.
+LSP_ON_ATTACH = function(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -37,7 +37,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', map_opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', map_opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>e', '<cmd>lua vim.lsp.buf.rename()<CR>', map_opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>q', '<cmd>lua vim.lsp.buf.formatting()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>q', '<cmd>lua vim.lsp.buf.format{async = true}<CR>', map_opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', map_opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', map_opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', map_opts)
@@ -69,7 +69,7 @@ do
   -- map buffer local keybindings when the language server attaches
   for name, config in pairs(myconfig.servers) do
     config.capabilities = def_cap
-    config.on_attach = on_attach
+    config.on_attach = LSP_ON_ATTACH
 
     lspconfig[name].setup(config)
   end
@@ -126,7 +126,7 @@ do
   require('rust-tools').setup({
     server = {
       capabilities = require'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-      on_attach = on_attach,
+      on_attach = LSP_ON_ATTACH,
       settings = {
         ["rust-analyzer"] = {
           procMacro = { enable = true },
