@@ -32,6 +32,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
 
   " github plugins, windows friendly
   Plug 'folke/neodev.nvim'
+  Plug 'jose-elias-alvarez/null-ls.nvim'
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
   Plug 'nathom/filetype.nvim'
