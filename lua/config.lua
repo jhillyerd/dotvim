@@ -55,7 +55,7 @@ do
       servers = {
         elmls = {},
         gopls = {},
-        sumneko_lua = {},
+        lua_ls = {},
         rnix = {},
         tsserver = {},
       },
