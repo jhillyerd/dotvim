@@ -35,7 +35,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
   Plug 'jose-elias-alvarez/null-ls.nvim'
   Plug 'LnL7/vim-nix'
   Plug 'miyakogi/conoline.vim'
-  Plug 'nathom/filetype.nvim'
   Plug 'neoclide/jsonc.vim'
   Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
