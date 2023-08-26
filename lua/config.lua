@@ -136,8 +136,8 @@ do
   })
 
   -- Very basic cargo run impl for embedded projects.
+  local tools = require('rust-tools')
   local cargo_run_cmd = function()
-    local tools = require('rust-tools')
     tools.config.options.tools.executor.execute_command('cargo', { 'run' }, '.')
   end
 
@@ -147,6 +147,7 @@ do
     group = group,
     callback = function()
       vim.keymap.set('n', '<localleader>r', cargo_run_cmd, { buffer = 0 })
+      vim.keymap.set('n', '<localleader>R', tools.runnables.runnables, { buffer = 0 })
     end,
   })
 end
