@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = "*.go",
   group = group,
   callback = function()
-    require('go.format').gofmt()
+    require('go.format').goimport()
   end,
 })
 
