@@ -1,7 +1,13 @@
-require("nvim-treesitter.configs").setup {
+local ensure_installed = {}
+
+if vim.g.UNIX == 1 then
   ensure_installed = {
     "go", "http", "json", "lua", "nix", "rust", "terraform"
-  },
+  }
+end
+
+require("nvim-treesitter.configs").setup {
+  ensure_installed = ensure_installed,
 
   highlight = {
     enable = true,
