@@ -55,7 +55,18 @@ do
       servers = {
         elmls = {},
         gopls = {},
-        lua_ls = {},
+
+        lua_ls = {
+          settings = {
+            Lua = {
+              workspace = {
+                -- Prevents `Do you need to configure your work environment as luv` popup.
+                checkThirdParty = false, -- Soon: "Disable",
+              },
+            },
+          },
+        },
+
         rnix = {},
         tsserver = {},
       },
