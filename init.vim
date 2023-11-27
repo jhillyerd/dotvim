@@ -126,25 +126,6 @@ if has("autocmd")
   let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'sh']
 endif
 
-" Language: Prose -------------------------------------------------------- {{{1
-" From http://alols.github.io/2012/11/07/writing-prose-with-vim/
-function! SetProse()
-  " Break undo sequence at the end of sentences
-  inoremap <buffer> . .<C-G>u
-  inoremap <buffer> ! !<C-G>u
-  inoremap <buffer> ? ?<C-G>u
-  setlocal spell spelllang=en nolist nowrap textwidth=74 formatoptions=t1
-  " Only auto-format during insert mode
-  augroup PROSE
-    autocmd!
-    autocmd InsertEnter <buffer> set formatoptions+=a
-    autocmd InsertLeave <buffer> set formatoptions-=a
-  augroup END
-  " Fix previous typo, return to cursor
-  nnoremap <silent> <buffer> <LocalLeader>f :<C-u>normal! mm[s1z=`m<CR>
-endfunction
-command! Prose call SetProse()
-
 " Reformat document: soft wrap paragraphs
 " - Add a blank line to end of document
 " - Join all non-blank lines
