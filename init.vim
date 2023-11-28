@@ -93,26 +93,6 @@ filetype plugin indent on
 " Conoline Configuration
 let g:conoline_use_colorscheme_default_normal=1
 
-" Options (many more set in vim-sensible) -------------------------------- {{{1
-"
-set cmdheight=2
-set colorcolumn=+1
-set expandtab                          " Uses spaces for indent
-set foldmethod=syntax                  " Fold based on file's syntax
-set foldnestmax=1                      " Use one level of folds
-set formatoptions=cqlj                 " Control comment formatting
-set nofoldenable                       " But folds are mostly annoying
-set nohlsearch
-set number                             " Always display line numbers
-set relativenumber                     " Relative line numbering
-set shiftwidth=2                       " Number of spaces for autoindent
-set showmatch                          " Highlight matching (){}[]
-set signcolumn=yes
-set noshowmode                         " Hide -- INSERT --
-set updatetime=500                     " Make gitgutter update faster
-set virtualedit=block
-set wildmode=longest,list,full         " Command line completion options
-
 " netrw should never be my alternate file
 let g:netrw_altfile=1
 

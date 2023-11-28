@@ -3,8 +3,29 @@ require "my.commands"
 require "my.keymaps"
 
 -- Useful definitions
---
-local map_opts = { noremap=true, silent=true }
+local map_opts         = { noremap = true, silent = true }
+
+-- Options (many more set in vim-sensible)
+vim.opt.cmdheight      = 2
+vim.opt.colorcolumn    = "+1"
+vim.opt.expandtab      = true     -- Uses spaces for indent
+vim.opt.foldmethod     = "syntax" -- Fold based on file's syntax
+vim.opt.foldnestmax    = 1        -- Use one level of folds
+vim.opt.foldenable     = false    -- But folds are mostly annoying
+vim.opt.hlsearch       = false
+vim.opt.number         = true     -- Always display line numbers
+vim.opt.relativenumber = true     -- Relative line numbering
+vim.opt.shiftwidth     = 2        -- Number of spaces for autoindent
+vim.opt.showmatch      = true     -- Highlight matching (){}[]
+vim.opt.signcolumn     = "yes"
+vim.opt.showmode       = false    -- Hide `-- INSERT --`
+vim.opt.updatetime     = 500      -- Make gitgutter update faster
+vim.opt.virtualedit    = "block"
+
+-- Control comment formatting
+vim.opt.formatoptions  = { c = true, q = true, l = true, j = true }
+-- Command line completion options
+vim.opt.wildmode       = { longest = true, list = true, full = true }
 
 -- Colors
 do
@@ -40,8 +61,10 @@ LSP_ON_ATTACH = function(_, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>e', '<cmd>lua vim.lsp.buf.rename()<CR>', map_opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>q', '<cmd>lua vim.lsp.buf.format{async = true}<CR>', map_opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', map_opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', map_opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wr',
+    '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', map_opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wl',
+    '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', map_opts)
 end
 
 -- Neovim/Lua plugin dev tools.
@@ -88,16 +111,16 @@ do
 end
 
 -- Add function signature help.
-require'lsp_signature'.setup({
+require("lsp_signature").setup({
   doc_lines = 2,
   hint_enable = false,
 })
 
 -- Language: Rust
 do
-  require('rust-tools').setup({
+  require("rust-tools").setup({
     server = {
-      capabilities = require'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+      capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
       on_attach = LSP_ON_ATTACH,
       settings = {
         ["rust-analyzer"] = {
