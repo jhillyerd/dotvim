@@ -76,7 +76,6 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'akinsho/toggleterm.nvim', {'tag' : '2.3.*'}
     Plug 'dag/vim-fish', { 'for': 'fish' }
     Plug 'wincent/terminus'
-    Plug 'xolox/vim-misc'
   endif
 
   " All of your Plugins must be added before the following line (required)
