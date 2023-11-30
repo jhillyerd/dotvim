@@ -75,6 +75,7 @@ if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
     Plug 'airblade/vim-gitgutter'
     Plug 'akinsho/toggleterm.nvim', {'tag' : '2.3.*'}
     Plug 'dag/vim-fish', { 'for': 'fish' }
+    Plug 'rest-nvim/rest.nvim'
     Plug 'wincent/terminus'
   endif
 
