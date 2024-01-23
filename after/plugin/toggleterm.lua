@@ -9,7 +9,9 @@ if ok then
 
     -- auto_scroll = true,
     direction = 'vertical',
-    size = vim.o.columns * 0.4,
+    size = 80,
+
+    shell = "fish",
   }
 
   local Terminal = require("toggleterm.terminal").Terminal
