@@ -93,6 +93,7 @@ do
 
         rnix = {},
         tsserver = {},
+        yamlls = {},
       },
     }
   end
