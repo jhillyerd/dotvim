@@ -25,7 +25,7 @@ vim.opt.virtualedit    = "block"
 -- Control comment formatting
 vim.opt.formatoptions  = { c = true, q = true, l = true, j = true }
 -- Command line completion options
-vim.opt.wildmode       = { longest = true, list = true, full = true }
+vim.opt.wildmode       = { "longest", "list", "full" }
 
 -- Colors
 do
