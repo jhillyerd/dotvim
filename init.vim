@@ -18,74 +18,9 @@ let g:WINDOWS = (has('win32') || has('win64'))
 let mapleader = " "
 let maplocalleader = ","
 
-" Plug List -------------------------------------------------------------- {{{1
-"
-" Detect Plug
-if !empty(globpath(&runtimepath, 'autoload/plug.vim'))
-  call plug#begin(stdpath('data') . '/plugged')
-
-  " dependencies
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'ray-x/guihua.lua'
-  Plug 'tjdevries/colorbuddy.vim'
-
-  " github plugins, windows friendly
-  Plug 'folke/neodev.nvim'
-  Plug 'jose-elias-alvarez/null-ls.nvim'
-  Plug 'jvirtanen/vim-hcl'
-  Plug 'LnL7/vim-nix'
-  Plug 'miyakogi/conoline.vim'
-  Plug 'neoclide/jsonc.vim'
-  Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-  Plug 'posva/vim-vue', { 'for': 'vue' }
-  Plug 'ray-x/go.nvim'
-  Plug 'ray-x/lsp_signature.nvim'
-  Plug 'simrat39/rust-tools.nvim'
-  Plug 'ThePrimeagen/harpoon'
-  Plug 'tjdevries/gruvbuddy.nvim'
-  Plug 'tpope/vim-abolish'
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-sensible'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-vinegar'
-  Plug 'vim-airline/vim-airline'
-
-  " debugging
-  Plug 'mfussenegger/nvim-dap'
-  Plug 'rcarriga/nvim-dap-ui'
-  Plug 'theHamsta/nvim-dap-virtual-text'
-  Plug 'leoluz/nvim-dap-go'
-
-  " completion setup
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/cmp-buffer'
-  Plug 'hrsh7th/cmp-path'
-  Plug 'hrsh7th/cmp-cmdline'
-  Plug 'hrsh7th/nvim-cmp'
-  Plug 'L3MON4D3/LuaSnip'
-  Plug 'saadparwaiz1/cmp_luasnip'
-
-  " github plugs, unix preferred
-  if !g:WINDOWS
-    Plug 'airblade/vim-gitgutter'
-    Plug 'akinsho/toggleterm.nvim', {'tag' : '2.3.*'}
-    Plug 'dag/vim-fish', { 'for': 'fish' }
-    Plug 'rest-nvim/rest.nvim'
-    Plug 'wincent/terminus'
-  endif
-
-  " All of your Plugins must be added before the following line (required)
-  call plug#end()
-endif
-
 lua require('config')
 
-" Post-plugin init (not Vundle dependent)
+" Post-plugin init
 filetype plugin indent on
 
 " Plugin Configuration --------------------------------------------------- {{{1

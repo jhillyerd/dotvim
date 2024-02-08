@@ -83,6 +83,12 @@ vim.keymap.set("n", "<Leader>z", ":<C-u>belowright split | startinsert | termina
 vim.keymap.set("n", "+", ":<C-u>resize +2<cr>", map_opts)
 vim.keymap.set("n", "_", ":<C-u>resize -2<cr>", map_opts)
 
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set("n", "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", map_opts)
+vim.keymap.set("n", "<up>", "<cmd>lua vim.diagnostic.goto_prev()<CR>", map_opts)
+vim.keymap.set("n", "<down>", "<cmd>lua vim.diagnostic.goto_next()<CR>", map_opts)
+-- vim.keymap.set("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", map_opts)
+
 --
 -- Insert mode mappings
 --
