@@ -1,38 +1,35 @@
-local map_opts = { noremap = true, silent = true }
-
 local group = vim.api.nvim_create_augroup("mylsp", { clear = true })
 vim.api.nvim_create_autocmd("LspAttach", {
   group = group,
 
   callback = function(ev)
-    -- TODO: update for vim.bo and vim.keymap.set
-    local bufnr = ev.buf
+    local map_opts = { noremap = true, silent = true, buffer = ev.buf }
 
     -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', map_opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', map_opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', map_opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', map_opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', map_opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', map_opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', map_opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>e', '<cmd>lua vim.lsp.buf.rename()<CR>', map_opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>q', '<cmd>lua vim.lsp.buf.format{async = true}<CR>', map_opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>',
+    vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", map_opts)
+    vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", map_opts)
+    vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", map_opts)
+    vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", map_opts)
+    vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", map_opts)
+    vim.keymap.set("n", "<localleader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", map_opts)
+    vim.keymap.set("n", "<localleader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", map_opts)
+    vim.keymap.set("n", "<localleader>e", "<cmd>lua vim.lsp.buf.rename()<CR>", map_opts)
+    vim.keymap.set("n", "<localleader>q", "<cmd>lua vim.lsp.buf.format{async = true}<CR>", map_opts)
+    vim.keymap.set("n", "<localleader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>",
       map_opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wr',
-      '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', map_opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>wl',
-      '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', map_opts)
+    vim.keymap.set("n", "<localleader>wr",
+      "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", map_opts)
+    vim.keymap.set("n", "<localleader>wl",
+      "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", map_opts)
   end
 })
 
 -- Local LSP config overrides when present.
-local ok, myconfig = pcall(require, 'local/lsp')
+local ok, myconfig = pcall(require, "local/lsp")
 if not ok then
   myconfig = {
     servers = {
