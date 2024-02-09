@@ -5,6 +5,7 @@ return {
 
   dependencies = {
     "ray-x/guihua.lua",
+    "leoluz/nvim-dap-go",
   },
 
   config = function()
@@ -13,11 +14,8 @@ return {
       luasnip = 'true',
     })
 
-    -- TODO: update for lazy
-    local dap_ok, dapgo = pcall(require, "dap-go")
-    if dap_ok then
-      dapgo.setup()
-    end
+    local dap_go = require("dap-go")
+    dap_go.setup()
 
     local group = vim.api.nvim_create_augroup('go-nvim', {})
 
@@ -40,9 +38,7 @@ return {
         vim.keymap.set("n", "<LocalLeader>t", "<Cmd>GoTestFile<cr>", map_opts)
         vim.keymap.set("n", "<LocalLeader>tt", "<Cmd>GoTestFunc<cr>", map_opts)
 
-        if dap_ok then
-          vim.keymap.set("n", "<LocalLeader>dt", dapgo.debug_test, map_opts)
-        end
+        vim.keymap.set("n", "<LocalLeader>dt", dap_go.debug_test, map_opts)
       end,
     })
   end
