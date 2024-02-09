@@ -12,7 +12,7 @@ return {
       terminal_mappings = false,
 
       -- auto_scroll = true,
-      direction = 'vertical',
+      direction = "vertical",
       size = 80,
 
       shell = "fish",

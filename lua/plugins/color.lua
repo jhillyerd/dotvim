@@ -8,11 +8,11 @@ return {
 
     config = function()
       do
-        local colorbuddy = require('colorbuddy')
+        local colorbuddy = require("colorbuddy")
         local Color, colors, Group, groups, styles = colorbuddy.setup()
 
-        colorbuddy.colorscheme('gruvbuddy')
-        Group.new('ColorColumn', colors.foreground, colors.background:light())
+        colorbuddy.colorscheme("gruvbuddy")
+        Group.new("ColorColumn", colors.foreground, colors.background:light())
       end
     end,
   },

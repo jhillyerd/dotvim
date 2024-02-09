@@ -10,7 +10,7 @@ return {
   },
 
   config = function()
-    local tools = require('rust-tools')
+    local tools = require("rust-tools")
     tools.setup({
       server = {
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
@@ -24,16 +24,16 @@ return {
 
     -- Very basic cargo run impl for embedded projects.
     local cargo_run_cmd = function()
-      tools.config.options.tools.executor.execute_command('cargo', { 'run' }, '.')
+      tools.config.options.tools.executor.execute_command("cargo", { "run" }, ".")
     end
 
-    local group = vim.api.nvim_create_augroup('rust-tools', {})
-    vim.api.nvim_create_autocmd('FileType', {
+    local group = vim.api.nvim_create_augroup("rust-tools", {})
+    vim.api.nvim_create_autocmd("FileType", {
       pattern = "rust",
       group = group,
       callback = function()
-        vim.keymap.set('n', '<localleader>r', cargo_run_cmd, { buffer = 0 })
-        vim.keymap.set('n', '<localleader>R', tools.runnables.runnables, { buffer = 0 })
+        vim.keymap.set("n", "<localleader>r", cargo_run_cmd, { buffer = 0 })
+        vim.keymap.set("n", "<localleader>R", tools.runnables.runnables, { buffer = 0 })
       end,
     })
   end

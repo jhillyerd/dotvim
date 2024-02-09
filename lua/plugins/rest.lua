@@ -6,9 +6,9 @@ return {
   config = function()
     require("rest-nvim").setup()
 
-    local group = vim.api.nvim_create_augroup('rest-nvim', { clear = true })
+    local group = vim.api.nvim_create_augroup("rest-nvim", { clear = true })
 
-    vim.api.nvim_create_autocmd('FileType', {
+    vim.api.nvim_create_autocmd("FileType", {
       pattern = "http",
       group = group,
       callback = function()

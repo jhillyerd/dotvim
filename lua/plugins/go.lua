@@ -9,25 +9,25 @@ return {
   },
 
   config = function()
-    require('go').setup({
-      gofmt = 'gopls',
-      luasnip = 'true',
+    require("go").setup({
+      gofmt = "gopls",
+      luasnip = "true",
     })
 
     local dap_go = require("dap-go")
     dap_go.setup()
 
-    local group = vim.api.nvim_create_augroup('go-nvim', {})
+    local group = vim.api.nvim_create_augroup("go-nvim", {})
 
-    vim.api.nvim_create_autocmd('BufWritePre', {
+    vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = "*.go",
       group = group,
       callback = function()
-        require('go.format').goimport()
+        require("go.format").goimport()
       end,
     })
 
-    vim.api.nvim_create_autocmd('FileType', {
+    vim.api.nvim_create_autocmd("FileType", {
       pattern = "go",
       group = group,
       callback = function()

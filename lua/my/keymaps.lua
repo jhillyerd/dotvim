@@ -43,7 +43,7 @@ end
 --
 
 -- Transpose current word to the right
-vim.keymap.set("n", "gl", '"xdiwdwep"xp', map_opts)
+vim.keymap.set("n", "gl", [["xdiwdwep"xp]], map_opts)
 
 -- Format paragraph
 vim.keymap.set("n", "Q", "gqip", map_opts)
