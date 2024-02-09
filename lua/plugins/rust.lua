@@ -13,7 +13,7 @@ return {
     local tools = require('rust-tools')
     tools.setup({
       server = {
-        capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
         settings = {
           ["rust-analyzer"] = {
             procMacro = { enable = true },

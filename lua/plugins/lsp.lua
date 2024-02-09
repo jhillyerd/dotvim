@@ -58,15 +58,19 @@ end
 return {
   {
     "neovim/nvim-lspconfig",
+
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+    },
+
     config = function()
       local lspconfig = require("lspconfig")
-      -- TODO extract
-      local def_cap = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       -- Use a loop to conveniently call 'setup' on multiple servers and
       -- map buffer local keybindings when the language server attaches
       for name, config in pairs(myconfig.servers) do
-        config.capabilities = def_cap
+        config.capabilities = capabilities
         lspconfig[name].setup(config)
       end
     end,
