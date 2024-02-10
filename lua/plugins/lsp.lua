@@ -61,6 +61,12 @@ return {
 
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
+
+      {
+        "j-hui/fidget.nvim",
+        version = "^1.3.0",
+        opts = {},
+      },
     },
 
     config = function()
