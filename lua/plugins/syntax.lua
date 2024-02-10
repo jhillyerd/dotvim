@@ -11,7 +11,7 @@ return {
 
     if vim.g.UNIX == 1 then
       ensure_installed = {
-        "go", "http", "json", "lua", "nix", "rust", "terraform"
+        "go", "http", "json", "lua", "nix", "rust", "terraform", "vim", "vimdoc"
       }
     end
 
