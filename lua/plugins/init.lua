@@ -17,6 +17,11 @@ return {
   "wincent/terminus",
 
   {
+    "folke/lazy.nvim",
+    branch = "stable",
+  },
+
+  {
     "folke/neodev.nvim",
     dependencies = {
       "neovim/nvim-lspconfig",
