@@ -39,4 +39,5 @@ require("lazy").setup("plugins", {
 
 require "my.augroups"
 require "my.commands"
+require "my.filetypes"
 require "my.keymaps"
