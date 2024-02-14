@@ -4,12 +4,6 @@
 
 " Initialization --------------------------------------------------------- {{{1
 "
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-autocmd!
-filetype off
-
 " Platform Detection
 let g:UNIX = has('unix') && !has('macunix') && !has('win32unix')
 let g:WINDOWS = (has('win32') || has('win64'))
@@ -19,9 +13,6 @@ let mapleader = " "
 let maplocalleader = ","
 
 lua require('config')
-
-" Post-plugin init
-filetype plugin indent on
 
 " Plugin Configuration --------------------------------------------------- {{{1
 "
