@@ -5,7 +5,6 @@ return {
   "airblade/vim-gitgutter",
   "jvirtanen/vim-hcl",
   "LnL7/vim-nix",
-  "miyakogi/conoline.vim",
   "neoclide/jsonc.vim",
   "posva/vim-vue",
   "tpope/vim-commentary",
@@ -15,6 +14,13 @@ return {
   "tpope/vim-vinegar",
   "vim-airline/vim-airline",
   "wincent/terminus",
+
+  {
+    "miyakogi/conoline.vim",
+    init = function()
+      vim.g.conoline_use_colorscheme_default_normal = 1
+    end,
+  },
 
   {
     "folke/lazy.nvim",

@@ -20,8 +20,11 @@ vim.opt.formatoptions  = { c = true, q = true, l = true, j = true }
 -- Command line completion options
 vim.opt.wildmode       = { "longest", "list", "full" }
 
+-- netrw should never be my alternate file
+vim.g.netrw_altfile    = 1
+
 -- Init lazy.nvim plugin manager
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath         = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",

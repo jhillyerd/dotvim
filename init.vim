@@ -14,14 +14,6 @@ let maplocalleader = ","
 
 lua require('config')
 
-" Plugin Configuration --------------------------------------------------- {{{1
-"
-" Conoline Configuration
-let g:conoline_use_colorscheme_default_normal=1
-
-" netrw should never be my alternate file
-let g:netrw_altfile=1
-
 " Commands --------------------------------------------------------------- {{{1
 "
 command! Here :cd %:p:h
