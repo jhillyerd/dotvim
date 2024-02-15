@@ -2,6 +2,8 @@
 local autocmd = vim.api.nvim_create_autocmd
 local map_opts = { buffer = 0, noremap = true, silent = true }
 
+vim.api.nvim_create_user_command("Here", ":cd %:p:h", {})
+
 local enable_prose = function()
   -- Set buffer options.
   vim.opt_local.spell = true
@@ -34,3 +36,15 @@ local enable_prose = function()
 end
 
 vim.api.nvim_create_user_command("Prose", enable_prose, {})
+
+-- Reformat document for pasting: soft wrap paragraphs
+-- * Add a blank line to end of document
+-- * Join all non-blank lines
+-- * Remove trailing whitespace
+-- * Double-space
+vim.api.nvim_create_user_command("SoftWrap", [[
+  <line2>put _ |
+  silent <line1>,<line2>g/\S/,/^\s*$/join |
+  silent s/\s\+$// |
+  put _
+]], { range = "%" })
