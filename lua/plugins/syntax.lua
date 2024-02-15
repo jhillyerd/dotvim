@@ -9,7 +9,7 @@ return {
   config = function()
     local ensure_installed = {}
 
-    if vim.g.UNIX == 1 then
+    if vim.fn.has('unix') then
       ensure_installed = {
         "go", "http", "json", "lua", "nix", "rust", "terraform", "vim", "vimdoc"
       }
