@@ -35,6 +35,7 @@ if not ok then
     servers = {
       -- rust handled by rust-tools.nvim.
       elmls = {},
+      gleam = {},
       gopls = {},
 
       lua_ls = {

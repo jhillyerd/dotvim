@@ -3,6 +3,7 @@ local map_opts = { noremap = true, silent = true }
 return {
   "dag/vim-fish",
   "airblade/vim-gitgutter",
+  "gleam-lang/gleam.vim",
   "jvirtanen/vim-hcl",
   "LnL7/vim-nix",
   "neoclide/jsonc.vim",
