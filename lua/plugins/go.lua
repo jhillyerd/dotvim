@@ -39,6 +39,8 @@ return {
         vim.keymap.set("n", "<LocalLeader>tt", "<Cmd>GoTestFunc<cr>", map_opts)
 
         vim.keymap.set("n", "<LocalLeader>dt", dap_go.debug_test, map_opts)
+
+        vim.api.nvim_create_user_command("Lint", [[:cexpr system("golangci-lint run")]], {})
       end,
     })
   end
