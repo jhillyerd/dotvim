@@ -24,7 +24,7 @@ return {
 
   {
     "folke/lazy.nvim",
-    branch = "stable",
+    tag = "stable",
   },
 
   {
