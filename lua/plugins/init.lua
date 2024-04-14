@@ -12,7 +12,6 @@ return {
   "tpope/vim-repeat",
   "tpope/vim-sensible",
   "tpope/vim-surround",
-  "tpope/vim-vinegar",
   "vim-airline/vim-airline",
   "wincent/terminus",
 
@@ -26,6 +25,14 @@ return {
   {
     "folke/lazy.nvim",
     tag = "stable",
+  },
+
+  {
+    "stevearc/oil.nvim",
+    opts = {},
+    init = function()
+      vim.keymap.set("n", "-", "<Cmd>Oil<cr>", map_opts)
+    end,
   },
 
   {
@@ -46,7 +53,7 @@ return {
 
   {
     "tpope/vim-fugitive",
-    config = function()
+    init = function()
       vim.keymap.set("n", "<Leader>ga", "<Cmd>Gwrite<cr>", map_opts)
       vim.keymap.set("n", "<Leader>gb", "<Cmd>Git blame<cr>", map_opts)
       vim.keymap.set("n", "<Leader>gd", "<Cmd>Gdiffsplit<cr>", map_opts)
