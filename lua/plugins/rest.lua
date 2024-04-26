@@ -2,6 +2,7 @@ local map_opts = { buffer = 0, noremap = true, silent = false }
 
 return {
   "rest-nvim/rest.nvim",
+  tag = "v1.2.1",
 
   config = function()
     require("rest-nvim").setup()
