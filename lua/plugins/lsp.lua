@@ -49,7 +49,7 @@ if not ok then
         },
       },
 
-      rnix = {},
+      nixd = {},
       tsserver = {},
       yamlls = {},
     },
