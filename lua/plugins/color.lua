@@ -1,19 +1,14 @@
 return {
   {
-    "tjdevries/gruvbuddy.nvim",
-
-    dependencies = {
-      "tjdevries/colorbuddy.vim",
-    },
+    "tjdevries/colorbuddy.nvim",
 
     config = function()
-      do
-        local colorbuddy = require("colorbuddy")
-        local Color, colors, Group, groups, styles = colorbuddy.setup()
+      local colorbuddy = require("colorbuddy")
+      local colors = colorbuddy.colors
+      local Group = colorbuddy.Group
 
-        colorbuddy.colorscheme("gruvbuddy")
-        Group.new("ColorColumn", colors.foreground, colors.background:light())
-      end
+      vim.cmd.colorscheme("gruvbuddy")
+      Group.new("ColorColumn", colors.foreground, colors.background:light())
     end,
   },
 }
