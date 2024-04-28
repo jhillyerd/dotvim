@@ -49,6 +49,7 @@ if not ok then
         },
       },
 
+      pylsp = {},
       nixd = {},
       tsserver = {},
       yamlls = {},

@@ -7,8 +7,6 @@ return {
 
     null_ls.setup {
       sources = {
-        b.diagnostics.ruff,
-        b.formatting.black,
         b.formatting.terraform_fmt,
       },
     }
