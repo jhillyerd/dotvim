@@ -25,13 +25,14 @@ return {
     end
 
     cmp.setup({
+      preselect = cmp.PreselectMode.None,
       snippet = {
         expand = function(args) luasnip.lsp_expand(args.body) end,
       },
       mapping = {
         ["<Up>"] = cmp.mapping.select_prev_item(),
         ["<Down>"] = cmp.mapping.select_next_item(),
-        ["<cr>"] = cmp.mapping.confirm({ select = false }),
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           -- Super Tab.
           if cmp.visible() then
