@@ -7,8 +7,8 @@ return {
     config = function()
       local palettes = {
         nightfox = {
-          bg0 = "#101010",
-          bg1 = "#202020",
+          bg0 = "#080808",
+          bg1 = "#1c1c1c",
         },
       }
 
