@@ -1,4 +1,4 @@
-local map_opts = { noremap=true, silent=true }
+local map_opts = { noremap = true, silent = true }
 
 --
 -- Supporting functions
@@ -97,9 +97,16 @@ vim.keymap.set("i", "jk", "<Esc>", map_opts)
 -- Terminal mode mappings
 --
 
-vim.keymap.set("t", "<M-Esc>", "<C-\\><C-N>", map_opts)
-vim.keymap.set("t", "<M-h>", "<C-\\><C-N><C-w>h", map_opts)
-vim.keymap.set("t", "<M-j>", "<C-\\><C-N><C-w>j", map_opts)
-vim.keymap.set("t", "<M-k>", "<C-\\><C-N><C-w>k", map_opts)
-vim.keymap.set("t", "<M-l>", "<C-\\><C-N><C-w>l", map_opts)
-vim.keymap.set("t", "<M-q>", "<C-\\><C-N><C-w>q", map_opts)
+local group = vim.api.nvim_create_augroup("shell-term", {})
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "term://*fish*", -- Don't match apps, i.e. lazygit.
+  group = group,
+  callback = function()
+    vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-N>", map_opts)
+    vim.keymap.set("t", "<M-h>", "<C-\\><C-N><C-w>h", map_opts)
+    vim.keymap.set("t", "<M-j>", "<C-\\><C-N><C-w>j", map_opts)
+    vim.keymap.set("t", "<M-k>", "<C-\\><C-N><C-w>k", map_opts)
+    vim.keymap.set("t", "<M-l>", "<C-\\><C-N><C-w>l", map_opts)
+    vim.keymap.set("t", "<M-q>", "<C-\\><C-N><C-w>q", map_opts)
+  end,
+})
