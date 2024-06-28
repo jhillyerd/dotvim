@@ -33,7 +33,7 @@ local ok, myconfig = pcall(require, "local/lsp")
 if not ok then
   myconfig = {
     servers = {
-      -- rust handled by rust-tools.nvim.
+      -- rust handled by rustaceanvim.
       elmls = {},
       gleam = {},
       gopls = {},
