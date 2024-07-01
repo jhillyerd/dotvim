@@ -12,7 +12,6 @@ return {
   "tpope/vim-repeat",
   "tpope/vim-sensible",
   "tpope/vim-surround",
-  "vim-airline/vim-airline",
   "wincent/terminus",
 
   {
@@ -39,6 +38,27 @@ return {
     "folke/neodev.nvim",
     dependencies = {
       "neovim/nvim-lspconfig",
+    },
+  },
+
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = {
+      options = {
+        icons_enabled = false,
+      },
+      sections = {
+        lualine_c = {
+          {
+            'filename',
+            path = 1,
+          },
+        },
+      },
+    },
+    dependencies = {
+      "EdenEast/nightfox.nvim",
+      "nvim-tree/nvim-web-devicons",
     },
   },
 
