@@ -3,6 +3,7 @@ return {
   build = ":TSUpdate",
 
   dependencies = {
+    "nvim-treesitter/nvim-treesitter-context",
     "nvim-treesitter/nvim-treesitter-textobjects",
   },
 
@@ -38,5 +39,9 @@ return {
         },
       },
     }
-  end
+
+    require("treesitter-context").setup({
+      max_lines = 1,
+    })
+  end,
 }
