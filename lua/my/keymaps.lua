@@ -4,6 +4,25 @@ local map_opts = { noremap = true, silent = true }
 -- Supporting functions
 --
 
+-- Open current file with `gh browse` command.
+local gh_browse = function()
+  local handle = io.popen('git rev-parse --show-toplevel')
+  if not handle then
+    vim.notify("git rev-parse got nil pipe handle")
+    return
+  end
+
+  local workdir = handle:read("*a")
+  workdir = string.gsub(workdir, "^%s*(.-)%s*$", "%1")
+  handle:close()
+
+  local relativePath = string.gsub(vim.api.nvim_buf_get_name(0), workdir .. "/", "")
+  local row = unpack(vim.api.nvim_win_get_cursor(0))
+
+  local cmd = "gh browse " .. relativePath .. ":" .. row
+  os.execute(cmd .. " &> /dev/null")
+end
+
 -- Toggle number+relativenumber and disable mouse for copying from terminal
 local toggle_number = function()
   local prev_relative_state = false
@@ -69,6 +88,7 @@ vim.keymap.set("n", "<Leader>v", "<C-w>v<C-w>l", map_opts)
 vim.keymap.set("n", "<C-l>", "<C-r>=has('diff')?'<Bar>diffupdate':''<cr><cr><C-l>", map_opts)
 
 -- Command mappings
+vim.keymap.set("n", "<Leader>gx", gh_browse, map_opts)
 vim.keymap.set("n", "<Leader>sh", ":<C-u>set hlsearch!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>sl", ":<C-u>set list!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>sn", toggle_number(), map_opts)
