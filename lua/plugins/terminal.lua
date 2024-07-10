@@ -13,7 +13,7 @@ return {
 
       -- auto_scroll = true,
       direction = "vertical",
-      size = 80,
+      size = 100,
 
       shell = "fish",
     })
