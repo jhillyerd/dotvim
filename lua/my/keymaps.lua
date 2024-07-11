@@ -71,6 +71,8 @@ vim.keymap.set("n", "Y", "y$", map_opts)
 -- Left/right cursor keys navigate in/out of tags
 vim.keymap.set("n", "<Left>", "<C-t>", map_opts)
 vim.keymap.set("n", "<Right>", "<C-]>", map_opts)
+vim.keymap.set("n", "<Up>", ":<C-u>GitGutterPrevHunk<CR>", map_opts)
+vim.keymap.set("n", "<Down>", ":<C-u>GitGutterNextHunk<CR>", map_opts)
 
 -- Place cursor at start of . command
 vim.keymap.set("n", ".", ".`[", map_opts)
@@ -102,9 +104,9 @@ vim.keymap.set("n", "+", ":<C-u>resize +2<cr>", map_opts)
 vim.keymap.set("n", "_", ":<C-u>resize -2<cr>", map_opts)
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, map_opts)
-vim.keymap.set("n", "<up>", vim.diagnostic.goto_prev, map_opts)
-vim.keymap.set("n", "<down>", vim.diagnostic.goto_next, map_opts)
+vim.keymap.set("n", "<Leader>d", vim.diagnostic.open_float, map_opts)
+vim.keymap.set("n", "<S-Up>", vim.diagnostic.goto_prev, map_opts)
+vim.keymap.set("n", "<S-Down>", vim.diagnostic.goto_next, map_opts)
 -- vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, map_opts)
 
 --
