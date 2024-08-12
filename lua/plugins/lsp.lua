@@ -25,6 +25,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
       "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", map_opts)
     vim.keymap.set("n", "<localleader>wl",
       "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", map_opts)
+
+    vim.lsp.inlay_hint.enable()
   end
 })
 
