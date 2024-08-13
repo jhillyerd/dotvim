@@ -43,5 +43,9 @@ return {
     require("treesitter-context").setup({
       max_lines = 1,
     })
+
+    -- Code Folding.
+    vim.wo.foldmethod = "expr"
+    vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
   end,
 }

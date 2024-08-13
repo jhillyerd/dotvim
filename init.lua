@@ -3,7 +3,6 @@ do
   vim.opt.cmdheight      = 2
   vim.opt.colorcolumn    = "+1"
   vim.opt.expandtab      = true            -- Uses spaces for indent
-  vim.opt.foldmethod     = "syntax"        -- Fold based on file's syntax
   vim.opt.foldnestmax    = 1               -- Use one level of folds
   vim.opt.foldenable     = false           -- But folds are mostly annoying
   vim.opt.hlsearch       = false
