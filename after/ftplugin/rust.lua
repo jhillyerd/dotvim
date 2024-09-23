@@ -9,3 +9,5 @@ vim.keymap.set("n", "<LocalLeader>tt", function()
   vim.notify("Fetching testables...")
   vim.cmd.RustLsp({ "testables" })
 end, map_opts)
+
+vim.keymap.set("n", "<LocalLeader>sf", 'v2i"cString::from(<C-r>")<Esc>', map_opts)
