@@ -53,7 +53,7 @@ if not ok then
 
       pylsp = {},
       nixd = {},
-      tsserver = {},
+      ts_ls = {},
       yamlls = {},
     },
   }
