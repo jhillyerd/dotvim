@@ -2,17 +2,16 @@
 do
   vim.opt.cmdheight      = 2
   vim.opt.colorcolumn    = "+1"
-  vim.opt.expandtab      = true            -- Uses spaces for indent
-  vim.opt.foldnestmax    = 1               -- Use one level of folds
-  vim.opt.foldenable     = false           -- But folds are mostly annoying
+  vim.opt.expandtab      = true  -- Uses spaces for indent
+  vim.opt.foldenable     = false
   vim.opt.hlsearch       = false
-  vim.opt.number         = true            -- Always display line numbers
-  vim.opt.relativenumber = true            -- Relative line numbering
-  vim.opt.shiftwidth     = 2               -- Number of spaces for autoindent
-  vim.opt.showmatch      = true            -- Highlight matching (){}[]
+  vim.opt.number         = true  -- Always display line numbers
+  vim.opt.relativenumber = true  -- Relative line numbering
+  vim.opt.shiftwidth     = 2     -- Number of spaces for autoindent
+  vim.opt.showmatch      = true  -- Highlight matching (){}[]
   vim.opt.signcolumn     = "yes"
-  vim.opt.showmode       = false           -- Hide `-- INSERT --`
-  vim.opt.updatetime     = 500             -- Make gitgutter update faster
+  vim.opt.showmode       = false -- Hide `-- INSERT --`
+  vim.opt.updatetime     = 500   -- Make gitgutter update faster
   vim.opt.virtualedit    = "block"
 
   -- Control comment formatting
