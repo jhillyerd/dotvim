@@ -92,6 +92,9 @@ return {
         base_mappings = {
           toggle = '<Leader><Leader>',
         },
+        window_mappings = {
+          delete_bookmark = 'dd',
+        },
       })
     end
   },
