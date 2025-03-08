@@ -9,6 +9,9 @@ return {
         default_settings = {
           -- rust-analyzer language server configuration.
           ['rust-analyzer'] = {
+            check = {
+              command = "check",
+            },
             checkOnSave = false,
           },
         },
