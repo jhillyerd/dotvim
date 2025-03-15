@@ -80,22 +80,4 @@ return {
       vim.keymap.set("n", "<Leader>gs", "<Cmd>Git<cr>", map_opts)
     end
   },
-
-  {
-    'EvWilson/spelunk.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    config = function()
-      require('spelunk').setup({
-        enable_persist = true,
-        base_mappings = {
-          toggle = '<Leader><Leader>',
-        },
-        window_mappings = {
-          delete_bookmark = 'dd',
-        },
-      })
-    end
-  },
 }
