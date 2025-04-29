@@ -15,6 +15,17 @@ return {
   "wincent/terminus",
 
   {
+    "augmentcode/augment.vim",
+    init = function()
+      vim.g.augment_workspace_folders = { "." }
+      vim.g.augment_disable_tab_mapping = true
+      vim.keymap.set("n", "<Leader>cc", ":Augment chat<cr>", map_opts)
+      vim.keymap.set("n", "<Leader>ct", ":Augment chat-toggle<cr>", map_opts)
+      vim.keymap.set("i", "<Right>", '<Cmd>call augment#Accept("\\<Right>")<cr>', map_opts)
+    end,
+  },
+
+  {
     "miyakogi/conoline.vim",
     init = function()
       vim.g.conoline_use_colorscheme_default_normal = 1
