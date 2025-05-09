@@ -30,6 +30,7 @@ return {
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
     vim.keymap.set("n", "<leader>fl", builtin.current_buffer_fuzzy_find, {})
+    vim.keymap.set("n", "<leader>fm", builtin.git_status, {})
     vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, {})
     vim.keymap.set("n", "<leader>ft", builtin.builtin, {})
     vim.keymap.set("n", "<leader>fv",
