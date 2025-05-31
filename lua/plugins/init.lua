@@ -21,6 +21,10 @@ return {
   },
 
   {
+    "github/copilot.vim",
+  },
+
+  {
     "folke/lazy.nvim",
     tag = "stable",
   },
