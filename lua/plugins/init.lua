@@ -20,6 +20,26 @@ return {
   },
 
   {
+    "github/copilot.vim",
+    init = function()
+      vim.keymap.set("n", "<Leader>cn", "<Cmd>Copilot panel<Cr>", map_opts)
+      vim.keymap.set("i", "<Right>", "copilot#Accept('<Right>')", {
+        expr = true,
+        replace_keycodes = false,
+      })
+      vim.keymap.set("i", "<C-Right>", "<Plug>(copilot-accept-word)", map_opts)
+
+      vim.g.copilot_no_tab_map = true
+
+      -- Allow copilot in devel subdirectories.
+      local cwd = vim.fn.getcwd()
+      if cwd:find(vim.env.HOME .. "/devel", 1, true) then
+        vim.g.copilot_workspace_folders = { cwd }
+      end
+    end
+  },
+
+  {
     "folke/lazy.nvim",
     tag = "stable",
   },
