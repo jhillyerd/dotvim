@@ -37,6 +37,6 @@ return {
       function() builtin.find_files { cwd = vim.fn.stdpath("config") } end, {})
 
     -- Override common LSP bindings.
-    vim.keymap.set("n", "gr", builtin.lsp_references, {})
+    vim.keymap.set("n", "grr", builtin.lsp_references, {})
   end
 }
