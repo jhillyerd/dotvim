@@ -18,8 +18,8 @@ return {
       terminal_mappings = false,
 
       -- auto_scroll = true,
-      direction = "vertical",
-      size = 100,
+      direction = "horizontal",
+      size = 25,
 
       shell = "fish",
     })
@@ -30,11 +30,19 @@ return {
     vim.keymap.set("v", "<Leader>ts", function()
       require("toggleterm").send_lines_to_terminal("visual_selection", trim_spaces, { args = vim.v.count })
     end)
+    -- Send entire buffer.
     vim.keymap.set("n", "<Leader>tf", function()
       set_opfunc(function(motion_type)
         require("toggleterm").send_lines_to_terminal(motion_type, false, { args = vim.v.count })
       end)
       vim.api.nvim_feedkeys("ggg@G''", "n", false)
+    end)
+    -- Send paragraph.
+    vim.keymap.set("n", "<Leader>tp", function()
+      set_opfunc(function(motion_type)
+        require("toggleterm").send_lines_to_terminal(motion_type, false, { args = vim.v.count })
+      end)
+      vim.api.nvim_feedkeys("g@ap", "n", false)
     end)
   end
 }
