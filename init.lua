@@ -2,7 +2,7 @@
 do
   vim.opt.cmdheight      = 2
   vim.opt.colorcolumn    = "+1"
-  vim.opt.expandtab      = true  -- Uses spaces for indent
+  vim.opt.expandtab      = true -- Uses spaces for indent
   vim.opt.foldenable     = false
   vim.opt.hlsearch       = false
   vim.opt.number         = true  -- Always display line numbers
@@ -25,11 +25,10 @@ end
 do
   vim.g.mapleader                 = " "
   vim.g.maplocalleader            = ","
-
+  vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'sh' }
   -- netrw should never be my alternate file
   vim.g.netrw_altfile             = 1
-
-  vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'sh' }
+  vim.g.omni_sql_no_default_maps  = 1
 end
 
 -- Init lazy.nvim plugin manager
