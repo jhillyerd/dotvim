@@ -14,7 +14,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", map_opts)
     vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", map_opts)
     vim.keymap.set("n", "<localleader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", map_opts)
-    vim.keymap.set("n", "<localleader>e", "<cmd>lua vim.lsp.buf.rename()<CR>", map_opts)
     vim.keymap.set("n", "<localleader>q", "<cmd>lua vim.lsp.buf.format{async = true}<CR>", map_opts)
     vim.keymap.set("n", "<localleader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>",
       map_opts)
