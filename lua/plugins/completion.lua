@@ -14,6 +14,7 @@ return {
     -- Complex due to implementing Super-Tab for LSP and snippet
     -- based completions.
 
+    print("in nvim-cmp init")
     local cmp = require("cmp")
     local luasnip = require("luasnip")
 
@@ -56,7 +57,8 @@ return {
         end, { "i", "s" }),
       },
       sources = cmp.config.sources({
-        { name = "nvim_lsp" },
+        -- { name = "nvim_lsp" },
+        { name = "codeium" },
         { name = "luasnip" },
       })
     })
