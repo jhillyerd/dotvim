@@ -3,7 +3,6 @@ local map_opts = { noremap = true, silent = true }
 return {
   "augmentcode/augment.vim",
   init = function()
-    vim.g.augment_workspace_folders = { "." }
     vim.g.augment_disable_tab_mapping = true
     vim.keymap.set("n", "<Leader>cc", ":Augment chat<cr>", map_opts)
     vim.keymap.set("n", "<Leader>ct", ":Augment chat-toggle<cr>", map_opts)
@@ -20,5 +19,11 @@ return {
         })
       end
     })
+
+    -- Allow augment to read devel subdirectories.
+    local cwd = vim.fn.getcwd()
+    if cwd:find(vim.env.HOME .. "/devel", 1, true) then
+      vim.g.augment_workspace_folders = { cwd }
+    end
   end,
 }
