@@ -9,7 +9,6 @@ return {
   "posva/vim-vue",
   "tpope/vim-commentary",
   "tpope/vim-repeat",
-  "tpope/vim-sensible",
   "tpope/vim-surround",
   "wincent/terminus",
 

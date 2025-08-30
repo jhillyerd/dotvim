@@ -1,4 +1,3 @@
--- Options (many more set in vim-sensible)
 do
   vim.opt.cmdheight      = 2
   vim.opt.colorcolumn    = "+1"
