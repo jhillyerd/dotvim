@@ -7,6 +7,13 @@ do
   local group = augroup("vimrc", {})
 
   autocmd("FileType", {
+    callback = function()
+      vim.opt_local.formatoptions:remove("o")
+    end,
+    group = group,
+  })
+
+  autocmd("FileType", {
     pattern = { "markdown", "text" },
     callback = function()
       vim.keymap.set(
