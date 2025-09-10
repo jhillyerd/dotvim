@@ -25,26 +25,34 @@ return {
       shell = "fish",
     })
 
-    vim.keymap.set("n", "<Leader>ts", function()
-      require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
-    end)
-    vim.keymap.set("v", "<Leader>ts", function()
-      require("toggleterm").send_lines_to_terminal("visual_selection", trim_spaces, { args = vim.v.count })
-    end)
+    vim.keymap.set("n", "<Leader>ts",
+      function()
+        require("toggleterm").send_lines_to_terminal("single_line", trim_spaces, { args = vim.v.count })
+      end,
+      { desc = "Send single line to terminal" })
+    vim.keymap.set("v", "<Leader>ts",
+      function()
+        require("toggleterm").send_lines_to_terminal("visual_selection", trim_spaces, { args = vim.v.count })
+      end,
+      { desc = "Send visual selection to terminal" })
     -- Send entire buffer.
-    vim.keymap.set("n", "<Leader>tf", function()
-      set_opfunc(function(motion_type)
-        require("toggleterm").send_lines_to_terminal(motion_type, false, { args = vim.v.count })
-      end)
-      vim.api.nvim_feedkeys("ggg@G''", "n", false)
-    end)
+    vim.keymap.set("n", "<Leader>tf",
+      function()
+        set_opfunc(function(motion_type)
+          require("toggleterm").send_lines_to_terminal(motion_type, false, { args = vim.v.count })
+        end)
+        vim.api.nvim_feedkeys("ggg@G''", "n", false)
+      end,
+      { desc = "Send entire buffer to terminal" })
     -- Send paragraph.
-    vim.keymap.set("n", "<Leader>tp", function()
-      set_opfunc(function(motion_type)
-        require("toggleterm").send_lines_to_terminal(motion_type, false, { args = vim.v.count })
-      end)
-      vim.api.nvim_feedkeys("g@ap", "n", false)
-    end)
+    vim.keymap.set("n", "<Leader>tp",
+      function()
+        set_opfunc(function(motion_type)
+          require("toggleterm").send_lines_to_terminal(motion_type, false, { args = vim.v.count })
+        end)
+        vim.api.nvim_feedkeys("g@ap", "n", false)
+      end,
+      { desc = "Send paragraph to terminal" })
 
     -- Keymap to jump to current toggleterm buffer and enter insert mode.
     vim.keymap.set("n", "<Leader>ti", function()
