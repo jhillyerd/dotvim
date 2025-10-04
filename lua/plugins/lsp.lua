@@ -77,6 +77,7 @@ return {
       for name, config in pairs(myconfig.servers) do
         config.capabilities = capabilities
         vim.lsp.config(name, config)
+        vim.lsp.enable(name)
       end
     end,
   },
