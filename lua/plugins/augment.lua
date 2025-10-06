@@ -2,6 +2,8 @@ local map_opts = { noremap = true, silent = true }
 
 return {
   "augmentcode/augment.vim",
+  enabled = not vim.fn.has("win32"),
+
   init = function()
     vim.g.augment_disable_tab_mapping = true
     vim.keymap.set("n", "<Leader>cc", ":Augment chat<cr>", map_opts)
