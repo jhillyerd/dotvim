@@ -2,7 +2,7 @@ local map_opts = { noremap = true, silent = true }
 
 return {
   "augmentcode/augment.vim",
-  enabled = not vim.fn.has("win32"),
+  enabled = vim.fn.has("win32") == 0,
 
   init = function()
     vim.g.augment_disable_tab_mapping = true
