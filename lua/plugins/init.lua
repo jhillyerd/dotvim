@@ -70,6 +70,15 @@ return {
   },
 
   {
+    "rafcamlet/nvim-luapad",
+    init = function()
+      vim.keymap.set("n", "<Leader>lp", function ()
+        require("luapad").toggle()
+      end, map_opts)
+    end,
+  },
+
+  {
     "tpope/vim-fugitive",
     init = function()
       vim.keymap.set("n", "<Leader>ga", "<Cmd>Gwrite<cr>", map_opts)
