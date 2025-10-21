@@ -46,6 +46,12 @@ local toggle_quickfix = function()
   end
 end
 
+-- Open scratch.md and attach luapad.
+local open_scratch = function()
+  vim.cmd("e ~/scratch.lua")
+  require("luapad").toggle()
+end
+
 --
 -- Normal mode mappings
 --
@@ -89,7 +95,7 @@ vim.keymap.set("n", "<Leader>sp", ":<C-u>set paste!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>sr", ":<C-u>set relativenumber!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>ss", ":<C-u>set spell!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>q", toggle_quickfix, map_opts)
-vim.keymap.set("n", "<Leader>x", ":<C-u>e ~/scratch.lua<cr>", map_opts)
+vim.keymap.set("n", "<Leader>x", open_scratch, map_opts)
 vim.keymap.set("n", "<Leader>z", ":<C-u>belowright split | startinsert | terminal fish<cr>", map_opts)
 vim.keymap.set("n", "+", ":<C-u>resize +2<cr>", map_opts)
 vim.keymap.set("n", "_", ":<C-u>resize -2<cr>", map_opts)
