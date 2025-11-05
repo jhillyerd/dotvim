@@ -23,3 +23,7 @@ vim.keymap.set("n", "<LocalLeader>tt", function()
 end, map_opts)
 
 vim.keymap.set("n", "<LocalLeader>sf", 'v2i"cString::from(<C-r>")<Esc>', map_opts)
+
+require("treesitter-context").setup({
+  max_lines = 2,
+})
