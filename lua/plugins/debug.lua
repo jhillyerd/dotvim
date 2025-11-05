@@ -17,17 +17,24 @@ return {
     dap.listeners.before.event_terminated["dapui_config"] = dapui.close
     dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
-    vim.keymap.set("n", "<F2>", dap.step_into)
-    vim.keymap.set("n", "<F3>", dap.step_over)
-    vim.keymap.set("n", "<F4>", dap.step_out)
-    vim.keymap.set("n", "<F5>", dap.continue) -- also starts dap.
-    vim.keymap.set("n", "<LocalLeader>db", dap.toggle_breakpoint)
-    vim.keymap.set("n", "<LocalLeader>dl", dap.run_to_cursor)
-    vim.keymap.set("n", "<LocalLeader>dq", function() -- quit dap.
+    vim.keymap.set("n", "<F2>", dap.step_into,
+      { desc = "Step into" })
+    vim.keymap.set("n", "<F3>", dap.step_over,
+      { desc = "Step over" })
+    vim.keymap.set("n", "<F4>", dap.step_out,
+      { desc = "Step out" })
+    vim.keymap.set("n", "<F5>", dap.continue,
+      { desc = "Continue" })
+    vim.keymap.set("n", "<LocalLeader>db", dap.toggle_breakpoint,
+      { desc = "Toggle breakpoint" })
+    vim.keymap.set("n", "<LocalLeader>dl", dap.run_to_cursor,
+      { desc = "Run to cursor" })
+    vim.keymap.set("n", "<LocalLeader>dq", function()
       dap.disconnect()
       dap.close()
       dapui.close()
-    end)
+    end,
+    { desc = "Quit dap" })
     vim.keymap.set("n", "<LocalLeader>dc", function()
       dap.set_breakpoint(vim.fn.input({ prompt = "Break condition: " }))
     end)
