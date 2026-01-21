@@ -14,6 +14,15 @@ local gh_browse = function()
     buf_dir, buf_file, line))
 end
 
+-- Copy relative file path and line number to tmux paste buffer
+local tmux_copy_path = function()
+  local file_path = vim.fn.expand("%:.")
+  local line = unpack(vim.api.nvim_win_get_cursor(0))
+  local text = string.format("%s:%s", file_path, line)
+
+  os.execute(string.format("tmux set-buffer %q", text))
+end
+
 -- Toggle number+relativenumber and disable mouse for copying from terminal
 local toggle_number = function()
   local prev_relative_state = false
@@ -88,6 +97,7 @@ vim.keymap.set("n", "<C-l>", "<C-r>=has('diff')?'<Bar>diffupdate':''<cr><cr><C-l
 
 -- Command mappings
 vim.keymap.set("n", "<Leader>gx", gh_browse, map_opts)
+vim.keymap.set("n", "<Leader>gy", tmux_copy_path, map_opts)
 vim.keymap.set("n", "<Leader>sh", ":<C-u>set hlsearch!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>sl", ":<C-u>set list!<cr>", map_opts)
 vim.keymap.set("n", "<Leader>sn", toggle_number(), map_opts)
