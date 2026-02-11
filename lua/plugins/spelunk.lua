@@ -18,11 +18,13 @@ return {
       base_mappings = {
         toggle = '<Leader><Leader>',
         add = '<Leader>a',
+        delete = 'NONE',
         next_bookmark = 'NONE',
         prev_bookmark = 'NONE',
         search_bookmarks = 'NONE',
         search_current_bookmarks = 'NONE',
         search_stacks = 'NONE',
+        change_line = 'NONE',
       },
       window_mappings = {
         close = '<Esc>',
