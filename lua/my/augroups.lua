@@ -43,12 +43,4 @@ do
     end,
     group = group,
   })
-
-  autocmd("BufEnter", {
-    pattern = "term://*fish",
-    callback = function()
-      vim.cmd("startinsert")
-    end,
-    group = group,
-  })
 end

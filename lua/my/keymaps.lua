@@ -132,6 +132,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
   group = group,
   callback = function()
     vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-N>", map_opts)
+    vim.keymap.set("t", "<C-w><C-w>", "<C-\\><C-N><C-w><C-w>", map_opts)
     vim.keymap.set("t", "<M-h>", "<C-\\><C-N><C-w>h", map_opts)
     vim.keymap.set("t", "<M-j>", "<C-\\><C-N><C-w>j", map_opts)
     vim.keymap.set("t", "<M-k>", "<C-\\><C-N><C-w>k", map_opts)

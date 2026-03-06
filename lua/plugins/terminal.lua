@@ -9,14 +9,15 @@ local set_opfunc = vim.fn[vim.api.nvim_exec([[
 return {
   "akinsho/toggleterm.nvim",
 
-  version = "^2.13.0",
+  version = "^2.13.1",
 
   config = function()
     require("toggleterm").setup({
       open_mapping = "<Leader>tt",
       insert_mappings = false,
       terminal_mappings = false,
-      persist_mode = false, -- Breaks insert mapping.
+      start_in_insert = true,
+      persist_mode = true,
 
       -- auto_scroll = true,
       direction = "horizontal",
@@ -83,7 +84,9 @@ return {
       -- Switch to toggleterm window, or start new one.
       if toggleterm_winid then
         vim.api.nvim_set_current_win(toggleterm_winid)
-        vim.cmd("startinsert!")
+        vim.schedule(function()
+          vim.cmd("startinsert!")
+        end)
       else
         vim.cmd([[ exe 1 . "ToggleTerm" ]])
       end
