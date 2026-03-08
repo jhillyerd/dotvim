@@ -43,4 +43,12 @@ do
     end,
     group = group,
   })
+
+  autocmd("TermOpen", {
+    pattern = "*",
+    callback = function()
+      vim.keymap.set("n", "<C-c>", "i<C-c>", map_opts)
+    end,
+    group = group,
+  })
 end
