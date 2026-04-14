@@ -16,27 +16,19 @@ return {
       }
     end
 
-    require("nvim-treesitter.configs").setup {
+    require("nvim-treesitter").setup {
       ensure_installed = ensure_installed,
+    }
 
-      highlight = {
+    require("nvim-treesitter-textobjects").setup {
+      select = {
         enable = true,
-      },
-
-      indent = {
-        enable = true,
-      },
-
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true, -- Jump forward like %
-          keymaps = {
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-          },
-          include_surrounding_whitespace = true,
+        lookahead = true,
+        keymaps = {
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
         },
+        include_surrounding_whitespace = true,
       },
     }
 
@@ -44,7 +36,6 @@ return {
       max_lines = 1,
     })
 
-    -- Code Folding.
     vim.wo.foldmethod = "expr"
     vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
   end,
